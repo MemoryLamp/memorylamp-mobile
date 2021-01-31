@@ -88,7 +88,8 @@ class OnboardingState extends State<Onboarding> {
               ),
             )
           : InkWell(
-              onTap: () => Navigator.pushNamed(context, LoginScreen.routeName),
+              onTap: () =>
+                  Navigator.popAndPushNamed(context, LoginScreen.routeName),
               child: Container(
                 color: PrimaryColor,
                 alignment: Alignment.center,
