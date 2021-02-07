@@ -45,16 +45,18 @@ class OnboardingState extends State<Onboarding> {
   Widget build(BuildContext context) {
     SizeMQ().init(context);
     return Scaffold(
-      body: PageView.builder(
-        controller: _pageController,
-        onPageChanged: (val) => setState(() => _currentIndex = val),
-        itemCount: sliderItems.length,
-        itemBuilder: (context, index) {
-          return SliderPage(
-            title: sliderItems[index].title,
-            message: sliderItems[index].message,
-          );
-        },
+      body: SafeArea(
+        child: PageView.builder(
+          controller: _pageController,
+          onPageChanged: (val) => setState(() => _currentIndex = val),
+          itemCount: sliderItems.length,
+          itemBuilder: (context, index) {
+            return SliderPage(
+              title: sliderItems[index].title,
+              message: sliderItems[index].message,
+            );
+          },
+        ),
       ),
       bottomSheet: _currentIndex != sliderItems.length - 1
           ? Container(

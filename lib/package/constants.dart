@@ -3,11 +3,6 @@ import 'package:memory_lamp/package/size.dart';
 
 const PrimaryColor = Colors.blue;
 const PrimaryLightColor = Colors.lightBlue;
-const PrimaryGradientColor = LinearGradient(
-  begin: Alignment.topLeft,
-  end: Alignment.bottomRight,
-  colors: [Colors.lightBlue, Colors.lightBlueAccent],
-);
 const SecondaryColor = Colors.grey;
 const TextColor = Colors.black87;
 
