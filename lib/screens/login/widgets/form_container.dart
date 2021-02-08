@@ -25,7 +25,7 @@ class _FormContainerState extends State<FormContainer> {
         SizedBox(height: SizeMQ.screenHeight * .03),
         _passwordField(),
         SizedBox(height: SizeMQ.screenHeight * .03),
-        _rememberMe(),
+        widget.loadForSignup ? _agreeToTOS() : _rememberMe(),
         SizedBox(height: SizeMQ.screenHeight * .03),
       ],
     );
@@ -77,7 +77,6 @@ class _FormContainerState extends State<FormContainer> {
             },
           ),
           Text("Remember me"),
-          SizedBox(height: SizeMQ.screenHeight * .03),
           Spacer(),
           GestureDetector(
             onTap: () {
@@ -86,6 +85,34 @@ class _FormContainerState extends State<FormContainer> {
             },
             child: Text(
               "Forgot Password",
+              style: TextStyle(decoration: TextDecoration.underline),
+            ),
+          ),
+        ],
+      );
+
+  Row _agreeToTOS() => Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Checkbox(
+            value: remember,
+            activeColor: PrimaryColor,
+            onChanged: (value) {
+              setState(() {
+                remember = value;
+              });
+            },
+          ),
+          Spacer(),
+          Text("By clicking this, you agree to our "),
+          GestureDetector(
+            onTap: () {
+              print('clicked : Terms and conditions');
+              Navigator.pushNamed(context, ForgotPassword.routeName);
+            },
+            child: Text(
+              "terms and conditions",
               style: TextStyle(decoration: TextDecoration.underline),
             ),
           ),

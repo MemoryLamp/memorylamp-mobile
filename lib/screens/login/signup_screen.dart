@@ -25,7 +25,6 @@ class SignUpScreen extends StatelessWidget {
                 _welcome(),
                 FormContainer(loadForSignup: true),
                 MyButton(press: () {}, text: 'Sign Up'),
-                SignUpCallToAction(),
               ],
             ),
           ),
