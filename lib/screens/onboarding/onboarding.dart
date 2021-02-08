@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/package/constants.dart';
 import 'package:memory_lamp/package/size.dart';
 import 'package:memory_lamp/package/texts.dart';
-import 'package:memory_lamp/screens/login/login.dart';
+import 'package:memory_lamp/screens/login/login_screen.dart';
 import 'package:memory_lamp/screens/onboarding/widgets/slider_model.dart';
 import 'package:memory_lamp/screens/onboarding/widgets/slider_page.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/package/constants.dart';
 import 'package:memory_lamp/package/size.dart';
 import 'package:memory_lamp/package/texts.dart';
-import 'package:memory_lamp/screens/login/login.dart';
+import 'package:memory_lamp/screens/login/signup_screen.dart';
 
 class SignUpCallToAction extends StatelessWidget {
   @override
@@ -15,7 +15,7 @@ class SignUpCallToAction extends StatelessWidget {
           size: getProportionateScreenWidth(16),
         ),
         GestureDetector(
-          onTap: () => Navigator.pushNamed(context, LoginScreen.routeName),
+          onTap: () => Navigator.pushNamed(context, SignUpScreen.routeName),
           child: NormalText("Sign Up",
               size: getProportionateScreenWidth(16), color: PrimaryColor),
         ),

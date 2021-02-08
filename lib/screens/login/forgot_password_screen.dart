@@ -3,22 +3,20 @@ import 'package:memory_lamp/package/constants.dart';
 import 'package:memory_lamp/package/my_button.dart';
 import 'package:memory_lamp/package/size.dart';
 import 'package:memory_lamp/package/texts.dart';
+import 'package:memory_lamp/package/transparent_appbar.dart';
 import 'package:memory_lamp/screens/login/widgets/forgot_password_form.dart';
-import 'package:memory_lamp/screens/login/widgets/sign_up_button.dart';
+import 'package:memory_lamp/screens/login/widgets/sign_up_call_to_action.dart';
 
 class ForgotPassword extends StatelessWidget {
   static String routeName = '/forgotPassword';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Reset Password'),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-      ),
+      appBar: transparentAppbar('Reset Password'),
       body: SafeArea(
-        child: Center(
-          child: Padding(
+        child: SingleChildScrollView(
+          child: Container(
+            height: SizeMQ.screenHeight  * .8,
             padding: EdgeInsets.symmetric(horizontal: SizeMQ.screenWidth * .1),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

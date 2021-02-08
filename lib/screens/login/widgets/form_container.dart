@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/package/constants.dart';
 import 'package:memory_lamp/package/size.dart';
-import 'package:memory_lamp/screens/login/forgot_password.dart';
+import 'package:memory_lamp/screens/login/forgot_password_screen.dart';
 
 class FormContainer extends StatefulWidget {
+  final bool loadForSignup;
+  const FormContainer({this.loadForSignup = false});
   @override
   _FormContainerState createState() => _FormContainerState();
 }
@@ -17,6 +19,8 @@ class _FormContainerState extends State<FormContainer> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       mainAxisSize: MainAxisSize.max,
       children: [
+        if (widget.loadForSignup) _userNameField(),
+        SizedBox(height: SizeMQ.screenHeight * .03),
         _emailField(),
         SizedBox(height: SizeMQ.screenHeight * .03),
         _passwordField(),
@@ -28,6 +32,16 @@ class _FormContainerState extends State<FormContainer> {
   }
 
   //  COMPONENTS
+  // ------ usernameField
+  TextFormField _userNameField() => TextFormField(
+        keyboardType: TextInputType.name,
+        decoration: InputDecoration(
+          labelText: "Username",
+          hintText: "Enter your username",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+        ),
+      );
+
   // ------ emailFeild
   TextFormField _emailField() => TextFormField(
         keyboardType: TextInputType.emailAddress,
