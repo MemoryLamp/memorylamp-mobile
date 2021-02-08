@@ -5,7 +5,6 @@ import 'package:memory_lamp/package/size.dart';
 import 'package:memory_lamp/package/texts.dart';
 import 'package:memory_lamp/package/transparent_appbar.dart';
 import 'package:memory_lamp/screens/login/widgets/form_container.dart';
-import 'package:memory_lamp/screens/login/widgets/sign_up_call_to_action.dart';
 
 class SignUpScreen extends StatelessWidget {
   static String routeName = '/signup';

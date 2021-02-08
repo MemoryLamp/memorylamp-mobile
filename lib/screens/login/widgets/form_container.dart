@@ -11,23 +11,27 @@ class FormContainer extends StatefulWidget {
 }
 
 class _FormContainerState extends State<FormContainer> {
+  final _formKey = GlobalKey<FormState>();
   bool remember = false;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        if (widget.loadForSignup) _userNameField(),
-        SizedBox(height: SizeMQ.screenHeight * .03),
-        _emailField(),
-        SizedBox(height: SizeMQ.screenHeight * .03),
-        _passwordField(),
-        SizedBox(height: SizeMQ.screenHeight * .03),
-        widget.loadForSignup ? _agreeToTOS() : _rememberMe(),
-        SizedBox(height: SizeMQ.screenHeight * .03),
-      ],
+    return Form(
+      key: _formKey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          if (widget.loadForSignup) _userNameField(),
+          SizedBox(height: SizeMQ.screenHeight * .03),
+          _emailField(),
+          SizedBox(height: SizeMQ.screenHeight * .03),
+          _passwordField(),
+          SizedBox(height: SizeMQ.screenHeight * .03),
+          widget.loadForSignup ? _agreeToTOS() : _rememberMe(),
+          SizedBox(height: SizeMQ.screenHeight * .03),
+        ],
+      ),
     );
   }
 
@@ -109,7 +113,7 @@ class _FormContainerState extends State<FormContainer> {
           GestureDetector(
             onTap: () {
               print('clicked : Terms and conditions');
-              Navigator.pushNamed(context, ForgotPassword.routeName);
+              // show TOS
             },
             child: Text(
               "terms and conditions",
