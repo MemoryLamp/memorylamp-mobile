@@ -15,14 +15,6 @@ class SliderPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Container(
-          //   height: SizeMQ.screenHeight * 0.6,
-          //   color: Colors.grey,
-          //   child: Center(
-          //     child: NormalText('replace with image when available'),
-          //   ),
-          // ),
-          // on second thought, I'll just hardcode something here  temporarily
           Image.asset('assets/code.png'),
           SizedBox(height: SizeMQ.screenHeight * 0.03),
           MediumText(

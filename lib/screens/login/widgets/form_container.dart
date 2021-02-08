@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/package/my_button.dart';
+import 'package:memory_lamp/package/constants.dart';
 import 'package:memory_lamp/package/size.dart';
-import 'package:memory_lamp/screens/login/sign_up_cta.dart';
-import 'package:memory_lamp/screens/login/widgets/email_field.dart';
-import 'package:memory_lamp/screens/login/widgets/password_field.dart';
-import 'package:memory_lamp/screens/login/widgets/remember_me.dart';
+import 'package:memory_lamp/screens/login/forgot_password.dart';
 
 class FormContainer extends StatefulWidget {
   @override
@@ -20,19 +17,64 @@ class _FormContainerState extends State<FormContainer> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       mainAxisSize: MainAxisSize.max,
       children: [
-        EmailField(),
+        _emailField(),
         SizedBox(height: SizeMQ.screenHeight * .03),
-        PasswordField(),
+        _passwordField(),
         SizedBox(height: SizeMQ.screenHeight * .03),
-        RememberMe(),
+        _rememberMe(),
         SizedBox(height: SizeMQ.screenHeight * .03),
-        MyButton(
-          press: () {},
-          text: 'Login',
-        ),
-        SizedBox(height: SizeMQ.screenHeight * .03),
-        SignUpCta(),
       ],
     );
   }
+
+  //  COMPONENTS
+  // ------ emailFeild
+  TextFormField _emailField() => TextFormField(
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          labelText: "Email",
+          hintText: "Enter your email",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+        ),
+      );
+
+  // ------ passwordField
+  TextFormField _passwordField() => TextFormField(
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          labelText: "Password",
+          hintText: "Enter your password",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+        ),
+      );
+
+  // ------- rememberMe
+  Row _rememberMe() => Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Checkbox(
+            value: remember,
+            activeColor: PrimaryColor,
+            onChanged: (value) {
+              setState(() {
+                remember = value;
+              });
+            },
+          ),
+          Text("Remember me"),
+          SizedBox(height: SizeMQ.screenHeight * .03),
+          Spacer(),
+          GestureDetector(
+            onTap: () {
+              print('clicked : forgot password');
+              Navigator.pushNamed(context, ForgotPassword.routeName);
+            },
+            child: Text(
+              "Forgot Password",
+              style: TextStyle(decoration: TextDecoration.underline),
+            ),
+          ),
+        ],
+      );
 }
