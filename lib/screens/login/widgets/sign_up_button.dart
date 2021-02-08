@@ -1,10 +1,10 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:memory_lamp/package/constants.dart';
 import 'package:memory_lamp/package/size.dart';
 import 'package:memory_lamp/package/texts.dart';
 import 'package:memory_lamp/screens/login/login.dart';
 
-class SignUpCta extends StatelessWidget {
+class SignUpCallToAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(

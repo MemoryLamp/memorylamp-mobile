@@ -37,12 +37,3 @@ class LargeText extends NormalText {
   const LargeText(this.child, {this.color, this.weight, this.size = 35})
       : super(child);
 }
-
-class ExtraLargeText extends NormalText {
-  final String child;
-  final Color color;
-  final FontWeight weight;
-  final double size;
-  const ExtraLargeText(this.child, {this.color, this.weight, this.size = 45})
-      : super(child);
-}

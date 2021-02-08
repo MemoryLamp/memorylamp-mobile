@@ -4,6 +4,7 @@ import 'package:memory_lamp/package/my_button.dart';
 import 'package:memory_lamp/package/size.dart';
 import 'package:memory_lamp/package/texts.dart';
 import 'package:memory_lamp/screens/login/widgets/form_container.dart';
+import 'package:memory_lamp/screens/login/widgets/sign_up_button.dart';
 
 class LoginScreen extends StatelessWidget {
   static String routeName = '/login';
@@ -22,7 +23,7 @@ class LoginScreen extends StatelessWidget {
                 FormContainer(),
                 MyButton(press: () {}, text: 'Login'),
                 SizedBox(height: SizeMQ.screenHeight * .03),
-                _signUpButton(context),
+                SignUpCallToAction(),
               ],
             ),
           ),
@@ -47,22 +48,6 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           NormalText('Dolor cillum laborum sunt qui fugiat aliqua eu ad.'),
-        ],
-      );
-
-  // ------ signUpCTA
-  Row _signUpButton(context) => Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          NormalText(
-            "Don’t have an account? ",
-            size: getProportionateScreenWidth(16),
-          ),
-          GestureDetector(
-            onTap: () => Navigator.pushNamed(context, LoginScreen.routeName),
-            child: NormalText("Sign Up",
-                size: getProportionateScreenWidth(16), color: PrimaryColor),
-          ),
         ],
       );
 }

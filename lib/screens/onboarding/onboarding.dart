@@ -18,6 +18,8 @@ class OnboardingState extends State<Onboarding> {
 
   @override
   Widget build(BuildContext context) {
+    SizeMQ().init(context);
+
     return Scaffold(
       body: SafeArea(
         child: PageView.builder(
