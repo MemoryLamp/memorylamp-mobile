@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/package/constants.dart';
 import 'package:memory_lamp/package/size.dart';
 import 'package:memory_lamp/screens/login/forgot_password_screen.dart';
+import 'package:memory_lamp/screens/login/widgets/error_list_builder.dart';
 
 class FormContainer extends StatefulWidget {
   final bool loadForSignup;
@@ -13,6 +14,22 @@ class FormContainer extends StatefulWidget {
 class _FormContainerState extends State<FormContainer> {
   final _formKey = GlobalKey<FormState>();
   bool remember = false;
+  bool agreeToTos = false;
+  String email;
+  String password;
+  final List<String> errors = [];
+
+  // ------ setState functions
+  void appendError({String error}) {
+    if (!errors.contains(error)) setState(() => errors.add(error));
+  }
+
+  void removeError({String error}) {
+    if (errors.contains(error)) setState(() => errors.remove(error));
+  }
+
+  // void setEmail(String input) => setState(() => email = input);
+  // void setPassword(String input) => setState(() => password = input);
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +45,7 @@ class _FormContainerState extends State<FormContainer> {
           SizedBox(height: SizeMQ.screenHeight * .03),
           _passwordField(),
           SizedBox(height: SizeMQ.screenHeight * .03),
+          ErrorListBuilder(errors: errors),
           widget.loadForSignup ? _agreeToTOS() : _rememberMe(),
           SizedBox(height: SizeMQ.screenHeight * .03),
         ],
@@ -39,30 +57,49 @@ class _FormContainerState extends State<FormContainer> {
   // ------ usernameField
   TextFormField _userNameField() => TextFormField(
         keyboardType: TextInputType.name,
-        decoration: InputDecoration(
-          labelText: "Username",
-          hintText: "Enter your username",
-          floatingLabelBehavior: FloatingLabelBehavior.always,
+        decoration: defaultInputDecoration(
+          label: "UserName",
+          hint: "Enter your UserName",
+          icon: "assets/icons/Mail.svg",
         ),
       );
 
   // ------ emailFeild
   TextFormField _emailField() => TextFormField(
         keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
-          labelText: "Email",
-          hintText: "Enter your email",
-          floatingLabelBehavior: FloatingLabelBehavior.always,
+        onSaved: (emailInput) => email = emailInput,
+        onChanged: (value) {
+          if (value.isNotEmpty) {
+            removeError(error: emptyEmail);
+          } else if (emailRegExp.hasMatch(value)) {
+            removeError(error: invalidEmail);
+          }
+          return null;
+        },
+        validator: (value) {
+          if (value.isEmpty) {
+            appendError(error: emptyEmail);
+            return "";
+          } else if (!emailRegExp.hasMatch(value)) {
+            appendError(error: invalidEmail);
+            return "";
+          }
+          return null;
+        },
+        decoration: defaultInputDecoration(
+          label: "Email",
+          hint: "Enter your Email",
+          icon: "assets/icons/Mail.svg",
         ),
       );
 
   // ------ passwordField
   TextFormField _passwordField() => TextFormField(
         keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
-          labelText: "Password",
-          hintText: "Enter your password",
-          floatingLabelBehavior: FloatingLabelBehavior.always,
+        decoration: defaultInputDecoration(
+          label: "Password",
+          hint: "Enter your Password",
+          icon: "assets/icons/Lock.svg",
         ),
       );
 
@@ -95,6 +132,7 @@ class _FormContainerState extends State<FormContainer> {
         ],
       );
 
+  // ------ agreeToTOS
   Row _agreeToTOS() => Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,7 +142,7 @@ class _FormContainerState extends State<FormContainer> {
             activeColor: PrimaryColor,
             onChanged: (value) {
               setState(() {
-                remember = value;
+                agreeToTos = value;
               });
             },
           ),
@@ -112,11 +150,11 @@ class _FormContainerState extends State<FormContainer> {
           Text("By clicking this, you agree to our "),
           GestureDetector(
             onTap: () {
-              print('clicked : Terms and conditions');
+              print("Terms of Service");
               // show TOS
             },
             child: Text(
-              "terms and conditions",
+              "Terms of Service",
               style: TextStyle(decoration: TextDecoration.underline),
             ),
           ),

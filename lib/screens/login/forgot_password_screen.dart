@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/package/constants.dart';
 import 'package:memory_lamp/package/my_button.dart';
+import 'package:memory_lamp/package/reusable_widgets.dart';
 import 'package:memory_lamp/package/size.dart';
 import 'package:memory_lamp/package/texts.dart';
-import 'package:memory_lamp/package/transparent_appbar.dart';
 import 'package:memory_lamp/screens/login/widgets/forgot_password_form.dart';
 import 'package:memory_lamp/screens/login/widgets/sign_up_call_to_action.dart';
 
@@ -16,7 +16,7 @@ class ForgotPassword extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: SizeMQ.screenHeight  * .8,
+            height: SizeMQ.screenHeight * .8,
             padding: EdgeInsets.symmetric(horizontal: SizeMQ.screenWidth * .1),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

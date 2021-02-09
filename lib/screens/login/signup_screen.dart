@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/package/constants.dart';
 import 'package:memory_lamp/package/my_button.dart';
+import 'package:memory_lamp/package/reusable_widgets.dart';
 import 'package:memory_lamp/package/size.dart';
 import 'package:memory_lamp/package/texts.dart';
-import 'package:memory_lamp/package/transparent_appbar.dart';
 import 'package:memory_lamp/screens/login/widgets/form_container.dart';
 
 class SignUpScreen extends StatelessWidget {

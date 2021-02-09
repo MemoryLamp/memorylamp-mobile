@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/package/reusable_widgets.dart';
 import 'package:memory_lamp/package/size.dart';
 
 const PrimaryColor = Colors.blue;
@@ -16,3 +17,16 @@ final headingStyle = TextStyle(
 );
 
 const defaultDuration = Duration(milliseconds: 250);
+
+defaultInputDecoration({
+  @required String label,
+  @required String hint,
+  @required String icon,
+}) {
+  return InputDecoration(
+    labelText: label,
+    hintText: hint,
+    floatingLabelBehavior: FloatingLabelBehavior.always,
+    suffixIcon: FormSuffixIcon(svgIcon: icon),
+  );
+}

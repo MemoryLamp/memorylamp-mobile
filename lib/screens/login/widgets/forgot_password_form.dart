@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/package/constants.dart';
 
 class ForgotPasswordForm extends StatefulWidget {
   @override
@@ -14,10 +15,10 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
       key: _formKey,
       child: TextFormField(
         keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
-          labelText: "Email",
-          hintText: "Enter your email",
-          floatingLabelBehavior: FloatingLabelBehavior.always,
+        decoration: defaultInputDecoration(
+          label: "Email",
+          hint: "Enter your Email",
+          icon: "assets/icons/Mail.svg",
         ),
       ),
     );
