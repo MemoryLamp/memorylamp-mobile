@@ -96,6 +96,15 @@ class _FormContainerState extends State<FormContainer> {
   // ------ passwordField
   TextFormField _passwordField() => TextFormField(
         keyboardType: TextInputType.emailAddress,
+        onSaved: (passwordInput) => password = passwordInput,
+        onChanged: (value) {
+          if (value.isNotEmpty) {
+            removeError(error: emptyPassword);
+          } else if (value.length < 8) {
+            removeError(error: shortPassword);
+          }
+          return null;
+        },
         decoration: defaultInputDecoration(
           label: "Password",
           hint: "Enter your Password",
