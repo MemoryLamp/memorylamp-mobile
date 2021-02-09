@@ -64,7 +64,7 @@ class _FormContainerState extends State<FormContainer> {
         ),
       );
 
-  // ------ emailFeild
+  // ------ emailField
   TextFormField _emailField() => TextFormField(
         keyboardType: TextInputType.emailAddress,
         onSaved: (emailInput) => email = emailInput,
