@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/package/constants.dart';
+import 'package:memory_lamp/package/my_alert_dialog.dart';
 import 'package:memory_lamp/package/size.dart';
 import 'package:memory_lamp/screens/login/forgot_password_screen.dart';
 import 'package:memory_lamp/screens/login/widgets/error_list_builder.dart';
@@ -27,9 +28,6 @@ class _FormContainerState extends State<FormContainer> {
   void removeError({String error}) {
     if (errors.contains(error)) setState(() => errors.remove(error));
   }
-
-  // void setEmail(String input) => setState(() => email = input);
-  // void setPassword(String input) => setState(() => password = input);
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +142,7 @@ class _FormContainerState extends State<FormContainer> {
   // ------ agreeToTOS
   Row _agreeToTOS() => Row(
         mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Checkbox(
             value: remember,
@@ -155,11 +153,20 @@ class _FormContainerState extends State<FormContainer> {
               });
             },
           ),
-          Spacer(),
           Text("By clicking this, you agree to our "),
           GestureDetector(
             onTap: () {
               print("Terms of Service");
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => MyAlertDialog(
+                  title: "Terms of Service",
+                  message: "Terms of service here",
+                  negativeBtnText: "OK",
+                  onNegativePressed: null,
+                  positiveBtnText: null,
+                ),
+              );
               // show TOS
             },
             child: Text(
