@@ -56,9 +56,9 @@ class _FormContainerState extends State<FormContainer> {
   TextFormField _userNameField() => TextFormField(
         keyboardType: TextInputType.name,
         decoration: defaultInputDecoration(
-          label: "UserName",
-          hint: "Enter your UserName",
-          icon: "assets/icons/Mail.svg",
+          label: "Username",
+          hint: "Enter your Username",
+          icon: "assets/icons/User.svg",
         ),
       );
 
