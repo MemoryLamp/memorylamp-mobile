@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 enum THEME { def, light, dim, dark }
 
 abstract class MLTheme {
-  static ThemeData def = ThemeData();
+  static final ThemeData def = ThemeData();
 
   static final ThemeData light = ThemeData();
 
