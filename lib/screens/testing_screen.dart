@@ -4,13 +4,12 @@ import 'package:memory_lamp/defaults/ml_text.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 
 class TestingScreen extends StatelessWidget {
-  static String routeName = '/login';
+  static String routeName = '/testing';
   const TestingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
       appBar: AppBar(title: MLText("hello world")),
       body: Center(
         child: SingleChildScrollView(
@@ -48,6 +47,18 @@ class TestingScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: "some label",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: "some label",
+          ),
+        ],
       ),
     );
   }
