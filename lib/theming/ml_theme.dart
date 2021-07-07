@@ -5,7 +5,7 @@ import 'ml_colors.dart';
 MLTheme mlTheme = MLTheme();
 
 class MLTheme with ChangeNotifier {
-  bool _isDarkTheme = true;
+  bool _isDarkTheme = false;
   ThemeMode get currentTheme => _isDarkTheme ? ThemeMode.dark : ThemeMode.light;
 
   void toggleTheme() {
@@ -19,27 +19,23 @@ class MLTheme with ChangeNotifier {
       primaryColor: MLColors.primary,
       accentColor: MLColors.accent,
       backgroundColor: MLColors.bgLight,
-      textTheme: TextTheme(
-        headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-        headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.normal),
-        bodyText1: TextStyle(fontSize: 14.0, color: MLColors.primary),
-        bodyText2: TextStyle(fontSize: 14.0, color: MLColors.primary),
+      fontFamily: "poppins",
+      textButtonTheme: TextButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all<Color>(MLColors.bgLight),
+          backgroundColor: MaterialStateProperty.all(MLColors.primary),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
+            ),
+          ),
+        ),
       ),
     );
   }
 
   static ThemeData get dark {
-    return ThemeData(
-      brightness: Brightness.dark,
-      primaryColor: MLColors.primaryLight,
-      accentColor: MLColors.accent,
-      backgroundColor: MLColors.bgLight,
-      textTheme: TextTheme(
-        headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-        headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-        bodyText1: TextStyle(fontSize: 14.0, color: MLColors.primaryLight),
-        bodyText2: TextStyle(fontSize: 14.0, color: MLColors.primaryLight),
-      ),
-    );
+    // I thought we were adding this haha
+    return ThemeData();
   }
 }

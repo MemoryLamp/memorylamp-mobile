@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:memory_lamp/router/route_map.dart';
 import 'package:memory_lamp/screens/onboarding.dart';
+import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_theme.dart';
 
 void main() {
@@ -25,6 +27,10 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: MLColors.primary,
+    ));
+
     return MaterialApp(
       title: 'Memory Lamp',
       theme: MLTheme.light,

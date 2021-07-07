@@ -6,13 +6,12 @@ abstract class MLColors {
   MLColors._();
 
   static Color primary = Color(0xFF173246);
-  static Color primaryLight = Color(0xFFABCCE4);
+  static Color primaryLight = Color(0xFF698292);
 
   static Color secondary = Color(0xFF227ABA);
   static Color secondaryLight = Color(0xFF2596BE);
 
   static Color accent = Color(0xFF1742AF);
 
-  static Color bgLight = Color(0xFFE4F2FF);
-  static Color bgLighter = Color(0xFFFBFDFF);
+  static Color bgLight = Color(0xFFF6FCFF);
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/defaults/buttons/ml_text_button.dart';
 import 'package:memory_lamp/defaults/ml_text.dart';
-import 'package:memory_lamp/theming/ml_theme.dart';
+import 'package:memory_lamp/helpers/asset_manager.dart';
+import 'package:memory_lamp/helpers/size_mq.dart';
+import 'package:memory_lamp/theming/ml_font.dart';
 
 class OnboardingScreen extends StatelessWidget {
   static String routeName = '/onboarding';
@@ -9,6 +10,8 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeMQ().init(context);
+
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -17,24 +20,28 @@ class OnboardingScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  shape: BoxShape.circle,
-                ),
-                child: MLText(""),
+              Image.asset(AssetManager.logo("ml-1-03.png")),
+              MLText(
+                "Start memorizing Bible verses",
+                style: MLTextStyles.mutedBold,
               ),
-              Container(
-                child: MLText("Start Memorizing Bible Verses"),
-              ),
-              MLTextButton(
-                child: MLText("Toggle theme"),
+              SizedBox(height: SizeMQ.width! * .2),
+              TextButton(
                 onPressed: () {
-                  mlTheme.toggleTheme();
+                  print("don't touch me");
                 },
-              )
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: SizeMQ.width! * .15,
+                    vertical: 2,
+                  ),
+                  child: MLText(
+                    "GET STARTED",
+                    fontWeight: MLFontWeight.bold,
+                    fontSize: MLFontSize.small,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
