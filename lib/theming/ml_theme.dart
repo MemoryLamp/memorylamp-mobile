@@ -20,13 +20,13 @@ class MLTheme with ChangeNotifier {
       accentColor: MLColors.accent,
       backgroundColor: MLColors.bgLight,
       fontFamily: "poppins",
-      textButtonTheme: TextButtonThemeData(
+      elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(MLColors.bgLight),
           backgroundColor: MaterialStateProperty.all(MLColors.primary),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.circular(12),
             ),
           ),
         ),
