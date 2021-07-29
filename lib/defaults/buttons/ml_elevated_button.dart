@@ -4,10 +4,14 @@ import 'package:memory_lamp/helpers/size_mq.dart';
 class MLElevatedButton extends StatelessWidget {
   final double? width;
   final Widget child;
+  final Color? backgroundColor;
+  final EdgeInsetsGeometry? padding;
   final Function() onPressed;
 
   const MLElevatedButton({
     this.width,
+    this.backgroundColor,
+    this.padding,
     required this.child,
     required this.onPressed,
     Key? key,
@@ -19,10 +23,11 @@ class MLElevatedButton extends StatelessWidget {
       width: width ?? SizeMQ.width! * .5,
       child: ElevatedButton(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: padding ?? EdgeInsets.all(8.0),
           child: child,
         ),
         onPressed: onPressed,
+        style: ElevatedButton.styleFrom(primary: backgroundColor),
       ),
     );
   }

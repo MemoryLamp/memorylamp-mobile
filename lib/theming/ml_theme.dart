@@ -21,11 +21,11 @@ class MLTheme with ChangeNotifier {
       fontFamily: "poppins",
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(MLColors.bgLight),
+          foregroundColor: MaterialStateProperty.all<Color>(MLColors.primary),
           backgroundColor: MaterialStateProperty.all(MLColors.primary),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(30),
             ),
           ),
         ),

@@ -1,5 +1,5 @@
 final String _logosPath = "assets/logos";
 
-class AssetManager {
+class AssetPaths {
   static String logo(String assetName) => "$_logosPath/$assetName";
 }
