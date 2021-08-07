@@ -17,7 +17,6 @@ class MLTheme with ChangeNotifier {
     return ThemeData(
       brightness: Brightness.light,
       primaryColor: MLColors.primary,
-      accentColor: MLColors.accent,
       backgroundColor: MLColors.bgLight,
       fontFamily: "poppins",
       elevatedButtonTheme: ElevatedButtonThemeData(
