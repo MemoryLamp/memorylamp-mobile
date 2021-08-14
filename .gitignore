@@ -47,4 +47,5 @@ app.*.map.json
 
 # don't include my vim config - jerome
 .vim
+.vimrc
 
