@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/defaults/ml_text.dart';
+import 'package:memory_lamp/widgets/ml_text.dart';
 
 class MLDrawer extends StatelessWidget {
   @override
