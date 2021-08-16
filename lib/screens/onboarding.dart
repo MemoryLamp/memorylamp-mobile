@@ -3,6 +3,7 @@ import 'package:memory_lamp/defaults/buttons/ml_elevated_button.dart';
 import 'package:memory_lamp/defaults/ml_text.dart';
 import 'package:memory_lamp/helpers/asset_manager.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
+import 'package:memory_lamp/screens/home.dart';
 import 'package:memory_lamp/screens/signup.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
@@ -27,7 +28,7 @@ class OnboardingScreen extends StatelessWidget {
             SizedBox(height: SizeMQ.width! * .2),
             MLElevatedButton(
               onPressed: () =>
-                  Navigator.pushNamed(context, SignupScreen.routeName),
+                  Navigator.popAndPushNamed(context, HomeScreen.routeName),
               child: MLText(
                 "Get Started",
                 fontWeight: MLFont.bold,
