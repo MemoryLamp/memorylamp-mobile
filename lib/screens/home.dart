@@ -20,35 +20,10 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
-              LabeledIcon(
-                icon: Icons.home,
-                label: MLText(
-                  "Verse of the day",
-                  style: MLFont.bannerText01,
-                ),
-              ),
               _verseOfTheDay(),
-              LabeledIcon(
-                icon: Icons.home,
-                label: MLText(
-                  "Get comforted by Bible verses",
-                  style: MLFont.bannerText01,
-                ),
-              ),
-              LabeledIcon(
-                icon: Icons.home,
-                label: MLText(
-                  "Start memorizing Bible verses",
-                  style: MLFont.bannerText01,
-                ),
-              ),
-              LabeledIcon(
-                icon: Icons.home,
-                label: MLText(
-                  "Ready For A Challenge?",
-                  style: MLFont.bannerText01,
-                ),
-              ),
+              _emotions(),
+              _books(),
+              _games(),
             ],
           ),
         ),
@@ -56,28 +31,81 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  MLContainer _verseOfTheDay() {
-    return MLContainer(
-      backgroundColor: MLColors.primary,
-      margin: const EdgeInsets.symmetric(vertical: 16.0),
-      padding: const EdgeInsets.all(32.0),
-      borderRadius: BorderRadius.all(Radius.circular(16)),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: MLText(
-              '"BUT THE LORD STOOD WITH ME AND GAVE ME STRENGTH"',
-              fontColor: Colors.white,
-            ),
+  Column _verseOfTheDay() {
+    return Column(
+      children: [
+        LabeledIcon(
+          icon: Icons.home,
+          label: MLText(
+            "Verse of the day",
+            style: MLFont.bannerText01,
           ),
-          MLText(
-            "2 TIMOTHY 4:17",
-            fontSize: MLFont.small,
-            fontColor: Colors.white,
+        ),
+        MLContainer(
+          backgroundColor: MLColors.primary,
+          margin: const EdgeInsets.symmetric(vertical: 16.0),
+          padding: const EdgeInsets.all(32.0),
+          borderRadius: BorderRadius.all(Radius.circular(16)),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: MLText(
+                  '"BUT THE LORD STOOD WITH ME AND GAVE ME STRENGTH"',
+                  fontColor: Colors.white,
+                ),
+              ),
+              MLText(
+                "2 TIMOTHY 4:17",
+                fontSize: MLFont.small,
+                fontColor: Colors.white,
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
+    );
+  }
+
+  Column _emotions() {
+    return Column(
+      children: [
+        LabeledIcon(
+          icon: Icons.home,
+          label: MLText(
+            "Get comforted by Bible verses",
+            style: MLFont.bannerText01,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Column _books() {
+    return Column(
+      children: [
+        LabeledIcon(
+          icon: Icons.home,
+          label: MLText(
+            "Get comforted by Bible verses",
+            style: MLFont.bannerText01,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Column _games() {
+    return Column(
+      children: [
+        LabeledIcon(
+          icon: Icons.home,
+          label: MLText(
+            "Ready For A Challenge?",
+            style: MLFont.bannerText01,
+          ),
+        ),
+      ],
     );
   }
 }
