@@ -30,6 +30,23 @@ class MLTheme with ChangeNotifier {
           ),
         ),
       ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all<Color>(MLColors.primary),
+          side: MaterialStateProperty.all<BorderSide?>(
+            BorderSide(
+              style: BorderStyle.solid,
+              color: MLColors.primary,
+              width: .8,
+            ),
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
+        ),
+      ),
     );
   }
 
