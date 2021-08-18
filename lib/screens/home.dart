@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/api/models/emotion.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
+import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/compound_widgets/ml_appbar.dart';
 import 'package:memory_lamp/widgets/compound_widgets/ml_drawer.dart';
@@ -67,17 +69,54 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Column _emotions() {
-    return Column(
-      children: [
-        LabeledIcon(
-          icon: Icons.home,
-          label: MLText(
-            "Get comforted by Bible verses",
-            style: MLFont.bannerText01,
+  Padding _emotions() {
+    const List<Emotion> _emotionsList = [
+      const Emotion(name: "Hope", icon: Icons.place_rounded),
+      const Emotion(name: "Sad", icon: Icons.place_rounded),
+      const Emotion(name: "Love", icon: Icons.place_rounded),
+      const Emotion(name: "Drained", icon: Icons.place_rounded),
+      const Emotion(name: "Joy", icon: Icons.place_rounded),
+      const Emotion(name: "Angry", icon: Icons.place_rounded),
+      const Emotion(name: "Peace", icon: Icons.place_rounded),
+      const Emotion(name: "•••", icon: Icons.place_rounded),
+    ];
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(
+        children: [
+          LabeledIcon(
+            icon: Icons.home,
+            label: MLText(
+              "Get comforted by Bible verses",
+              style: MLFont.bannerText01,
+            ),
           ),
-        ),
-      ],
+          MLContainer(
+            child: GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              childAspectRatio: 4,
+              children: List.generate(_emotionsList.length, (index) {
+                return Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: MLOutlinedButton(
+                    onPressed: () => print("nothing here yet"),
+                    child: LabeledIcon(
+                      icon: _emotionsList[index].icon,
+                      label: MLText(
+                        _emotionsList[index].name,
+                        fontSize: MLFont.medium,
+                      ),
+                    ),
+                  ),
+                );
+              }),
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -87,7 +126,7 @@ class HomeScreen extends StatelessWidget {
         LabeledIcon(
           icon: Icons.home,
           label: MLText(
-            "Get comforted by Bible verses",
+            "Start memorizing Bible verses",
             style: MLFont.bannerText01,
           ),
         ),
