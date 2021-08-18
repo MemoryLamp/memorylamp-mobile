@@ -47,6 +47,25 @@ class MLTheme with ChangeNotifier {
           ),
         ),
       ),
+      textButtonTheme: TextButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          backgroundColor:
+              MaterialStateProperty.all<Color>(MLColors.primaryAccent),
+          side: MaterialStateProperty.all<BorderSide?>(
+            BorderSide(
+              style: BorderStyle.solid,
+              color: MLColors.primary,
+              width: .8,
+            ),
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        ),
+      ),
     );
   }
 
