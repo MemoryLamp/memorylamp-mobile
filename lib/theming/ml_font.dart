@@ -17,6 +17,7 @@ class MLFont {
 
   static double extraSmall = 9;
   static double small = 12;
+  static double mediumSmall = 14;
   static double medium = 16;
   static double mediumLarge = 18;
   static double large = 20;
