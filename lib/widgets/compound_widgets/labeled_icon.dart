@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 
 class LabeledIcon extends StatelessWidget {
-  final IconData icon;
-  final MLText label;
+  final Widget icon;
+  final Widget label;
   final Axis direction;
 
   const LabeledIcon({
@@ -24,7 +23,7 @@ class LabeledIcon extends StatelessWidget {
     return Flex(
       direction: direction,
       children: [
-        Icon(this.icon),
+        this.icon,
         _separator(),
         this.label,
       ],

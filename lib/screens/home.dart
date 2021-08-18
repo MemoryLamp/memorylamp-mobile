@@ -3,6 +3,7 @@ import 'package:memory_lamp/api/models/emotion.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
+import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/compound_widgets/ml_appbar.dart';
 import 'package:memory_lamp/widgets/compound_widgets/ml_drawer.dart';
@@ -17,16 +18,18 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: MLAppbar(),
       drawer: MLDrawer(),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            children: [
-              _verseOfTheDay(),
-              _emotions(),
-              _books(),
-              _games(),
-            ],
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              children: [
+                _verseOfTheDay(),
+                _emotions(),
+                _books(),
+                _games(),
+              ],
+            ),
           ),
         ),
       ),
@@ -37,7 +40,7 @@ class HomeScreen extends StatelessWidget {
     return Column(
       children: [
         LabeledIcon(
-          icon: Icons.home,
+          icon: Icon(Icons.home),
           label: MLText(
             "Verse of the day",
             style: MLFont.bannerText01,
@@ -86,7 +89,7 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           LabeledIcon(
-            icon: Icons.home,
+            icon: Icon(Icons.home),
             label: MLText(
               "Get comforted by Bible verses",
               style: MLFont.bannerText01,
@@ -104,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                   child: MLOutlinedButton(
                     onPressed: () => print("nothing here yet"),
                     child: LabeledIcon(
-                      icon: _emotionsList[index].icon,
+                      icon: Icon(_emotionsList[index].icon),
                       label: MLText(
                         _emotionsList[index].name,
                         fontSize: MLFont.medium,
@@ -121,15 +124,50 @@ class HomeScreen extends StatelessWidget {
   }
 
   Column _books() {
+    const List<String> _bookList = [
+      "Genesis",
+      "Exodus",
+      "Leviticus",
+      "Numbers",
+      "Deutronomy",
+      "•••",
+    ];
+
     return Column(
       children: [
         LabeledIcon(
-          icon: Icons.home,
+          icon: Icon(Icons.home),
           label: MLText(
             "Start memorizing Bible verses",
             style: MLFont.bannerText01,
           ),
         ),
+        MLContainer(
+          child: GridView.count(
+            crossAxisCount: 3,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            childAspectRatio: 1.5,
+            children: List.generate(_bookList.length, (index) {
+              return Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: MLTextButton(
+                  onPressed: () => print("nothing here yet"),
+                  child: LabeledIcon(
+                    direction: Axis.vertical,
+                    icon: Expanded(child: Icon(Icons.book)),
+                    label: Expanded(
+                      child: MLText(
+                        _bookList[index],
+                        fontSize: MLFont.mediumSmall,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }),
+          ),
+        )
       ],
     );
   }
@@ -138,7 +176,7 @@ class HomeScreen extends StatelessWidget {
     return Column(
       children: [
         LabeledIcon(
-          icon: Icons.home,
+          icon: Icon(Icons.home),
           label: MLText(
             "Ready For A Challenge?",
             style: MLFont.bannerText01,
