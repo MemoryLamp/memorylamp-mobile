@@ -146,31 +146,35 @@ class HomeScreen extends StatelessWidget {
         ),
         MLContainer(
           child: GridView.count(
-            crossAxisCount: 3,
             shrinkWrap: true,
+            crossAxisCount: 3,
             physics: NeverScrollableScrollPhysics(),
-            childAspectRatio: 1.5,
+            childAspectRatio: 1.1,
             children: List.generate(_bookList.length, (index) {
-              return Padding(
-                padding: const EdgeInsets.all(6.0),
-                child: MLTextButton(
-                  onPressed: () => print("nothing here yet"),
-                  child: LabeledIcon(
-                    direction: Axis.vertical,
-                    icon: Expanded(child: Icon(Icons.book)),
-                    label: Expanded(
-                      child: MLText(
-                        _bookList[index],
-                        fontSize: MLFont.mediumSmall,
-                      ),
-                    ),
-                  ),
-                ),
-              );
+              return _bookButton(_bookList[index]);
             }),
           ),
         )
       ],
+    );
+  }
+
+  MLTextButton _bookButton(String _book) {
+    return MLTextButton(
+      margin: const EdgeInsets.all(8.0),
+      width: SizeMQ.height! * .1,
+      height: SizeMQ.height! * .1,
+      onPressed: () => print("nothing here yet"),
+      child: LabeledIcon(
+        direction: Axis.vertical,
+        icon: Expanded(child: Icon(Icons.book)),
+        label: Expanded(
+          child: MLText(
+            _book,
+            fontSize: MLFont.mediumSmall,
+          ),
+        ),
+      ),
     );
   }
 
@@ -201,42 +205,30 @@ class HomeScreen extends StatelessWidget {
             child: Row(
               children: List.generate(
                 _gameList.length,
-                (int index) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: MLTextButton(
-                    onPressed: () => print("nothing here yet"),
-                    child: LabeledIcon(
-                      direction: Axis.vertical,
-                      icon: Expanded(child: Icon(_gameList[index].icon)),
-                      label: Expanded(
-                        child: MLText(
-                          _gameList[index].name,
-                          fontSize: MLFont.mediumSmall,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                (int index) => _gameButton(_gameList[index]),
               ),
             ),
           ),
         )
       ],
     );
-    // ListView.builder(
-    //   itemCount: _gameList.length,
-    //   itemBuilder: (BuildContext context, int index) {
-    //     return LabeledIcon(
-    //       direction: Axis.vertical,
-    //       icon: Expanded(child: Icon(_gameList[index].icon)),
-    //       label: Expanded(
-    //         child: MLText(
-    //           _gameList[index].name,
-    //           fontSize: MLFont.mediumSmall,
-    //         ),
-    //       ),
-    //     );
-    //   },
-    // )
+  }
+
+  MLTextButton _gameButton(Game _game) {
+    return MLTextButton(
+      margin: const EdgeInsets.all(8.0),
+      width: SizeMQ.height! * .2,
+      onPressed: () => print("nothing here yet"),
+      child: LabeledIcon(
+        direction: Axis.vertical,
+        icon: Expanded(child: Icon(_game.icon)),
+        label: Expanded(
+          child: MLText(
+            _game.name,
+            fontSize: MLFont.mediumSmall,
+          ),
+        ),
+      ),
+    );
   }
 }
