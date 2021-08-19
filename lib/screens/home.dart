@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/api/models/book.dart';
 import 'package:memory_lamp/api/models/emotion.dart';
 import 'package:memory_lamp/api/models/game.dart';
+import 'package:memory_lamp/helpers/asset_manager.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
@@ -75,15 +77,21 @@ class HomeScreen extends StatelessWidget {
   }
 
   Padding _emotions() {
-    const List<Emotion> _emotionsList = [
-      const Emotion(name: "Hope", icon: Icons.place_rounded),
-      const Emotion(name: "Sad", icon: Icons.place_rounded),
-      const Emotion(name: "Love", icon: Icons.place_rounded),
-      const Emotion(name: "Drained", icon: Icons.place_rounded),
-      const Emotion(name: "Joy", icon: Icons.place_rounded),
-      const Emotion(name: "Angry", icon: Icons.place_rounded),
-      const Emotion(name: "Peace", icon: Icons.place_rounded),
-      const Emotion(name: "•••", icon: Icons.place_rounded),
+    Image _emotionIcon(String _emotionName) {
+      return Image.asset(
+        AssetManager.emotion(_emotionName),
+        width: MLFont.large,
+      );
+    }
+
+    List<Emotion> _emotionsList = [
+      Emotion(name: "Hope", icon: _emotionIcon("hope.png")),
+      Emotion(name: "Sad", icon: _emotionIcon("sad.png")),
+      Emotion(name: "Love", icon: _emotionIcon("love.png")),
+      Emotion(name: "Drained", icon: _emotionIcon("drained.png")),
+      Emotion(name: "Joy", icon: _emotionIcon("joy.png")),
+      Emotion(name: "Angry", icon: _emotionIcon("angry.png")),
+      Emotion(name: "Peace", icon: _emotionIcon("peace.png")),
     ];
 
     return Padding(
@@ -109,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                   child: MLOutlinedButton(
                     onPressed: () => print("nothing here yet"),
                     child: LabeledIcon(
-                      icon: Icon(_emotionsList[index].icon),
+                      icon: _emotionsList[index].icon,
                       label: MLText(
                         _emotionsList[index].name,
                         fontSize: MLFont.medium,
@@ -117,7 +125,19 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 );
-              }),
+              })
+                ..add(
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: MLOutlinedButton(
+                      onPressed: () => print("nothing here yet"),
+                      child: MLText(
+                        "•••",
+                        fontSize: MLFont.medium,
+                      ),
+                    ),
+                  ),
+                ),
             ),
           )
         ],
@@ -126,13 +146,13 @@ class HomeScreen extends StatelessWidget {
   }
 
   Padding _books() {
-    const List<String> _bookList = [
-      "Genesis",
-      "Exodus",
-      "Leviticus",
-      "Numbers",
-      "Deutronomy",
-      "•••",
+    const List<Book> _bookList = [
+      Book(name: "Genesis", icon: Icons.book),
+      Book(name: "Exodus", icon: Icons.book),
+      Book(name: "Leviticus", icon: Icons.book),
+      Book(name: "Numbers", icon: Icons.book),
+      Book(name: "Deutronomy", icon: Icons.book),
+      Book(name: "more", icon: Icons.more_horiz),
     ];
 
     return Padding(
@@ -162,7 +182,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  MLTextButton _bookButton(String _book) {
+  MLTextButton _bookButton(Book _book) {
     return MLTextButton(
       margin: const EdgeInsets.all(8.0),
       width: SizeMQ.height! * .1,
@@ -170,10 +190,10 @@ class HomeScreen extends StatelessWidget {
       onPressed: () => print("nothing here yet"),
       child: LabeledIcon(
         direction: Axis.vertical,
-        icon: Expanded(child: Icon(Icons.book)),
+        icon: Expanded(child: Icon(_book.icon)),
         label: Expanded(
           child: MLText(
-            _book,
+            _book.name,
             fontSize: MLFont.mediumSmall,
           ),
         ),
@@ -197,7 +217,10 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           LabeledIcon(
-            icon: Icon(Icons.home),
+            icon: Image.asset(
+              AssetManager.icon("game.png"),
+              height: MLFont.large,
+            ),
             label: MLText(
               "Ready For A Challenge?",
               style: MLFont.bannerText01,

@@ -50,6 +50,17 @@ flutter:
     # logos
     - assets/logos/ml-1-03.png
     - assets/logos/Header.png
+    # icons
+    - assets/icons/game.png
+    # emotion
+    - assets/emotion/angry.png
+    - assets/emotion/drained.png
+    - assets/emotion/joy.png
+    - assets/emotion/hope.png
+    - assets/emotion/love.png
+    - assets/emotion/peace.png
+    - assets/emotion/sad.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

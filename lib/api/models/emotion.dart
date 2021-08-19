@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class Emotion {
   final String name;
-  final IconData icon;
+  final Image icon;
 
   const Emotion({required this.name, required this.icon});
 }
