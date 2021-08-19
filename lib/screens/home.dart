@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/api/models/emotion.dart';
+import 'package:memory_lamp/api/models/game.dart';
+import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
@@ -173,6 +175,16 @@ class HomeScreen extends StatelessWidget {
   }
 
   Column _games() {
+    const List<Game> _gameList = [
+      const Game(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      const Game(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      const Game(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      const Game(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      const Game(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      const Game(
+          name: "Fill In The Blanks", icon: Icons.speaker_group_outlined),
+    ];
+
     return Column(
       children: [
         LabeledIcon(
@@ -182,7 +194,49 @@ class HomeScreen extends StatelessWidget {
             style: MLFont.bannerText01,
           ),
         ),
+        SizedBox(
+          height: SizeMQ.height! * .2,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(
+                _gameList.length,
+                (int index) => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MLTextButton(
+                    onPressed: () => print("nothing here yet"),
+                    child: LabeledIcon(
+                      direction: Axis.vertical,
+                      icon: Expanded(child: Icon(_gameList[index].icon)),
+                      label: Expanded(
+                        child: MLText(
+                          _gameList[index].name,
+                          fontSize: MLFont.mediumSmall,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        )
       ],
     );
+    // ListView.builder(
+    //   itemCount: _gameList.length,
+    //   itemBuilder: (BuildContext context, int index) {
+    //     return LabeledIcon(
+    //       direction: Axis.vertical,
+    //       icon: Expanded(child: Icon(_gameList[index].icon)),
+    //       label: Expanded(
+    //         child: MLText(
+    //           _gameList[index].name,
+    //           fontSize: MLFont.mediumSmall,
+    //         ),
+    //       ),
+    //     );
+    //   },
+    // )
   }
 }

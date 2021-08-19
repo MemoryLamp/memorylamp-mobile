@@ -6,6 +6,7 @@ class MLContainer extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final BorderRadius? borderRadius;
+  final double? height;
 
   const MLContainer({
     required this.child,
@@ -13,11 +14,13 @@ class MLContainer extends StatelessWidget {
     this.padding,
     this.margin,
     this.borderRadius,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: height,
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
