@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
     ];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
         children: [
           LabeledIcon(
@@ -125,7 +125,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Column _books() {
+  Padding _books() {
     const List<String> _bookList = [
       "Genesis",
       "Exodus",
@@ -135,27 +135,30 @@ class HomeScreen extends StatelessWidget {
       "•••",
     ];
 
-    return Column(
-      children: [
-        LabeledIcon(
-          icon: Icon(Icons.home),
-          label: MLText(
-            "Start memorizing Bible verses",
-            style: MLFont.bannerText01,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12.0),
+      child: Column(
+        children: [
+          LabeledIcon(
+            icon: Icon(Icons.home),
+            label: MLText(
+              "Start memorizing Bible verses",
+              style: MLFont.bannerText01,
+            ),
           ),
-        ),
-        MLContainer(
-          child: GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 3,
-            physics: NeverScrollableScrollPhysics(),
-            childAspectRatio: 1.1,
-            children: List.generate(_bookList.length, (index) {
-              return _bookButton(_bookList[index]);
-            }),
-          ),
-        )
-      ],
+          MLContainer(
+            child: GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 3,
+              physics: NeverScrollableScrollPhysics(),
+              childAspectRatio: 1.1,
+              children: List.generate(_bookList.length, (index) {
+                return _bookButton(_bookList[index]);
+              }),
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -178,7 +181,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Column _games() {
+  Padding _games() {
     const List<Game> _gameList = [
       const Game(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
       const Game(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
@@ -189,28 +192,31 @@ class HomeScreen extends StatelessWidget {
           name: "Fill In The Blanks", icon: Icons.speaker_group_outlined),
     ];
 
-    return Column(
-      children: [
-        LabeledIcon(
-          icon: Icon(Icons.home),
-          label: MLText(
-            "Ready For A Challenge?",
-            style: MLFont.bannerText01,
-          ),
-        ),
-        SizedBox(
-          height: SizeMQ.height! * .2,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: List.generate(
-                _gameList.length,
-                (int index) => _gameButton(_gameList[index]),
-              ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12.0),
+      child: Column(
+        children: [
+          LabeledIcon(
+            icon: Icon(Icons.home),
+            label: MLText(
+              "Ready For A Challenge?",
+              style: MLFont.bannerText01,
             ),
           ),
-        )
-      ],
+          SizedBox(
+            height: SizeMQ.height! * .2,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(
+                  _gameList.length,
+                  (int index) => _gameButton(_gameList[index]),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
