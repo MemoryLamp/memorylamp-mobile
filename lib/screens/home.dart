@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/api/models/book.dart';
-import 'package:memory_lamp/api/models/emotion.dart';
-import 'package:memory_lamp/api/models/game.dart';
 import 'package:memory_lamp/helpers/asset_manager.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
+import 'package:memory_lamp/models/icon_label_pair.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
@@ -84,14 +82,14 @@ class HomeScreen extends StatelessWidget {
       );
     }
 
-    List<Emotion> _emotionsList = [
-      Emotion(name: "Hope", icon: _emotionIcon("hope.png")),
-      Emotion(name: "Sad", icon: _emotionIcon("sad.png")),
-      Emotion(name: "Love", icon: _emotionIcon("love.png")),
-      Emotion(name: "Drained", icon: _emotionIcon("drained.png")),
-      Emotion(name: "Joy", icon: _emotionIcon("joy.png")),
-      Emotion(name: "Angry", icon: _emotionIcon("angry.png")),
-      Emotion(name: "Peace", icon: _emotionIcon("peace.png")),
+    List<IconLabelPair> _emotionsList = [
+      IconLabelPair.image(name: "Hope", image: _emotionIcon("hope.png")),
+      IconLabelPair.image(name: "Sad", image: _emotionIcon("sad.png")),
+      IconLabelPair.image(name: "Love", image: _emotionIcon("love.png")),
+      IconLabelPair.image(name: "Drained", image: _emotionIcon("drained.png")),
+      IconLabelPair.image(name: "Joy", image: _emotionIcon("joy.png")),
+      IconLabelPair.image(name: "Angry", image: _emotionIcon("angry.png")),
+      IconLabelPair.image(name: "Peace", image: _emotionIcon("peace.png")),
     ];
 
     return Padding(
@@ -117,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                   child: MLOutlinedButton(
                     onPressed: () => print("nothing here yet"),
                     child: LabeledIcon(
-                      icon: _emotionsList[index].icon,
+                      icon: _emotionsList[index].image!,
                       label: MLText(
                         _emotionsList[index].name,
                         fontSize: MLFont.medium,
@@ -146,13 +144,13 @@ class HomeScreen extends StatelessWidget {
   }
 
   Padding _books() {
-    const List<Book> _bookList = [
-      Book(name: "Genesis", icon: Icons.book),
-      Book(name: "Exodus", icon: Icons.book),
-      Book(name: "Leviticus", icon: Icons.book),
-      Book(name: "Numbers", icon: Icons.book),
-      Book(name: "Deutronomy", icon: Icons.book),
-      Book(name: "more", icon: Icons.more_horiz),
+    const List<IconLabelPair> _bookList = [
+      IconLabelPair(name: "Genesis", icon: Icons.book),
+      IconLabelPair(name: "Exodus", icon: Icons.book),
+      IconLabelPair(name: "Leviticus", icon: Icons.book),
+      IconLabelPair(name: "Numbers", icon: Icons.book),
+      IconLabelPair(name: "Deutronomy", icon: Icons.book),
+      IconLabelPair(name: "more", icon: Icons.more_horiz),
     ];
 
     return Padding(
@@ -182,7 +180,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  MLTextButton _bookButton(Book _book) {
+  MLTextButton _bookButton(IconLabelPair _book) {
     return MLTextButton(
       margin: const EdgeInsets.all(8.0),
       width: SizeMQ.height! * .1,
@@ -202,13 +200,18 @@ class HomeScreen extends StatelessWidget {
   }
 
   Padding _games() {
-    const List<Game> _gameList = [
-      const Game(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      const Game(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      const Game(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      const Game(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      const Game(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      const Game(
+    const List<IconLabelPair> _gameList = [
+      const IconLabelPair(
+          name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      const IconLabelPair(
+          name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      const IconLabelPair(
+          name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      const IconLabelPair(
+          name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      const IconLabelPair(
+          name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      const IconLabelPair(
           name: "Fill In The Blanks", icon: Icons.speaker_group_outlined),
     ];
 
@@ -243,7 +246,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  MLTextButton _gameButton(Game _game) {
+  MLTextButton _gameButton(IconLabelPair _game) {
     return MLTextButton(
       margin: const EdgeInsets.all(8.0),
       width: SizeMQ.height! * .2,
