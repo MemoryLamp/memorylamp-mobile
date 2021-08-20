@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/models/icon_label_pair.dart';
+import 'package:memory_lamp/models/nav_item.dart';
+import 'package:memory_lamp/screens/home.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
 
 class MLDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<IconLabelPair> _drawerItems = [
-      IconLabelPair(icon: Icons.home, name: "Home"),
-      IconLabelPair(icon: Icons.person, name: "Profile"),
-      IconLabelPair(icon: Icons.book_sharp, name: "Browse Books"),
-      IconLabelPair(icon: Icons.notifications, name: "Notification"),
-      IconLabelPair(icon: Icons.settings, name: "Settings"),
-      IconLabelPair(icon: Icons.logout, name: "Logout"),
+    List<NavItem> _drawerItems = [
+      NavItem(icon: Icons.home, name: "Home", routeName: HomeScreen.routeName),
+      NavItem(icon: Icons.person, name: "Profile", routeName: "profile"),
+      NavItem(
+        icon: Icons.book_sharp,
+        name: "Browse Books",
+        routeName: "profile",
+      ),
+      NavItem(
+        icon: Icons.notifications,
+        name: "Notification",
+        routeName: "profile",
+      ),
+      NavItem(icon: Icons.settings, name: "Settings", routeName: "profile"),
+      NavItem(icon: Icons.logout, name: "Logout", routeName: "profile"),
     ];
 
     return Drawer(
@@ -21,6 +30,10 @@ class MLDrawer extends StatelessWidget {
           (index) => ListTile(
             leading: Icon(_drawerItems[index].icon),
             title: MLText(_drawerItems[index].name),
+            onTap: () => Navigator.pushReplacementNamed(
+              context,
+              _drawerItems[index].routeName,
+            ),
           ),
         ),
       ),
