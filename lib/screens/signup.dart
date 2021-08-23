@@ -38,7 +38,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       style: TextStyle(color: MLColors.primary),
                     ),
                     onPressed: () {}),
-                AlreadyUser(),
+                _alreadyUser(context),
               ],
             ),
           ),
@@ -46,32 +46,29 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
     );
   }
-}
 
 //Message
-Column _welcome() => Column(
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text(
-          "Hello!",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: getProportionateScreenWidth(14),
-            fontWeight: FontWeight.bold,
+  Column _welcome() => Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            "Hello!",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: getProportionateScreenWidth(14),
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        MLText(
-          'Create a new Account',
-          color: Colors.white54,
-        ),
-      ],
-    );
+          MLText(
+            'Create a new Account',
+            color: Colors.white54,
+          ),
+        ],
+      );
 
 //SignIn
-class AlreadyUser extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+  Row _alreadyUser(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
