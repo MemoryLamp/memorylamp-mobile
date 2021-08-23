@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/defaults/ml_text.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 
@@ -89,18 +90,16 @@ class _MLFormState extends State<MLForm> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              MLText(
                 "I agree with the ",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: getProportionateScreenWidth(7)),
+                color: Colors.white,
+                fontSize: getProportionateScreenWidth(7),
               ),
-              Text(
+              MLText(
                 "Terms and Conditions",
-                style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    color: Colors.white,
-                    fontSize: getProportionateScreenWidth(7)),
+                textDecoration: TextDecoration.underline,
+                color: Colors.white,
+                fontSize: getProportionateScreenWidth(7),
               ),
             ],
           )
@@ -123,10 +122,10 @@ class _MLFormState extends State<MLForm> {
                 }),
             data: ThemeData(unselectedWidgetColor: Colors.white38),
           ),
-          Text(
+          MLText(
             "Remember Me ",
-            style: TextStyle(
-                color: Colors.white, fontSize: getProportionateScreenWidth(7)),
+            color: Colors.white,
+            fontSize: getProportionateScreenWidth(7),
           ),
         ],
       );
@@ -144,8 +143,9 @@ class _MLFormState extends State<MLForm> {
       focusedBorder: UnderlineInputBorder(
         borderSide: BorderSide(color: Colors.white),
       ),
-      enabledBorder:
-          UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.white),
+      ),
     );
   }
 }

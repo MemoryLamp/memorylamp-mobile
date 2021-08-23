@@ -32,12 +32,13 @@ class _SignupScreenState extends State<SignupScreen> {
                   loadForSignup: true,
                 ),
                 MLElevatedButton(
-                    color: Colors.white,
-                    child: Text(
-                      'Create Account',
-                      style: TextStyle(color: MLColors.primary),
-                    ),
-                    onPressed: () {}),
+                  color: Colors.white,
+                  child: MLText(
+                    'Create Account',
+                    style: TextStyle(color: MLColors.primary),
+                  ),
+                  onPressed: () {},
+                ),
                 _alreadyUser(context),
               ],
             ),
@@ -52,13 +53,11 @@ class _SignupScreenState extends State<SignupScreen> {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
+          MLText(
             "Hello!",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: getProportionateScreenWidth(14),
-              fontWeight: FontWeight.bold,
-            ),
+            color: Colors.white,
+            fontSize: getProportionateScreenWidth(14),
+            fontWeight: FontWeight.bold,
           ),
           MLText(
             'Create a new Account',
