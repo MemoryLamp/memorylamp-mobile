@@ -7,6 +7,7 @@ class MLText extends StatelessWidget {
   final double? fontSize;
   final Color? color;
   final TextDecoration? textDecoration;
+  final FontStyle? fontStyle;
 
   const MLText(
     this.text, {
@@ -15,6 +16,7 @@ class MLText extends StatelessWidget {
     this.color,
     this.fontWeight,
     this.fontSize,
+    this.fontStyle,
     Key? key,
   })  : assert(
           style == null || (fontWeight == null && fontSize == null),
@@ -33,6 +35,7 @@ class MLText extends StatelessWidget {
             fontSize: fontSize,
             color: color,
             decoration: textDecoration,
+            fontStyle: fontStyle,
           ),
     );
   }
