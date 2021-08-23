@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   _loginButton(),
                   SizedBox(width: SizeMQ.height! * .03),
-                  SignUpHere(),
+                  _signUpHere(context),
                 ],
               ),
             ),
@@ -86,12 +86,9 @@ class _LoginScreenState extends State<LoginScreen> {
           print('Login');
         },
       );
-}
 
 //SignUp
-class SignUpHere extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+  Row _signUpHere(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
