@@ -1,105 +1,93 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/defaults/buttons/ml_elevated_button.dart';
 import 'package:memory_lamp/defaults/ml_text.dart';
+import 'package:memory_lamp/form/ml_form.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
-import 'package:memory_lamp/screens/onboarding.dart';
+import 'package:memory_lamp/screens/login.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
-import 'package:memory_lamp/theming/ml_font.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   static String routeName = '/signup';
-  SignupScreen({Key? key}) : super(key: key);
 
-  final double _width = SizeMQ.width! * .6;
+  @override
+  _SignupScreenState createState() => _SignupScreenState();
+}
 
+class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MLColors.bgLight,
+      backgroundColor: MLColors.primary,
       body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              OnboardingScreen.heroLogo(),
-              SizedBox(height: SizeMQ.width! * .1),
-              _thirdPartySignup(),
-              _divider(),
-              _signUp(),
-              _submitButton(),
-            ],
+        child: SingleChildScrollView(
+          child: Container(
+            height: SizeMQ.height! * .9,
+            padding: EdgeInsets.symmetric(horizontal: SizeMQ.width! * .1),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _welcome(),
+                MLForm(
+                  loadForSignup: true,
+                ),
+                MLElevatedButton(
+                  color: Colors.white,
+                  child: MLText(
+                    'Create Account',
+                    style: TextStyle(color: MLColors.primary),
+                  ),
+                  onPressed: () {},
+                ),
+                _alreadyUser(context),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Column _thirdPartySignup() {
-    return Column(
-      children: [
-        MLElevatedButton(
-          width: _width,
-          onPressed: () {},
-          child: MLText(
-            "Sign up via Google",
-            fontWeight: MLFont.light,
-            fontSize: MLFont.small,
-          ),
-        ),
-        MLElevatedButton(
-          width: _width,
-          onPressed: () {},
-          child: MLText(
-            "Sign up via Facebook",
-            fontWeight: MLFont.light,
-            fontSize: MLFont.small,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Padding _divider() {
-    Expanded _line = Expanded(
-      child: Divider(
-        color: MLColors.secondary,
-        thickness: .5,
-      ),
-    );
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: SizeMQ.width! * .1,
-        vertical: SizeMQ.width! * .06,
-      ),
-      child: Row(
+//Message
+  Column _welcome() => Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _line,
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: MLText("OR", fontSize: MLFont.extraSmall),
+          MLText(
+            "Hello!",
+            color: Colors.white,
+            fontSize: getProportionateScreenWidth(14),
+            fontWeight: FontWeight.bold,
           ),
-          _line,
+          MLText(
+            'Create a new Account',
+            color: Colors.white54,
+          ),
         ],
-      ),
-    );
-  }
+      );
 
-  Column _signUp() {
-    return Column(
+//SignIn
+  Row _alreadyUser(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        MLText("email"),
-        MLText("password"),
+        MLText(
+          'Already have an Account? ',
+          fontSize: getProportionateScreenWidth(7),
+          color: Colors.white,
+        ),
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, LoginScreen.routeName);
+          },
+          child: MLText(
+            'Sign in here!',
+            textDecoration: TextDecoration.underline,
+            fontSize: getProportionateScreenWidth(7),
+            color: Colors.blue,
+          ),
+        ),
       ],
-    );
-  }
-
-  MLElevatedButton _submitButton() {
-    return MLElevatedButton(
-      width: _width,
-      onPressed: () {},
-      child: MLText("Submit"),
     );
   }
 }
