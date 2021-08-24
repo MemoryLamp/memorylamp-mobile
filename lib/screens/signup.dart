@@ -32,13 +32,14 @@ class _SignupScreenState extends State<SignupScreen> {
                   loadForSignup: true,
                 ),
                 MLElevatedButton(
-                    color: Colors.white,
-                    child: Text(
-                      'Create Account',
-                      style: TextStyle(color: MLColors.primary),
-                    ),
-                    onPressed: () {}),
-                AlreadyUser(),
+                  color: Colors.white,
+                  child: MLText(
+                    'Create Account',
+                    style: TextStyle(color: MLColors.primary),
+                  ),
+                  onPressed: () {},
+                ),
+                _alreadyUser(context),
               ],
             ),
           ),
@@ -46,32 +47,27 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
     );
   }
-}
 
 //Message
-Column _welcome() => Column(
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text(
-          "Hello!",
-          style: TextStyle(
+  Column _welcome() => Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          MLText(
+            "Hello!",
             color: Colors.white,
             fontSize: getProportionateScreenWidth(14),
             fontWeight: FontWeight.bold,
           ),
-        ),
-        MLText(
-          'Create a new Account',
-          color: Colors.white54,
-        ),
-      ],
-    );
+          MLText(
+            'Create a new Account',
+            color: Colors.white54,
+          ),
+        ],
+      );
 
 //SignIn
-class AlreadyUser extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+  Row _alreadyUser(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

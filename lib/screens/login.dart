@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   _loginButton(),
                   SizedBox(width: SizeMQ.height! * .03),
-                  SignUpHere(),
+                  _signUpHere(context),
                 ],
               ),
             ),
@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           Align(
             alignment: Alignment.topLeft,
-            child: Text(
+            child: MLText(
               "Welcome Back! ",
               style: TextStyle(
                 color: Colors.white,
@@ -65,11 +65,9 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Align(
             alignment: Alignment.topLeft,
-            child: Text(
+            child: MLText(
               'Log in to continue',
-              style: (TextStyle(
-                color: Colors.white54,
-              )),
+              color: Colors.white54,
             ),
           ),
         ],
@@ -77,21 +75,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
 //LoginButton
   MLElevatedButton _loginButton() => MLElevatedButton(
-        child: Text(
+        child: MLText(
           'Log in',
-          style: TextStyle(color: MLColors.primary),
+          color: MLColors.primary,
         ),
         color: Colors.white,
         onPressed: () {
           print('Login');
         },
       );
-}
 
 //SignUp
-class SignUpHere extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+  Row _signUpHere(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
