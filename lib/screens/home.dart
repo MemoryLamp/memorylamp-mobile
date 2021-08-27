@@ -19,8 +19,8 @@ class HomeScreen extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => ViewProvider(),
       child: Scaffold(
-        appBar: MLAppbar(),
-        drawer: MLDrawer(),
+        appBar: const MLAppbar(),
+        drawer: const MLDrawer(),
         body: Consumer<ViewProvider>(
           builder: (BuildContext context, viewProvider, Widget? child) {
             return _viewSwitch(viewProvider.selectedView);

@@ -21,11 +21,18 @@ class MLFont {
   static double medium = 16;
   static double mediumLarge = 18;
   static double large = 20;
+  static double extraLarge = 25;
 
   // we can add some reusable TextStyle Widgets here so we can have a more uniform styling across the app
   static TextStyle get bannerText01 => TextStyle(
         color: MLColors.primary,
         fontSize: mediumLarge,
         fontWeight: semiBold,
+      );
+
+  static TextStyle get extraLargeBold => TextStyle(
+        color: MLColors.primary,
+        fontSize: extraLarge,
+        fontWeight: bold,
       );
 }
