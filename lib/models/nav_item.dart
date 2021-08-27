@@ -1,5 +1,4 @@
-import 'package:memory_lamp/screens/home.dart';
-
+import 'enums/views.dart';
 import 'icon_label_pair.dart';
 
 class NavItem extends IconLabelPair {

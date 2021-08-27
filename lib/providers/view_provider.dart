@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:memory_lamp/screens/home.dart';
+import 'package:memory_lamp/models/enums/views.dart';
 
 class ViewProvider extends ChangeNotifier {
-  Views _selectedView = Views.books;
+  Views _selectedView = Views.home;
 
   void changeView(Views view) {
     _selectedView = view;

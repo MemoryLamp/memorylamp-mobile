@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/models/enums/views.dart';
 import 'package:memory_lamp/models/nav_item.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
-import 'package:memory_lamp/screens/home.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
 import 'package:provider/provider.dart';
 

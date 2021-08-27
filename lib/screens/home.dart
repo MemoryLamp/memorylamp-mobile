@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/models/enums/views.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/views/books.dart';
 import 'package:memory_lamp/views/home.dart';
@@ -9,8 +10,6 @@ import 'package:memory_lamp/widgets/compound_widgets/ml_appbar.dart';
 import 'package:memory_lamp/widgets/compound_widgets/ml_drawer.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
 import 'package:provider/provider.dart';
-
-enum Views { home, profile, books, notification, settings }
 
 class HomeScreen extends StatelessWidget {
   static String routeName = "home";
