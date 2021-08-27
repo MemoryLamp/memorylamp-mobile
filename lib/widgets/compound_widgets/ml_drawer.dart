@@ -65,7 +65,7 @@ class MLDrawer extends StatelessWidget {
         view: Views.notification,
       ),
       NavItem(icon: Icons.settings, name: "Settings", view: Views.settings),
-      NavItem(icon: Icons.logout, name: "Logout", view: Views.home),
+      NavItem(icon: Icons.logout, name: "Logout", view: Views.logout),
     ];
 
     return MLContainer(
@@ -73,22 +73,30 @@ class MLDrawer extends StatelessWidget {
       child: Column(
         children: List.generate(
           _drawerItems.length,
-          (index) => MLTextButton(
-            backgroundColor: Colors.transparent,
-            margin: const EdgeInsets.all(4.0),
-            padding: const EdgeInsets.all(8.0),
-            child: LabeledIcon(
-              icon: Icon(_drawerItems[index].icon, color: Colors.white),
-              label: MLText(
-                _drawerItems[index].name,
-                fontColor: Colors.white,
+          (index) {
+            bool isActive =
+                _drawerItems[index].view == viewProvider.selectedView;
+            return MLTextButton(
+              borderRadius: BorderRadius.circular(28),
+              backgroundColor: isActive ? Colors.white : Colors.transparent,
+              margin: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.all(8.0),
+              child: LabeledIcon(
+                icon: Icon(
+                  _drawerItems[index].icon,
+                  color: isActive ? MLColors.primary : Colors.white,
+                ),
+                label: MLText(
+                  _drawerItems[index].name,
+                  fontColor: isActive ? MLColors.primary : Colors.white,
+                ),
               ),
-            ),
-            onPressed: () {
-              viewProvider.changeView(_drawerItems[index].view);
-              Navigator.pop(context);
-            },
-          ),
+              onPressed: () {
+                viewProvider.changeView(_drawerItems[index].view);
+                Navigator.pop(context);
+              },
+            );
+          },
         ),
       ),
     );

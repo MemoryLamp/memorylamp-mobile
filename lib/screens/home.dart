@@ -3,6 +3,7 @@ import 'package:memory_lamp/models/enums/views.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/views/books.dart';
 import 'package:memory_lamp/views/home.dart';
+import 'package:memory_lamp/views/logout.dart';
 import 'package:memory_lamp/views/notification.dart';
 import 'package:memory_lamp/views/profile.dart';
 import 'package:memory_lamp/views/settings.dart';
@@ -42,6 +43,8 @@ class HomeScreen extends StatelessWidget {
         return NotificationView();
       case Views.settings:
         return SettingsView();
+      case Views.logout:
+        return LogoutView();
 
       default:
         return Center(child: MLText("View not found"));

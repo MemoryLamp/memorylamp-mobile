@@ -1,1 +1,1 @@
-enum Views { home, profile, books, notification, settings }
+enum Views { home, profile, books, notification, settings, logout }

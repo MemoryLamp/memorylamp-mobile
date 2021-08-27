@@ -8,6 +8,7 @@ class MLTextButton extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final EdgeInsetsGeometry padding;
   final Color? backgroundColor;
+  final BorderRadius? borderRadius;
 
   const MLTextButton({
     Key? key,
@@ -15,9 +16,10 @@ class MLTextButton extends StatelessWidget {
     this.onPressed,
     this.width,
     this.height,
+    this.backgroundColor,
     this.margin = EdgeInsets.zero,
     this.padding = EdgeInsets.zero,
-    this.backgroundColor,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -38,7 +40,7 @@ class MLTextButton extends StatelessWidget {
           style: TextButton.styleFrom(
             backgroundColor: backgroundColor,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(28),
+              borderRadius: borderRadius ?? BorderRadius.circular(12),
             ),
           ),
         ),
