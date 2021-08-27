@@ -10,5 +10,5 @@ class ViewProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  get selectedView => _selectedView;
+  Views get selectedView => _selectedView;
 }
