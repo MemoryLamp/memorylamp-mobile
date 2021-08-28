@@ -55,6 +55,7 @@ flutter:
     # icons
     - assets/icons/game.png
     - assets/icons/pfp.png
+    - assets/icons/book.png
     # emotion
     - assets/emotion/angry.png
     - assets/emotion/drained.png

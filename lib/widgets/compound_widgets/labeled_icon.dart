@@ -4,17 +4,19 @@ class LabeledIcon extends StatelessWidget {
   final Widget icon;
   final Widget label;
   final Axis direction;
+  final double? spaceBetween;
 
   const LabeledIcon({
     required this.icon,
     required this.label,
+    this.spaceBetween = 8,
     this.direction = Axis.horizontal,
   });
 
   SizedBox _separator() {
     return SizedBox(
-      width: direction == Axis.vertical ? 0 : 8,
-      height: direction == Axis.horizontal ? 0 : 8,
+      width: direction == Axis.vertical ? 0 : spaceBetween,
+      height: direction == Axis.horizontal ? 0 : spaceBetween,
     );
   }
 

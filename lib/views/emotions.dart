@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/asset_manager.dart';
+import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/emotion.dart';
+import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
+import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
+import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
 import 'package:provider/provider.dart';
@@ -17,10 +21,13 @@ class EmotionsView extends StatelessWidget {
       builder: (BuildContext context, viewProvider, Widget? child) {
         Emotion _emotion = viewProvider.arg;
         return SafeArea(
-          child: Column(
-            children: [
-              _header(_emotion),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                _header(_emotion),
+                _verseList(_emotion.verses),
+              ],
+            ),
           ),
         );
       },
@@ -66,6 +73,40 @@ class EmotionsView extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Padding _verseList(List<Verse> _verses) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: List.generate(
+          _verses.length,
+          (index) => Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              LabeledIcon(
+                spaceBetween: 16,
+                icon: Image.asset(
+                  AssetManager.icon("book.png"),
+                  width: MLFont.large,
+                ),
+                label: MLText(
+                  _verses[index].toVerseFormat,
+                  fontWeight: MLFont.semiBold,
+                  fontSize: MLFont.medium,
+                ),
+              ),
+              Spacer(),
+              MLOutlinedButton(
+                width: SizeMQ.width! * .4,
+                child: MLText("Memorize"),
+                onPressed: () => print("nothing here yet"),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
