@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/asset_manager.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
+import 'package:memory_lamp/models/emotion.dart';
 import 'package:memory_lamp/models/enums/views.dart';
 import 'package:memory_lamp/models/icon_label_pair.dart';
+import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
@@ -57,6 +59,7 @@ class HomeView extends StatelessWidget {
                 child: MLText(
                   '"BUT THE LORD STOOD WITH ME AND GAVE ME STRENGTH"',
                   fontColor: Colors.white,
+                  textAlign: TextAlign.center,
                 ),
               ),
               MLText(
@@ -79,14 +82,74 @@ class HomeView extends StatelessWidget {
       );
     }
 
-    List<IconLabelPair> _emotionsList = [
-      IconLabelPair.image(name: "Hope", image: _emotionIcon("hope.png")),
-      IconLabelPair.image(name: "Sad", image: _emotionIcon("sad.png")),
-      IconLabelPair.image(name: "Love", image: _emotionIcon("love.png")),
-      IconLabelPair.image(name: "Drained", image: _emotionIcon("drained.png")),
-      IconLabelPair.image(name: "Joy", image: _emotionIcon("joy.png")),
-      IconLabelPair.image(name: "Angry", image: _emotionIcon("angry.png")),
-      IconLabelPair.image(name: "Peace", image: _emotionIcon("peace.png")),
+    // hardcoded temporarily
+    Verse _highlightVerse = Verse(
+      book: "Isaiah",
+      chapter: 26,
+      number: 3,
+      verse:
+          "You keep him in perfect peace whose mind is stayed on you, because He trusts in you.",
+    );
+    List<Verse> _verses = [
+      Verse(
+        book: "Genesis",
+        chapter: 1,
+        number: 1,
+        verse:
+            "Et consectetur ea et ut Lorem veniam culpa velit ea cillum Lorem esse ad nulla.",
+      ),
+      Verse(
+        book: "Psalm",
+        chapter: 19,
+        number: 1,
+        verse:
+            "Nostrud veniam ea mollit aliqua dolore tempor in exercitation nulla ea.",
+      )
+    ];
+
+    List<Emotion> _emotionsList = [
+      Emotion(
+        name: "Hope",
+        image: _emotionIcon("hope.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
+      Emotion(
+        name: "Sad",
+        image: _emotionIcon("sad.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
+      Emotion(
+        name: "Love",
+        image: _emotionIcon("love.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
+      Emotion(
+        name: "Drained",
+        image: _emotionIcon("drained.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
+      Emotion(
+        name: "Joy",
+        image: _emotionIcon("joy.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
+      Emotion(
+        name: "Angry",
+        image: _emotionIcon("angry.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
+      Emotion(
+        name: "Peace",
+        image: _emotionIcon("peace.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
     ];
 
     Consumer _emotionButton(int index) {
@@ -95,7 +158,10 @@ class HomeView extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(4.0),
             child: MLOutlinedButton(
-              onPressed: () => viewProvider.changeView(Views.emotions),
+              onPressed: () => viewProvider.changeView(
+                Views.emotions,
+                arg: _emotionsList[index],
+              ),
               child: LabeledIcon(
                 icon: _emotionsList[index].image!,
                 label: MLText(
@@ -220,6 +286,24 @@ class HomeView extends StatelessWidget {
           name: "Fill In The Blanks", icon: Icons.speaker_group_outlined),
     ];
 
+    MLTextButton _gameButton(IconLabelPair _game) {
+      return MLTextButton(
+        margin: const EdgeInsets.all(8.0),
+        width: SizeMQ.height! * .2,
+        onPressed: () => print("nothing here yet"),
+        child: LabeledIcon(
+          direction: Axis.vertical,
+          icon: Expanded(child: Icon(_game.icon)),
+          label: Expanded(
+            child: MLText(
+              _game.name,
+              fontSize: MLFont.mediumSmall,
+            ),
+          ),
+        ),
+      );
+    }
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
@@ -247,24 +331,6 @@ class HomeView extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
-  }
-
-  MLTextButton _gameButton(IconLabelPair _game) {
-    return MLTextButton(
-      margin: const EdgeInsets.all(8.0),
-      width: SizeMQ.height! * .2,
-      onPressed: () => print("nothing here yet"),
-      child: LabeledIcon(
-        direction: Axis.vertical,
-        icon: Expanded(child: Icon(_game.icon)),
-        label: Expanded(
-          child: MLText(
-            _game.name,
-            fontSize: MLFont.mediumSmall,
-          ),
-        ),
       ),
     );
   }

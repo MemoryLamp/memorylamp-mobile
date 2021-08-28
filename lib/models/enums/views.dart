@@ -54,6 +54,10 @@ extension ViewsExt on Views {
         return _headerText("Settings");
       case Views.logout:
         return _headerText("Logout");
+
+      case Views.emotions:
+        return _headerText("Emotions");
+
       default:
         return Image.asset(AssetManager.logo("Header.png"));
     }

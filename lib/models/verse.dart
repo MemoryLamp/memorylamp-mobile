@@ -10,4 +10,6 @@ class Verse {
     required this.number,
     required this.verse,
   });
+
+  String get toVerseFormat => "${this.book} ${this.chapter}:${this.number}";
 }

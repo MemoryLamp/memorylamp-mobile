@@ -63,6 +63,9 @@ flutter:
     - assets/emotion/love.png
     - assets/emotion/peace.png
     - assets/emotion/sad.png
+    # image
+    - assets/images/emotion-img.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
