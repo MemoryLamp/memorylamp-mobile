@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/asset_manager.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
+import 'package:memory_lamp/models/enums/views.dart';
 import 'package:memory_lamp/models/icon_label_pair.dart';
+import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
@@ -9,6 +11,7 @@ import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
+import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -86,6 +89,26 @@ class HomeView extends StatelessWidget {
       IconLabelPair.image(name: "Peace", image: _emotionIcon("peace.png")),
     ];
 
+    Consumer _emotionButton(int index) {
+      return Consumer<ViewProvider>(
+        builder: (BuildContext context, viewProvider, Widget? child) {
+          return Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: MLOutlinedButton(
+              onPressed: () => viewProvider.changeView(Views.emotions),
+              child: LabeledIcon(
+                icon: _emotionsList[index].image!,
+                label: MLText(
+                  _emotionsList[index].name,
+                  fontSize: MLFont.medium,
+                ),
+              ),
+            ),
+          );
+        },
+      );
+    }
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
@@ -104,19 +127,7 @@ class HomeView extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               childAspectRatio: 4,
               children: List.generate(_emotionsList.length, (index) {
-                return Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: MLOutlinedButton(
-                    onPressed: () => print("nothing here yet"),
-                    child: LabeledIcon(
-                      icon: _emotionsList[index].image!,
-                      label: MLText(
-                        _emotionsList[index].name,
-                        fontSize: MLFont.medium,
-                      ),
-                    ),
-                  ),
-                );
+                return _emotionButton(index);
               })
                 ..add(
                   Padding(
