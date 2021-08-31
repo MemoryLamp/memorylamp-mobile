@@ -254,6 +254,7 @@ class HomeView extends StatelessWidget {
   MLTextButton _bookButton(IconLabelPair _book) {
     return MLTextButton(
       margin: const EdgeInsets.all(8.0),
+      borderRadius: BorderRadius.circular(12),
       width: SizeMQ.height! * .1,
       height: SizeMQ.height! * .1,
       onPressed: () => print("nothing here yet"),
@@ -290,6 +291,7 @@ class HomeView extends StatelessWidget {
       return MLTextButton(
         margin: const EdgeInsets.all(8.0),
         width: SizeMQ.height! * .2,
+        borderRadius: BorderRadius.circular(12),
         onPressed: () => print("nothing here yet"),
         child: LabeledIcon(
           direction: Axis.vertical,
