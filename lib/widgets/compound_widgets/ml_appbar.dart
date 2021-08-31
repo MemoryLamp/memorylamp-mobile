@@ -14,6 +14,7 @@ class MLAppbar extends StatelessWidget implements PreferredSizeWidget {
   AppBar _appBar() {
     return AppBar(
       centerTitle: true,
+      elevation: 0,
       title: Consumer<ViewProvider>(
         builder: (BuildContext context, viewProvider, Widget? child) {
           return viewProvider.selectedView.title;
