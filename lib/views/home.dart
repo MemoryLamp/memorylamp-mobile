@@ -262,12 +262,7 @@ class HomeView extends StatelessWidget {
         direction: Axis.vertical,
         mainAxisAlignment: MainAxisAlignment.center,
         icon: Expanded(child: Icon(_book.icon)),
-        label: Expanded(
-          child: MLText(
-            _book.name,
-            fontSize: MLFont.mediumSmall,
-          ),
-        ),
+        label: Expanded(child: MLText(_book.name)),
       ),
     );
   }
@@ -298,10 +293,7 @@ class HomeView extends StatelessWidget {
           direction: Axis.vertical,
           icon: Expanded(child: Icon(_game.icon)),
           label: Expanded(
-            child: MLText(
-              _game.name,
-              fontSize: MLFont.mediumSmall,
-            ),
+            child: MLText(_game.name),
           ),
         ),
       );

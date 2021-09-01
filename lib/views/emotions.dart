@@ -61,13 +61,11 @@ class EmotionsView extends StatelessWidget {
                 _emotion.highlightVerse.verse,
                 fontColor: Colors.white,
                 textAlign: TextAlign.center,
-                fontSize: MLFont.mediumSmall,
                 fontWeight: MLFont.light,
               ),
               MLText(
                 _emotion.highlightVerse.toVerseFormat,
                 fontColor: Colors.white,
-                fontSize: MLFont.mediumSmall,
               )
             ],
           ),

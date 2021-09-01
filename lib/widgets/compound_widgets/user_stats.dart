@@ -75,14 +75,12 @@ class UserStats extends StatelessWidget {
                   MLText(
                     "Streak : ${_user.streak}",
                     fontColor: Colors.white,
-                    fontSize: MLFont.mediumSmall,
                     fontWeight: MLFont.semiBold,
                   ),
                   Spacer(),
                   MLText(
                     "Week: ${_user.week}",
                     fontColor: Colors.white,
-                    fontSize: MLFont.mediumSmall,
                     fontWeight: MLFont.semiBold,
                   ),
                 ],
