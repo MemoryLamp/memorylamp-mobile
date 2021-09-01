@@ -42,10 +42,8 @@ extension ViewsExt on Views {
     }
 
     switch (this) {
-      case Views.home:
-        return Image.asset(AssetManager.logo("Header.png"));
       case Views.profile:
-        return Image.asset(AssetManager.logo("Header.png"));
+        return _headerText("Profile");
       case Views.books:
         return _headerText("Browse Books");
       case Views.notification:
