@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/models/enums/views.dart';
+import 'package:memory_lamp/providers/user_provider.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/widgets/compound_widgets/ml_appbar.dart';
 import 'package:memory_lamp/widgets/compound_widgets/ml_drawer.dart';
@@ -10,8 +11,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ViewProvider(),
+    return MultiProvider(
+      providers: [
+        ListenableProvider<ViewProvider>(create: (_) => ViewProvider()),
+        ListenableProvider<UserProvider>(create: (_) => UserProvider()),
+      ],
       child: Scaffold(
         appBar: const MLAppbar(),
         drawer: const MLDrawer(),
