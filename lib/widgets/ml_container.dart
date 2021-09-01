@@ -7,6 +7,7 @@ class MLContainer extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final BorderRadius? borderRadius;
   final double? height;
+  final double? width;
   final bool hasShadow;
 
   const MLContainer({
@@ -16,6 +17,7 @@ class MLContainer extends StatelessWidget {
     this.margin,
     this.borderRadius,
     this.height,
+    this.width,
     this.hasShadow = false,
   });
 
@@ -25,6 +27,7 @@ class MLContainer extends StatelessWidget {
       height: height,
       margin: margin,
       padding: padding,
+      width: width,
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: borderRadius,
@@ -32,8 +35,8 @@ class MLContainer extends StatelessWidget {
             ? [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
+                  spreadRadius: 2,
+                  blurRadius: 3,
                   offset: Offset(0, 3),
                 ),
               ]

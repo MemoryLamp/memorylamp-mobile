@@ -31,6 +31,7 @@ dependencies:
 
   provider: ^6.0.0
   percent_indicator: ^3.0.1
+  badges: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -57,6 +58,8 @@ flutter:
     - assets/icons/game.png
     - assets/icons/pfp.png
     - assets/icons/book.png
+    - assets/icons/streak.png
+    - assets/icons/badges.png
     # emotion
     - assets/emotion/angry.png
     - assets/emotion/drained.png
