@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/models/enums/views.dart';
+import 'package:memory_lamp/providers/notification_provider.dart';
 import 'package:memory_lamp/providers/user_provider.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/widgets/compound_widgets/ml_appbar.dart';
@@ -15,6 +16,9 @@ class HomeScreen extends StatelessWidget {
       providers: [
         ListenableProvider<ViewProvider>(create: (_) => ViewProvider()),
         ListenableProvider<UserProvider>(create: (_) => UserProvider()),
+        ListenableProvider<NotificationProvider>(
+          create: (_) => NotificationProvider(),
+        ),
       ],
       child: Scaffold(
         appBar: const MLAppbar(),
