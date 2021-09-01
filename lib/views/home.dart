@@ -260,6 +260,7 @@ class HomeView extends StatelessWidget {
       onPressed: () => print("nothing here yet"),
       child: LabeledIcon(
         direction: Axis.vertical,
+        mainAxisAlignment: MainAxisAlignment.center,
         icon: Expanded(child: Icon(_book.icon)),
         label: Expanded(
           child: MLText(

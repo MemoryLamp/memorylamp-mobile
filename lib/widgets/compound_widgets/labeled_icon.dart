@@ -5,12 +5,14 @@ class LabeledIcon extends StatelessWidget {
   final Widget label;
   final Axis direction;
   final double? spaceBetween;
+  final MainAxisAlignment? mainAxisAlignment;
 
   const LabeledIcon({
     required this.icon,
     required this.label,
     this.spaceBetween = 8,
     this.direction = Axis.horizontal,
+    this.mainAxisAlignment,
   });
 
   SizedBox _separator() {
@@ -23,6 +25,7 @@ class LabeledIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flex(
+      mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
       direction: direction,
       children: [
         this.icon,

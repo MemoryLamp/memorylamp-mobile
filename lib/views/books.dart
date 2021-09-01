@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/theming/ml_font.dart';
+import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
+import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
 
 class BooksView extends StatelessWidget {
@@ -6,13 +9,55 @@ class BooksView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            children: [MLText("Books")],
+    List<String> _bookList = [
+      "Genesis",
+      "Exodus",
+      "Leviticus",
+      "Numbers",
+      "Deutronomy",
+      "Joshua",
+      "Judges",
+      "Ruth",
+      "1 Samuel",
+      "2 Samuel",
+      "1 Kings",
+      "2 Kings",
+      "1 Chronicles",
+      "2 Chronicles",
+      "Ezra",
+    ];
+
+    MLTextButton _bookButton(int index) {
+      return MLTextButton(
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+        onPressed: () => print("nothing here yet"),
+        child: LabeledIcon(
+          mainAxisAlignment: MainAxisAlignment.center,
+          direction: Axis.vertical,
+          icon: Icon(Icons.book),
+          label: MLText(
+            _bookList[index],
+            fontSize: MLFont.mediumSmall,
           ),
+        ),
+      );
+    }
+
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: GridView.builder(
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            childAspectRatio: 1.1,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+          ),
+          itemCount: _bookList.length,
+          itemBuilder: (BuildContext context, int index) {
+            return _bookButton(index);
+          },
         ),
       ),
     );
