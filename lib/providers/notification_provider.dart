@@ -55,6 +55,9 @@ class NotificationProvider extends ChangeNotifier {
   int _indexOf(String name) =>
       _cards.indexWhere((element) => element.name == name);
 
+  bool get noNotifications =>
+      _cards.indexWhere((element) => element.count > 0) == -1;
+
   NotificationCard getNotif(String name) => _cards[_indexOf(name)];
 
   List<NotificationCard> get cards => _cards;

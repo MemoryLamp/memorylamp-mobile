@@ -1,6 +1,8 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/models/enums/views.dart';
 import 'package:memory_lamp/models/nav_item.dart';
+import 'package:memory_lamp/providers/notification_provider.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
@@ -64,9 +66,26 @@ class MLDrawer extends StatelessWidget {
               margin: const EdgeInsets.all(4.0),
               padding: const EdgeInsets.all(8.0),
               child: LabeledIcon(
-                icon: Icon(
-                  _drawerItems[index].icon,
-                  color: isActive ? MLColors.primary : Colors.white,
+                icon: Consumer<NotificationProvider>(
+                  builder: (
+                    BuildContext context,
+                    notificationProvider,
+                    Widget? child,
+                  ) {
+                    Icon _icon = Icon(
+                      _drawerItems[index].icon,
+                      color: isActive ? MLColors.primary : Colors.white,
+                    );
+                    if (_drawerItems[index].view == Views.notification) {
+                      return Badge(
+                        showBadge: !notificationProvider.noNotifications,
+                        badgeColor: MLColors.secondary,
+                        position: BadgePosition.topEnd(top: -1, end: -1),
+                        child: _icon,
+                      );
+                    }
+                    return _icon;
+                  },
                 ),
                 label: MLText(
                   _drawerItems[index].name,
