@@ -1,14 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/helpers/asset_manager.dart';
-import 'package:memory_lamp/helpers/size_mq.dart';
+import 'package:memory_lamp/models/completed_game.dart';
+import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
+import 'package:memory_lamp/widgets/compound_widgets/user_stats.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -19,114 +18,103 @@ class ProfileView extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            _header(),
-            _statsContainer(),
+            _userStats(),
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                children: [
+                  _banner(),
+                  _completedVerses(),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  MLContainer _header() {
-    return MLContainer(
-      padding: const EdgeInsets.all(20.0),
-      borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(28),
-        bottomRight: Radius.circular(28),
+  UserStats _userStats() => UserStats();
+
+  LabeledIcon _banner() {
+    return LabeledIcon(
+      icon: Icon(
+        Icons.check_circle_outline,
+        color: MLColors.secondary,
+        size: 32,
       ),
-      backgroundColor: MLColors.primary,
-      child: Center(
-        child: LabeledIcon(
-          spaceBetween: 24,
-          icon: Image.asset(AssetManager.icon("pfp.png")),
-          label: SizedBox(
-            width: SizeMQ.width! * .4,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                MLText(
-                  "Hannah",
-                  fontColor: Colors.white,
-                  fontWeight: MLFont.bold,
-                  fontSize: MLFont.extraLarge,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    MLText(
-                      "Streak : 1",
-                      fontColor: Colors.white,
-                      fontSize: MLFont.mediumSmall,
-                      fontWeight: MLFont.semiBold,
-                    ),
-                    MLText(
-                      "Week: 0",
-                      fontColor: Colors.white,
-                      fontSize: MLFont.mediumSmall,
-                      fontWeight: MLFont.semiBold,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+      label: MLText(
+        "Completed Verses",
+        style: MLFont.bannerText01,
+      ),
+    );
+  }
+
+  MLContainer _completedVerses() {
+    List<String> _columnHeaders = ["Verse", "Activity", "Time"];
+    // temporary hardcoded data
+    List<CompletedGame> _completedGames = List.generate(20, (index) {
+      return CompletedGame(
+        verse: Verse(
+          book: "Genesis",
+          chapter: 1,
+          number: index,
+          verse: "Hello",
         ),
-      ),
-    );
-  }
+        name: "Fill in the Blanks",
+        time: "01:5$index",
+      );
+    });
 
-  Padding _statsContainer() {
-    return Padding(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        children: [
-          _indicator(large: true),
-          GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            childAspectRatio: .9,
-            children: List.generate(5, (_) => _indicator()),
-          ),
-        ],
-      ),
-    );
-  }
-
-  CircularPercentIndicator _indicator({bool large = false}) {
-    Column _centerContent({
-      required String percent,
-      required String formatedVerse,
-    }) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          MLText(
-            percent,
-            fontSize: large ? MLFont.medium * 2 : MLFont.medium,
-            fontWeight: MLFont.bold,
-          ),
-          MLText(
-            formatedVerse,
-            fontSize: MLFont.small,
-            fontWeight: MLFont.bold,
-          ),
-        ],
+    Padding _rowBuilder(CompletedGame _item) {
+      return Padding(
+        padding: const EdgeInsets.all(6.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            MLText(_item.verse.toVerseFormat),
+            MLText(_item.name),
+            MLText(_item.time),
+          ],
+        ),
       );
     }
 
-    return CircularPercentIndicator(
-      radius: large ? SizeMQ.width! * .55 : SizeMQ.width! * .28,
-      animation: true,
-      lineWidth: large ? 28 : 14,
-      percent: .4,
-      center: _centerContent(percent: "40%", formatedVerse: "Psalm 119:1"),
-      progressColor: MLColors.purple,
-      footer: MLTextButton(
-        width: large ? SizeMQ.width! * .5 : SizeMQ.width! * .3,
-        backgroundColor: MLColors.secondary,
-        child: MLText("Continue"),
-        onPressed: () => print("nothing here yet"),
+    return MLContainer(
+      backgroundColor: Colors.white,
+      hasShadow: true,
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+      margin: const EdgeInsets.symmetric(vertical: 12),
+      child: Column(
+        children: [
+          MLContainer(
+            padding: const EdgeInsets.all(8),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(12),
+              topRight: Radius.circular(12),
+            ),
+            backgroundColor: MLColors.primary,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: List.generate(
+                _columnHeaders.length,
+                (index) => MLText(
+                  _columnHeaders[index],
+                  fontWeight: MLFont.semiBold,
+                  fontSize: MLFont.mediumLarge,
+                  fontColor: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ]..addAll(
+            List.generate(
+              _completedGames.length,
+              (index) {
+                return _rowBuilder(_completedGames[index]);
+              },
+            ),
+          ),
       ),
     );
   }
