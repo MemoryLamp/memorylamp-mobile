@@ -9,7 +9,7 @@ import 'package:memory_lamp/views/profile.dart';
 import 'package:memory_lamp/views/settings.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
 
-enum Views { home, profile, books, notification, settings, logout, emotions }
+enum Views { home, profile, books, notification, settings, logout }
 
 extension ViewsExt on Views {
   Widget get view {
@@ -48,9 +48,6 @@ extension ViewsExt on Views {
         return _headerText("Settings");
       case Views.logout:
         return _headerText("Logout");
-
-      case Views.emotions:
-        return _headerText("Emotions");
 
       default:
         return Image.asset(AssetManager.logo("Header.png"));
