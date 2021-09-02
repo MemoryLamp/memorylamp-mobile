@@ -3,38 +3,51 @@ import 'package:memory_lamp/helpers/asset_manager.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/emotion.dart';
 import 'package:memory_lamp/models/verse.dart';
-import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
-import 'package:provider/provider.dart';
 
-class EmotionsView extends StatelessWidget {
-  const EmotionsView({Key? key}) : super(key: key);
+class EmotionsScreen extends StatelessWidget {
+  static const routeName = "/emotions";
+
+  final Emotion _emotion;
+
+  const EmotionsScreen(this._emotion, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ViewProvider>(
-      builder: (BuildContext context, viewProvider, Widget? child) {
-        Emotion _emotion = viewProvider.arg;
-        return SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                _header(_emotion),
-                _verseList(_emotion.verses),
-              ],
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: MLText(_emotion.name),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.chevron_left_rounded, size: 40),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () => print("nothing here yet"),
+            icon: Icon(Icons.share_outlined, size: 30),
+          )
+        ],
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _header(),
+              _verseList(_emotion.verses),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 
-  Column _header(Emotion _emotion) {
+  Column _header() {
     return Column(
       children: [
         Image.asset(

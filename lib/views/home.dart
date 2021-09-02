@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/asset_manager.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/emotion.dart';
-import 'package:memory_lamp/models/enums/views.dart';
 import 'package:memory_lamp/models/icon_label_pair.dart';
 import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/theming/defaults.dart';
+import 'package:memory_lamp/screens/emotions.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
@@ -159,9 +159,10 @@ class HomeView extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(4.0),
             child: MLOutlinedButton(
-              onPressed: () => viewProvider.changeView(
-                Views.emotions,
-                arg: _emotionsList[index],
+              onPressed: () => Navigator.pushNamed(
+                context,
+                EmotionsScreen.routeName,
+                arguments: _emotionsList[index],
               ),
               child: LabeledIcon(
                 icon: _emotionsList[index].image!,
