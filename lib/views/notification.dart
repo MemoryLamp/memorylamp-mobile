@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/notification_card.dart';
 import 'package:memory_lamp/providers/notification_provider.dart';
+import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
@@ -50,7 +51,6 @@ class NotificationView extends StatelessWidget {
     NotificationProvider _provider,
   ) {
     final dimension = SizeMQ.width! * .35;
-    final double border = 16;
 
     return Badge(
       animationType: BadgeAnimationType.scale,
@@ -68,7 +68,7 @@ class NotificationView extends StatelessWidget {
           height: dimension,
           hasShadow: true,
           backgroundColor: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(border)),
+          borderRadius: MLDefaults.rounded,
           child: LabeledIcon(
             direction: Axis.vertical,
             icon: Expanded(child: _data.image!),
@@ -76,10 +76,7 @@ class NotificationView extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               backgroundColor: MLColors.primaryAccent,
               width: double.infinity,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(border),
-                bottomRight: Radius.circular(border),
-              ),
+              borderRadius: MLDefaults.roundedBottom,
               child: MLText(
                 _data.name,
                 textAlign: TextAlign.center,

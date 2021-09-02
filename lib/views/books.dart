@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
@@ -28,7 +29,7 @@ class BooksView extends StatelessWidget {
 
     MLTextButton _bookButton(int index) {
       return MLTextButton(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
+        borderRadius: MLDefaults.rounded,
         onPressed: () => print("nothing here yet"),
         child: LabeledIcon(
           mainAxisAlignment: MainAxisAlignment.center,

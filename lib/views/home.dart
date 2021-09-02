@@ -6,6 +6,7 @@ import 'package:memory_lamp/models/enums/views.dart';
 import 'package:memory_lamp/models/icon_label_pair.dart';
 import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
+import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
@@ -51,7 +52,7 @@ class HomeView extends StatelessWidget {
           backgroundColor: MLColors.primary,
           margin: const EdgeInsets.symmetric(vertical: 16.0),
           padding: const EdgeInsets.all(32.0),
-          borderRadius: BorderRadius.all(Radius.circular(16)),
+          borderRadius: MLDefaults.rounded,
           child: Column(
             children: [
               Padding(
@@ -254,7 +255,7 @@ class HomeView extends StatelessWidget {
   MLTextButton _bookButton(IconLabelPair _book) {
     return MLTextButton(
       margin: const EdgeInsets.all(8.0),
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: MLDefaults.rounded,
       width: SizeMQ.height! * .1,
       height: SizeMQ.height! * .1,
       onPressed: () => print("nothing here yet"),
@@ -287,7 +288,7 @@ class HomeView extends StatelessWidget {
       return MLTextButton(
         margin: const EdgeInsets.all(8.0),
         width: SizeMQ.height! * .2,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: MLDefaults.rounded,
         onPressed: () => print("nothing here yet"),
         child: LabeledIcon(
           direction: Axis.vertical,

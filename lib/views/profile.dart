@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/models/completed_game.dart';
 import 'package:memory_lamp/models/verse.dart';
+import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
@@ -83,16 +84,13 @@ class ProfileView extends StatelessWidget {
     return MLContainer(
       backgroundColor: Colors.white,
       hasShadow: true,
-      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderRadius: MLDefaults.rounded,
       margin: const EdgeInsets.symmetric(vertical: 12),
       child: Column(
         children: [
           MLContainer(
             padding: const EdgeInsets.all(8),
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12),
-              topRight: Radius.circular(12),
-            ),
+            borderRadius: MLDefaults.roundedTop,
             backgroundColor: MLColors.primary,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

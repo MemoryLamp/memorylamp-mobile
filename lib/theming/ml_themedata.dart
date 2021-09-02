@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/theming/defaults.dart';
 
 import 'ml_colors.dart';
 
@@ -9,7 +10,7 @@ abstract class MLThemeData {
           backgroundColor: MaterialStateProperty.all(MLColors.primary),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: MLDefaults.rounded,
             ),
           ),
         ),
@@ -40,7 +41,7 @@ abstract class MLThemeData {
               MaterialStateProperty.all<Color>(MLColors.primaryAccent),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: MLDefaults.rounded,
             ),
           ),
         ),
