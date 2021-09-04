@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/helpers/asset_manager.dart';
+import 'package:memory_lamp/models/enums/views.dart';
+import 'package:memory_lamp/providers/view_provider.dart';
+import 'package:provider/provider.dart';
 
 class MLAppbar extends StatelessWidget implements PreferredSizeWidget {
+  const MLAppbar();
+
   @override
   Widget build(BuildContext context) {
     return _appBar();
@@ -10,7 +14,11 @@ class MLAppbar extends StatelessWidget implements PreferredSizeWidget {
   AppBar _appBar() {
     return AppBar(
       centerTitle: true,
-      title: Image.asset(AssetManager.logo("Header.png")),
+      title: Consumer<ViewProvider>(
+        builder: (BuildContext context, viewProvider, Widget? child) {
+          return viewProvider.selectedView.title;
+        },
+      ),
       actions: [
         IconButton(
           onPressed: () => print("Search"),

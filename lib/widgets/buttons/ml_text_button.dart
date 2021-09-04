@@ -6,6 +6,9 @@ class MLTextButton extends StatelessWidget {
   final double? width;
   final double? height;
   final EdgeInsetsGeometry margin;
+  final EdgeInsetsGeometry padding;
+  final Color? backgroundColor;
+  final BorderRadius? borderRadius;
 
   const MLTextButton({
     Key? key,
@@ -13,7 +16,10 @@ class MLTextButton extends StatelessWidget {
     this.onPressed,
     this.width,
     this.height,
+    this.backgroundColor,
     this.margin = EdgeInsets.zero,
+    this.padding = EdgeInsets.zero,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -27,7 +33,16 @@ class MLTextButton extends StatelessWidget {
         height: height,
         child: TextButton(
           onPressed: onPressed,
-          child: child,
+          child: Padding(
+            padding: padding,
+            child: child,
+          ),
+          style: TextButton.styleFrom(
+            backgroundColor: backgroundColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: borderRadius ?? BorderRadius.circular(12),
+            ),
+          ),
         ),
       ),
     );
