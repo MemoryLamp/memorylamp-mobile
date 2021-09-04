@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/screens/home.dart';
-import 'package:memory_lamp/screens/signup.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_elevated_button.dart';
@@ -26,15 +25,6 @@ class OnboardingScreen extends StatelessWidget {
           children: [
             _logo(),
             SizedBox(height: SizeMQ.width! * .2),
-            MLElevatedButton(
-              onPressed: () =>
-                  Navigator.popAndPushNamed(context, HomeScreen.routeName),
-              child: MLText(
-                "Get Started",
-                fontWeight: MLFont.bold,
-                fontSize: MLFont.small,
-              ),
-            ),
             _getStarted(context),
           ],
         ),
@@ -55,10 +45,11 @@ class OnboardingScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       width: SizeMQ.width! * .60,
       padding: EdgeInsets.all(12),
-      onPressed: () => Navigator.pushNamed(context, SignupScreen.routeName),
+      onPressed: () => Navigator.pushNamed(context, HomeScreen.routeName),
       child: MLText(
         "Get Started",
         fontWeight: MLFont.bold,
+        fontColor: MLColors.primary,
         fontSize: MLFont.medium,
       ),
     );

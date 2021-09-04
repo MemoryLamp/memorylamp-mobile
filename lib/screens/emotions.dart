@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/helpers/asset_manager.dart';
+import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/emotion.dart';
 import 'package:memory_lamp/models/verse.dart';
@@ -51,7 +51,7 @@ class EmotionsScreen extends StatelessWidget {
     return Column(
       children: [
         Image.asset(
-          AssetManager.image("emotion-img.png"),
+          AssetPaths.image("emotion-img.png"),
           fit: BoxFit.fitWidth,
           width: double.infinity,
         ),
@@ -99,7 +99,7 @@ class EmotionsScreen extends StatelessWidget {
               LabeledIcon(
                 spaceBetween: 16,
                 icon: Image.asset(
-                  AssetManager.icon("book.png"),
+                  AssetPaths.icon("book.png"),
                   width: MLFont.large,
                 ),
                 label: MLText(

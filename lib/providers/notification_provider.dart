@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/helpers/asset_manager.dart';
+import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/models/notification_card.dart';
 
 enum NotifAction { increment, decrement }
@@ -10,17 +10,17 @@ class NotificationProvider extends ChangeNotifier {
     NotificationCard(
       count: 5,
       name: "Pending Verses",
-      image: Image.asset(AssetManager.icon("book.png")),
+      image: Image.asset(AssetPaths.icon("book.png")),
     ),
     NotificationCard(
       count: 2,
       name: "Weekly Streak",
-      image: Image.asset(AssetManager.icon("streak.png")),
+      image: Image.asset(AssetPaths.icon("streak.png")),
     ),
     NotificationCard(
       count: 2,
       name: "Badges",
-      image: Image.asset(AssetManager.icon("badges.png")),
+      image: Image.asset(AssetPaths.icon("badges.png")),
     ),
   ];
 

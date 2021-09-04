@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/helpers/asset_manager.dart';
+import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/user.dart';
 import 'package:memory_lamp/providers/user_provider.dart';
@@ -34,7 +34,7 @@ class UserStats extends StatelessWidget {
       child: LabeledIcon(
         icon: Padding(
           padding: const EdgeInsets.all(4.0),
-          child: Image.asset(AssetManager.icon("pfp.png")),
+          child: Image.asset(AssetPaths.icon("pfp.png")),
         ),
         label: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +58,7 @@ class UserStats extends StatelessWidget {
       backgroundColor: MLColors.primary,
       child: LabeledIcon(
         spaceBetween: 24,
-        icon: Image.asset(AssetManager.icon("pfp.png")),
+        icon: Image.asset(AssetPaths.icon("pfp.png")),
         label: SizedBox(
           width: SizeMQ.width! * .4,
           child: Column(

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:memory_lamp/helpers/asset_manager.dart';
+import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/views/books.dart';
 import 'package:memory_lamp/views/home.dart';
@@ -50,7 +50,7 @@ extension ViewsExt on Views {
         return _headerText("Logout");
 
       default:
-        return Image.asset(AssetManager.logo("Header.png"));
+        return Image.asset(AssetPaths.logo("Header.png"));
     }
   }
 }

@@ -10,7 +10,7 @@ abstract class MLThemeData {
           backgroundColor: MaterialStateProperty.all(MLColors.primary),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: MLDefaults.rounded,
+              borderRadius: BorderRadius.circular(30),
             ),
           ),
         ),

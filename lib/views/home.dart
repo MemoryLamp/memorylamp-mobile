@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/helpers/asset_manager.dart';
+import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/emotion.dart';
 import 'package:memory_lamp/models/icon_label_pair.dart';
@@ -78,7 +78,7 @@ class HomeView extends StatelessWidget {
   Padding _emotions() {
     Image _emotionIcon(String _emotionName) {
       return Image.asset(
-        AssetManager.emotion(_emotionName),
+        AssetPaths.emotion(_emotionName),
         width: MLFont.large,
       );
     }
@@ -307,7 +307,7 @@ class HomeView extends StatelessWidget {
         children: [
           LabeledIcon(
             icon: Image.asset(
-              AssetManager.icon("game.png"),
+              AssetPaths.icon("game.png"),
               height: MLFont.large,
             ),
             label: MLText(
