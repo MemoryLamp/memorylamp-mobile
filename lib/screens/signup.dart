@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/defaults/buttons/ml_elevated_button.dart';
-import 'package:memory_lamp/defaults/ml_text.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
+import 'package:memory_lamp/widgets/buttons/ml_elevated_button.dart';
+import 'package:memory_lamp/widgets/ml_text.dart';
 
 class SignupScreen extends StatelessWidget {
   static String routeName = '/signup';

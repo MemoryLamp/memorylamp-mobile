@@ -6,12 +6,14 @@ class MLElevatedButton extends StatelessWidget {
   final Widget child;
   final Color? backgroundColor;
   final EdgeInsetsGeometry? padding;
+  final BorderRadius? borderRadius;
   final Function() onPressed;
 
   const MLElevatedButton({
     this.width,
     this.backgroundColor,
     this.padding,
+    this.borderRadius,
     required this.child,
     required this.onPressed,
     Key? key,

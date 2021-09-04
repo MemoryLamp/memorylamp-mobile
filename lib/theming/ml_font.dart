@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'ml_colors.dart';
 
 // the ._() constructors  prevents instantiation and extension.
 
@@ -16,12 +19,20 @@ class MLFont {
   static double extraSmall = 9;
   static double small = 12;
   static double medium = 16;
+  static double mediumLarge = 18;
   static double large = 20;
+  static double extraLarge = 25;
 
   // we can add some reusable TextStyle Widgets here so we can have a more uniform styling across the app
-  // static TextStyle get mutedBold => TextStyle(
-  //       color: MLColors.primary,
-  //       fontSize: medium,
-  //       fontWeight: bold,
-  //     );
+  static TextStyle get bannerText01 => TextStyle(
+        color: MLColors.primary,
+        fontSize: mediumLarge,
+        fontWeight: semiBold,
+      );
+
+  static TextStyle get extraLargeBold => TextStyle(
+        color: MLColors.primary,
+        fontSize: extraLarge,
+        fontWeight: bold,
+      );
 }
