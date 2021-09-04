@@ -7,6 +7,7 @@ abstract class MLColors {
   MLColors._();
 
   static Color primary = Color(0xFF072C47);
+  static Color primaryAccent = Color(0xFF173246);
 
   static Color secondary = Color(0xFF227ABA);
 

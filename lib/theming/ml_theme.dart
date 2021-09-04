@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/theming/ml_themedata.dart';
 
 import 'ml_colors.dart';
 
@@ -19,17 +20,9 @@ class MLTheme with ChangeNotifier {
       primaryColor: MLColors.primary,
       backgroundColor: MLColors.bgLight,
       fontFamily: "poppins",
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(MLColors.bgLight),
-          backgroundColor: MaterialStateProperty.all(MLColors.primary),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-        ),
-      ),
+      elevatedButtonTheme: MLThemeData.elevatedButton,
+      outlinedButtonTheme: MLThemeData.outlinedButton,
+      textButtonTheme: MLThemeData.textButton,
     );
   }
 

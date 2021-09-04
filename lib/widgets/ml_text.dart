@@ -6,6 +6,7 @@ class MLText extends StatelessWidget {
   final FontWeight? fontWeight;
   final double? fontSize;
   final FontStyle? fontStyle;
+  final Color? fontColor;
 
   const MLText(
     this.text, {
@@ -13,9 +14,11 @@ class MLText extends StatelessWidget {
     this.fontWeight,
     this.fontSize,
     this.fontStyle,
+    this.fontColor,
     Key? key,
   })  : assert(
-          style == null || (fontWeight == null && fontSize == null),
+          style == null ||
+              (fontWeight == null && fontSize == null && fontStyle == null),
           "Please don't add custom styles when using a preset style, "
           "It won't work anyway as the preset style will take priority- jerome",
         ),
@@ -30,6 +33,7 @@ class MLText extends StatelessWidget {
             fontWeight: fontWeight,
             fontSize: fontSize,
             fontStyle: fontStyle,
+            color: fontColor,
           ),
     );
   }
