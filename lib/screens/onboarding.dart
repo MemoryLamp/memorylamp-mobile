@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/helpers/asset_manager.dart';
+import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/screens/home.dart';
+import 'package:memory_lamp/screens/signup.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_elevated_button.dart';
@@ -16,14 +17,14 @@ class OnboardingScreen extends StatelessWidget {
     SizeMQ().init(context);
 
     return Scaffold(
-      backgroundColor: MLColors.bgLight,
+      backgroundColor: MLColors.primary,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            heroLogo(),
+            _logo(),
             SizedBox(height: SizeMQ.width! * .2),
             MLElevatedButton(
               onPressed: () =>
@@ -34,26 +35,31 @@ class OnboardingScreen extends StatelessWidget {
                 fontSize: MLFont.small,
               ),
             ),
+            _getStarted(context),
           ],
         ),
       ),
     );
   }
 
-  static Hero heroLogo() {
-    return Hero(
-      tag: "logo",
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            AssetManager.logo("ml-1-03.png"),
-          ),
-          MLText(
-            "Start memorizing Bible verses",
-            fontSize: MLFont.medium,
-          ),
-        ],
+  Image _logo() {
+    return Image.asset(
+      AssetPaths.logo("logo-light.png"),
+      width: SizeMQ.width! * .65,
+      fit: BoxFit.fitWidth,
+    );
+  }
+
+  MLElevatedButton _getStarted(BuildContext context) {
+    return MLElevatedButton(
+      backgroundColor: Colors.white,
+      width: SizeMQ.width! * .60,
+      padding: EdgeInsets.all(12),
+      onPressed: () => Navigator.pushNamed(context, SignupScreen.routeName),
+      child: MLText(
+        "Get Started",
+        fontWeight: MLFont.bold,
+        fontSize: MLFont.medium,
       ),
     );
   }

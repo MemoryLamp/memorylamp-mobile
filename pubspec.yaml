@@ -52,7 +52,6 @@ flutter:
   assets:
 
     # logos
-    - assets/logos/ml-1-03.png
     - assets/logos/Header.png
     # icons
     - assets/icons/game.png
@@ -72,6 +71,8 @@ flutter:
     - assets/images/emotion-img.png
 
 
+    - assets/logos/logo-dark.png
+    - assets/logos/logo-light.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
