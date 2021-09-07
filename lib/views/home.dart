@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/emotion.dart';
+import 'package:memory_lamp/models/enums/views.dart';
 import 'package:memory_lamp/models/icon_label_pair.dart';
 import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
@@ -110,8 +111,38 @@ class HomeView extends StatelessWidget {
 
     List<Emotion> _emotionsList = [
       Emotion(
-        name: "Hope",
-        image: _emotionIcon("hope.png"),
+        name: "Happy",
+        image: _emotionIcon("happy.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
+      Emotion(
+        name: "Cheerful",
+        image: _emotionIcon("cheerful.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
+      Emotion(
+        name: "Loved",
+        image: _emotionIcon("loved.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
+      Emotion(
+        name: "Joyful",
+        image: _emotionIcon("joyful.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
+      Emotion(
+        name: "Relief",
+        image: _emotionIcon("relief.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
+      Emotion(
+        name: "Exhausted",
+        image: _emotionIcon("exhausted.png"),
         verses: _verses,
         highlightVerse: _highlightVerse,
       ),
@@ -122,20 +153,14 @@ class HomeView extends StatelessWidget {
         highlightVerse: _highlightVerse,
       ),
       Emotion(
-        name: "Love",
-        image: _emotionIcon("love.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-      Emotion(
         name: "Drained",
         image: _emotionIcon("drained.png"),
         verses: _verses,
         highlightVerse: _highlightVerse,
       ),
       Emotion(
-        name: "Joy",
-        image: _emotionIcon("joy.png"),
+        name: "Tired",
+        image: _emotionIcon("tired.png"),
         verses: _verses,
         highlightVerse: _highlightVerse,
       ),
@@ -146,8 +171,14 @@ class HomeView extends StatelessWidget {
         highlightVerse: _highlightVerse,
       ),
       Emotion(
-        name: "Peace",
-        image: _emotionIcon("peace.png"),
+        name: "Hopeless",
+        image: _emotionIcon("hopeless.png"),
+        verses: _verses,
+        highlightVerse: _highlightVerse,
+      ),
+      Emotion(
+        name: "Betrayed",
+        image: _emotionIcon("betrayed.png"),
         verses: _verses,
         highlightVerse: _highlightVerse,
       ),
@@ -194,18 +225,24 @@ class HomeView extends StatelessWidget {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               childAspectRatio: 4,
-              children: List.generate(_emotionsList.length, (index) {
+              children: List.generate(7, (index) {
                 return _emotionButton(index);
               })
                 ..add(
                   Padding(
                     padding: const EdgeInsets.all(4.0),
-                    child: MLOutlinedButton(
-                      onPressed: () => print("nothing here yet"),
-                      child: MLText(
-                        "•••",
-                        fontSize: MLFont.medium,
-                      ),
+                    child: Consumer<ViewProvider>(
+                      builder: (context, viewProvider, child) {
+                        return MLOutlinedButton(
+                          onPressed: () {
+                            viewProvider.changeView(Views.emotions);
+                          },
+                          child: MLText(
+                            "•••",
+                            fontSize: MLFont.medium,
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),

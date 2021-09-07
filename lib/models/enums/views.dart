@@ -3,6 +3,7 @@ import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/views/bookmarks.dart';
 import 'package:memory_lamp/views/books.dart';
+import 'package:memory_lamp/views/emotions.dart';
 import 'package:memory_lamp/views/home.dart';
 import 'package:memory_lamp/views/logout.dart';
 import 'package:memory_lamp/views/notification.dart';
@@ -20,6 +21,7 @@ enum Views {
   logout,
   streaks,
   bookmarks,
+  emotions,
 }
 
 extension ViewsExt on Views {
@@ -42,6 +44,8 @@ extension ViewsExt on Views {
         return StreaksView();
       case Views.bookmarks:
         return BookmarksView();
+      case Views.emotions:
+        return EmotionsView();
 
       default:
         return Center(child: MLText("View not found"));
@@ -69,6 +73,8 @@ extension ViewsExt on Views {
         return _headerText("Streaks");
       case Views.bookmarks:
         return _headerText("Bookmarks");
+      case Views.emotions:
+        return _headerText("Emotions");
 
       default:
         return Image.asset(AssetPaths.logo("Header.png"));
