@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
+import 'package:memory_lamp/views/bookmarks.dart';
 import 'package:memory_lamp/views/books.dart';
 import 'package:memory_lamp/views/home.dart';
 import 'package:memory_lamp/views/logout.dart';
@@ -10,7 +11,16 @@ import 'package:memory_lamp/views/settings.dart';
 import 'package:memory_lamp/views/streaks.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
 
-enum Views { home, profile, books, notification, settings, logout, streaks }
+enum Views {
+  home,
+  profile,
+  books,
+  notification,
+  settings,
+  logout,
+  streaks,
+  bookmarks,
+}
 
 extension ViewsExt on Views {
   Widget get view {
@@ -30,6 +40,8 @@ extension ViewsExt on Views {
 
       case Views.streaks:
         return StreaksView();
+      case Views.bookmarks:
+        return BookmarksView();
 
       default:
         return Center(child: MLText("View not found"));
@@ -55,6 +67,8 @@ extension ViewsExt on Views {
 
       case Views.streaks:
         return _headerText("Streaks");
+      case Views.bookmarks:
+        return _headerText("Bookmarks");
 
       default:
         return Image.asset(AssetPaths.logo("Header.png"));

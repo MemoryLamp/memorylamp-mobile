@@ -28,7 +28,11 @@ class _MLBottomNavBarState extends State<MLBottomNavBar> {
     List<NavItem> _navItems = [
       NavItem(icon: Icons.home, name: "Home", view: Views.home),
       NavItem(icon: Icons.emoji_emotions, name: "Emotions", view: Views.home),
-      NavItem(icon: Icons.bookmark_added, name: "Bookmarks", view: Views.home),
+      NavItem(
+        icon: Icons.bookmark_added,
+        name: "Bookmarks",
+        view: Views.bookmarks,
+      ),
       NavItem(icon: Icons.query_stats, name: "Streaks", view: Views.streaks),
     ];
 
