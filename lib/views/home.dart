@@ -165,7 +165,7 @@ class HomeView extends StatelessWidget {
                 arguments: _emotionsList[index],
               ),
               child: LabeledIcon(
-                icon: _emotionsList[index].image!,
+                icon: _emotionsList[index].icon,
                 label: MLText(
                   _emotionsList[index].name,
                   fontSize: MLFont.medium,
@@ -217,7 +217,7 @@ class HomeView extends StatelessWidget {
   }
 
   Padding _books() {
-    const List<IconLabelPair> _bookList = [
+    List<IconLabelPair> _bookList = [
       IconLabelPair(name: "Genesis", icon: Icons.book),
       IconLabelPair(name: "Exodus", icon: Icons.book),
       IconLabelPair(name: "Leviticus", icon: Icons.book),
@@ -270,18 +270,13 @@ class HomeView extends StatelessWidget {
   }
 
   Padding _games() {
-    const List<IconLabelPair> _gameList = [
-      const IconLabelPair(
-          name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      const IconLabelPair(
-          name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      const IconLabelPair(
-          name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      const IconLabelPair(
-          name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      const IconLabelPair(
-          name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      const IconLabelPair(
+    List<IconLabelPair> _gameList = [
+      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      IconLabelPair(
           name: "Fill In The Blanks", icon: Icons.speaker_group_outlined),
     ];
 
