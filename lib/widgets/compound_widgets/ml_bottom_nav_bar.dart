@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/models/enums/views.dart';
+import 'package:memory_lamp/models/nav_item.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:provider/provider.dart';
@@ -17,12 +19,19 @@ class _MLBottomNavBarState extends State<MLBottomNavBar> {
   Widget build(BuildContext context) {
     return Consumer<ViewProvider>(
       builder: (BuildContext context, viewProvider, Widget? child) {
-        return _bottomNavBar();
+        return _bottomNavBar(viewProvider);
       },
     );
   }
 
-  BottomNavigationBar _bottomNavBar() {
+  BottomNavigationBar _bottomNavBar(ViewProvider viewProvider) {
+    List<NavItem> _navItems = [
+      NavItem(icon: Icons.home, name: "Home", view: Views.home),
+      NavItem(icon: Icons.emoji_emotions, name: "Emotions", view: Views.home),
+      NavItem(icon: Icons.bookmark_added, name: "Bookmarks", view: Views.home),
+      NavItem(icon: Icons.query_stats, name: "Streaks", view: Views.streaks),
+    ];
+
     return BottomNavigationBar(
       selectedItemColor: Colors.white,
       unselectedItemColor: MLColors.bgLight,
@@ -31,28 +40,16 @@ class _MLBottomNavBarState extends State<MLBottomNavBar> {
       backgroundColor: MLColors.primary,
       type: BottomNavigationBarType.fixed,
       currentIndex: _currentIndex,
-      items: [
-        BottomNavigationBarItem(
-          label: 'Home',
-          icon: Icon(Icons.home),
+      items: List.generate(
+        _navItems.length,
+        (index) => BottomNavigationBarItem(
+          label: _navItems[index].name,
+          icon: Icon(_navItems[index].icon),
         ),
-        BottomNavigationBarItem(
-          label: 'Emotions',
-          icon: Icon(Icons.emoji_emotions),
-        ),
-        BottomNavigationBarItem(
-          label: 'Bookmarks',
-          icon: Icon(Icons.bookmark_added),
-        ),
-        BottomNavigationBarItem(
-          label: 'Stats',
-          icon: Icon(Icons.query_stats),
-        ),
-      ],
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
+      ),
+      onTap: (int index) {
+        viewProvider.changeView(_navItems[index].view);
+        setState(() => _currentIndex = index);
       },
     );
   }

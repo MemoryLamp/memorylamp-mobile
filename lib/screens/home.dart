@@ -4,7 +4,7 @@ import 'package:memory_lamp/providers/notification_provider.dart';
 import 'package:memory_lamp/providers/user_provider.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/widgets/compound_widgets/ml_appbar.dart';
-import 'package:memory_lamp/widgets/compound_widgets/ml_bottomNavBar.dart';
+import 'package:memory_lamp/widgets/compound_widgets/ml_bottom_nav_bar.dart';
 import 'package:memory_lamp/widgets/compound_widgets/ml_drawer.dart';
 import 'package:provider/provider.dart';
 
