@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/constants/emotion_list.dart';
 import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
-import 'package:memory_lamp/models/emotion.dart';
 import 'package:memory_lamp/models/enums/views.dart';
 import 'package:memory_lamp/models/icon_label_pair.dart';
-import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/screens/emotions.dart';
@@ -29,7 +28,7 @@ class HomeView extends StatelessWidget {
           child: Column(
             children: [
               _verseOfTheDay(),
-              _emotions(),
+              emotions(),
               _books(),
               _games(),
             ],
@@ -76,114 +75,7 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Padding _emotions() {
-    Image _emotionIcon(String _emotionName) {
-      return Image.asset(
-        AssetPaths.emotion(_emotionName),
-        width: MLFont.large,
-      );
-    }
-
-    // hardcoded temporarily
-    Verse _highlightVerse = Verse(
-      book: "Isaiah",
-      chapter: 26,
-      number: 3,
-      verse:
-          "You keep him in perfect peace whose mind is stayed on you, because He trusts in you.",
-    );
-    List<Verse> _verses = [
-      Verse(
-        book: "Genesis",
-        chapter: 1,
-        number: 1,
-        verse:
-            "Et consectetur ea et ut Lorem veniam culpa velit ea cillum Lorem esse ad nulla.",
-      ),
-      Verse(
-        book: "Psalm",
-        chapter: 19,
-        number: 1,
-        verse:
-            "Nostrud veniam ea mollit aliqua dolore tempor in exercitation nulla ea.",
-      )
-    ];
-
-    List<Emotion> _emotionsList = [
-      Emotion(
-        name: "Happy",
-        image: _emotionIcon("happy.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-      Emotion(
-        name: "Cheerful",
-        image: _emotionIcon("cheerful.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-      Emotion(
-        name: "Loved",
-        image: _emotionIcon("loved.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-      Emotion(
-        name: "Joyful",
-        image: _emotionIcon("joyful.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-      Emotion(
-        name: "Relief",
-        image: _emotionIcon("relief.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-      Emotion(
-        name: "Exhausted",
-        image: _emotionIcon("exhausted.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-      Emotion(
-        name: "Sad",
-        image: _emotionIcon("sad.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-      Emotion(
-        name: "Drained",
-        image: _emotionIcon("drained.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-      Emotion(
-        name: "Tired",
-        image: _emotionIcon("tired.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-      Emotion(
-        name: "Angry",
-        image: _emotionIcon("angry.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-      Emotion(
-        name: "Hopeless",
-        image: _emotionIcon("hopeless.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-      Emotion(
-        name: "Betrayed",
-        image: _emotionIcon("betrayed.png"),
-        verses: _verses,
-        highlightVerse: _highlightVerse,
-      ),
-    ];
-
+  Padding emotions() {
     Consumer _emotionButton(int index) {
       return Consumer<ViewProvider>(
         builder: (BuildContext context, viewProvider, Widget? child) {
@@ -193,12 +85,12 @@ class HomeView extends StatelessWidget {
               onPressed: () => Navigator.pushNamed(
                 context,
                 EmotionsScreen.routeName,
-                arguments: _emotionsList[index],
+                arguments: emotionsList[index],
               ),
               child: LabeledIcon(
-                icon: _emotionsList[index].icon,
+                icon: emotionsList[index].icon,
                 label: MLText(
-                  _emotionsList[index].name,
+                  emotionsList[index].name,
                   fontSize: MLFont.medium,
                 ),
               ),
@@ -309,12 +201,11 @@ class HomeView extends StatelessWidget {
   Padding _games() {
     List<IconLabelPair> _gameList = [
       IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
       IconLabelPair(
           name: "Fill In The Blanks", icon: Icons.speaker_group_outlined),
+      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
+      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
     ];
 
     MLTextButton _gameButton(IconLabelPair _game) {
