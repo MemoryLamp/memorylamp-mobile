@@ -6,7 +6,9 @@ import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/enums/views.dart';
 import 'package:memory_lamp/models/game.dart';
 import 'package:memory_lamp/models/icon_label_pair.dart';
+import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
+import 'package:memory_lamp/screens/games/pick_game.dart';
 import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/screens/emotions.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
@@ -30,7 +32,7 @@ class HomeView extends StatelessWidget {
           child: Column(
             children: [
               _verseOfTheDay(),
-              emotions(),
+              _emotions(),
               _books(),
               _games(),
             ],
@@ -77,7 +79,7 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Padding emotions() {
+  Padding _emotions() {
     Consumer _emotionButton(int index) {
       return Consumer<ViewProvider>(
         builder: (BuildContext context, viewProvider, Widget? child) {
@@ -201,13 +203,20 @@ class HomeView extends StatelessWidget {
   }
 
   Padding _games() {
+    Verse _sampleHardcodedVerse =
+        Verse(book: "Genesis", chapter: 1, number: 1, verse: "Hello world");
+
     Builder _gameButton(Game _game) {
       return Builder(builder: (context) {
         return MLTextButton(
           margin: const EdgeInsets.all(8.0),
           width: SizeMQ.height! * .2,
           borderRadius: MLDefaults.rounded,
-          onPressed: () => Navigator.pushNamed(context, _game.routeName),
+          onPressed: () => Navigator.pushNamed(
+            context,
+            PickGameScreen.routeName,
+            arguments: _sampleHardcodedVerse,
+          ),
           child: LabeledIcon(
             direction: Axis.vertical,
             icon: Expanded(child: Icon(_game.icon)),
