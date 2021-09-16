@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/constants/games_list.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/game.dart';
+import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
@@ -10,7 +11,9 @@ import 'package:memory_lamp/widgets/ml_text.dart';
 class PickGameScreen extends StatelessWidget {
   static const String routeName = "/pickGame";
 
-  const PickGameScreen({Key? key}) : super(key: key);
+  final Verse _verse;
+
+  const PickGameScreen(this._verse, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,11 @@ class PickGameScreen extends StatelessWidget {
       return MLOutlinedButton(
         child: MLText(_game.name),
         width: SizeMQ.width! * .65,
-        onPressed: () => Navigator.pushNamed(context, _game.routeName),
+        onPressed: () => Navigator.pushNamed(
+          context,
+          _game.routeName,
+          arguments: _verse,
+        ),
       );
     }
 

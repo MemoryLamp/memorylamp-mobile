@@ -29,6 +29,7 @@ class MLText extends StatelessWidget {
       textAlign: textAlign,
       style: style ??
           TextStyle(
+            height: height,
             fontWeight: fontWeight,
             fontSize: fontSize,
             fontStyle: fontStyle,

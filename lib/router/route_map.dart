@@ -18,8 +18,10 @@ final Map<String, WidgetBuilder> routeMap = {
   EmotionsScreen.routeName: (context) => EmotionsScreen(_extractArgs(context)),
 
   // games
-  PickGameScreen.routeName: (context) => PickGameScreen(),
-  FillInTheBlanksScreen.routeName: (context) => FillInTheBlanksScreen(),
+  PickGameScreen.routeName: (context) => PickGameScreen(_extractArgs(context)),
+  FillInTheBlanksScreen.routeName: (context) => FillInTheBlanksScreen(
+        _extractArgs(context),
+      ),
   ReciteThisVerseScreen.routeName: (context) => ReciteThisVerseScreen(),
   RearrangeToMemorizeScreen.routeName: (context) => RearrangeToMemorizeScreen(),
 };
