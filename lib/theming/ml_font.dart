@@ -35,4 +35,11 @@ class MLFont {
         fontSize: extraLarge,
         fontWeight: bold,
       );
+
+  static TextStyle get memorizeHeader {
+    return TextStyle(
+      fontSize: extraLarge,
+      fontWeight: bold,
+    );
+  }
 }

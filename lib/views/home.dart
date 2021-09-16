@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/constants/emotion_list.dart';
+import 'package:memory_lamp/constants/games_list.dart';
 import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/enums/views.dart';
+import 'package:memory_lamp/models/game.dart';
 import 'package:memory_lamp/models/icon_label_pair.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/theming/defaults.dart';
@@ -24,7 +26,7 @@ class HomeView extends StatelessWidget {
     return SingleChildScrollView(
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: MLDefaults.screenPadding,
           child: Column(
             children: [
               _verseOfTheDay(),
@@ -199,29 +201,22 @@ class HomeView extends StatelessWidget {
   }
 
   Padding _games() {
-    List<IconLabelPair> _gameList = [
-      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      IconLabelPair(
-          name: "Fill In The Blanks", icon: Icons.speaker_group_outlined),
-      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-      IconLabelPair(name: "Speak-To-Photo", icon: Icons.speaker_group_outlined),
-    ];
-
-    MLTextButton _gameButton(IconLabelPair _game) {
-      return MLTextButton(
-        margin: const EdgeInsets.all(8.0),
-        width: SizeMQ.height! * .2,
-        borderRadius: MLDefaults.rounded,
-        onPressed: () => print("nothing here yet"),
-        child: LabeledIcon(
-          direction: Axis.vertical,
-          icon: Expanded(child: Icon(_game.icon)),
-          label: Expanded(
-            child: MLText(_game.name),
+    Builder _gameButton(Game _game) {
+      return Builder(builder: (context) {
+        return MLTextButton(
+          margin: const EdgeInsets.all(8.0),
+          width: SizeMQ.height! * .2,
+          borderRadius: MLDefaults.rounded,
+          onPressed: () => Navigator.pushNamed(context, _game.routeName),
+          child: LabeledIcon(
+            direction: Axis.vertical,
+            icon: Expanded(child: Icon(_game.icon)),
+            label: Expanded(
+              child: MLText(_game.name),
+            ),
           ),
-        ),
-      );
+        );
+      });
     }
 
     return Padding(
@@ -244,8 +239,8 @@ class HomeView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: List.generate(
-                  _gameList.length,
-                  (int index) => _gameButton(_gameList[index]),
+                  gameList.length,
+                  (int index) => _gameButton(gameList[index]),
                 ),
               ),
             ),

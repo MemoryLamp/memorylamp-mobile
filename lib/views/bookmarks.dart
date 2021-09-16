@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/verse.dart';
+import 'package:memory_lamp/screens/pick_game.dart';
 import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
@@ -91,12 +92,18 @@ class BookmarksView extends StatelessWidget {
                 fontStyle: FontStyle.italic,
               ),
             ),
-            MLTextButton(
-              backgroundColor: MLColors.secondary,
-              width: double.infinity,
-              child: MLText("Begin"),
-              onPressed: () => print("nothing here yet"),
-            )
+            Builder(builder: (context) {
+              return MLTextButton(
+                backgroundColor: MLColors.secondary,
+                width: double.infinity,
+                child: MLText("Begin"),
+                onPressed: () => Navigator.pushNamed(
+                  context,
+                  PickGameScreen.routeName,
+                  arguments: _verse,
+                ),
+              );
+            }),
           ],
         ),
       );

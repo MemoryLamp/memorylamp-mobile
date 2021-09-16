@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
+import 'package:memory_lamp/screens/fill_in_the_blanks.dart';
 import 'package:memory_lamp/screens/home.dart';
 import 'package:memory_lamp/screens/onboarding.dart';
+import 'package:memory_lamp/screens/pick_game.dart';
 import 'package:memory_lamp/screens/signup.dart';
 import 'package:memory_lamp/screens/emotions.dart';
 
@@ -12,4 +14,8 @@ final Map<String, WidgetBuilder> routeMap = {
   SignupScreen.routeName: (_) => SignupScreen(),
   HomeScreen.routeName: (_) => HomeScreen(),
   EmotionsScreen.routeName: (context) => EmotionsScreen(_extractArgs(context)),
+
+  // games
+  PickGameScreen.routeName: (context) => PickGameScreen(),
+  FillInTheBlanksScreen.routeName: (context) => FillInTheBlanksScreen(),
 };
