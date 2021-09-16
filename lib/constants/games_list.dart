@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/models/game.dart';
-import 'package:memory_lamp/screens/fill_in_the_blanks.dart';
-import 'package:memory_lamp/screens/rearrange_to_memorize.dart';
-import 'package:memory_lamp/screens/recite_this_verse.dart';
+import 'package:memory_lamp/screens/games/fill_in_the_blanks.dart';
+import 'package:memory_lamp/screens/games/rearrange_to_memorize.dart';
+import 'package:memory_lamp/screens/games/recite_this_verse.dart';
 
 List<Game> gameList = [
   Game(

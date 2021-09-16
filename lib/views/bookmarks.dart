@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/verse.dart';
-import 'package:memory_lamp/screens/pick_game.dart';
+import 'package:memory_lamp/screens/games/pick_game.dart';
 import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
