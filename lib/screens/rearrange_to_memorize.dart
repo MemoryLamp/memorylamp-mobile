@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
 
-class FillInTheBlanksScreen extends StatelessWidget {
-  static const String routeName = "/fillInTheBlanks";
+class RearrangeToMemorizeScreen extends StatelessWidget {
+  static const String routeName = "/rearrangeToMemorize";
 
-  const FillInTheBlanksScreen({Key? key}) : super(key: key);
+  const RearrangeToMemorizeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class FillInTheBlanksScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: MLDefaults.screenPadding,
-          child: MLText("Fill In The Blanks"),
+          child: MLText("Rearrange to memorize"),
         ),
       ),
     );

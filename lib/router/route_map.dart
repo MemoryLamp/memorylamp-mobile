@@ -3,6 +3,8 @@ import 'package:memory_lamp/screens/fill_in_the_blanks.dart';
 import 'package:memory_lamp/screens/home.dart';
 import 'package:memory_lamp/screens/onboarding.dart';
 import 'package:memory_lamp/screens/pick_game.dart';
+import 'package:memory_lamp/screens/rearrange_to_memorize.dart';
+import 'package:memory_lamp/screens/recite_this_verse.dart';
 import 'package:memory_lamp/screens/signup.dart';
 import 'package:memory_lamp/screens/emotions.dart';
 
@@ -18,4 +20,6 @@ final Map<String, WidgetBuilder> routeMap = {
   // games
   PickGameScreen.routeName: (context) => PickGameScreen(),
   FillInTheBlanksScreen.routeName: (context) => FillInTheBlanksScreen(),
+  ReciteThisVerseScreen.routeName: (context) => ReciteThisVerseScreen(),
+  RearrangeToMemorizeScreen.routeName: (context) => RearrangeToMemorizeScreen(),
 };
