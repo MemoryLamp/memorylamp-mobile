@@ -21,7 +21,7 @@ class ProfileView extends StatelessWidget {
           children: [
             _userStats(),
             Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: MLDefaults.screenPadding,
               child: Column(
                 children: [
                   _banner(),

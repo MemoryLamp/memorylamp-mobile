@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/constants/emotion_list.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/screens/emotions.dart';
+import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
@@ -19,7 +20,7 @@ class EmotionsView extends StatelessWidget {
     return SingleChildScrollView(
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: MLDefaults.screenPadding,
           child: Column(
             children: [
               _banner(),

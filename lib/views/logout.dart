@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
 
 class LogoutView extends StatelessWidget {
@@ -9,7 +10,7 @@ class LogoutView extends StatelessWidget {
     return SingleChildScrollView(
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: MLDefaults.screenPadding,
           child: Column(
             children: [
               MLText(

@@ -22,4 +22,10 @@ class MLDefaults {
       bottomRight: Radius.circular(12),
     );
   }
+
+  // paddings
+
+  static EdgeInsetsGeometry get screenPadding {
+    return const EdgeInsets.all(24);
+  }
 }

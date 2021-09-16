@@ -21,7 +21,7 @@ class NotificationView extends StatelessWidget {
     return SingleChildScrollView(
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: MLDefaults.screenPadding,
           child: Center(
             child: Consumer<NotificationProvider>(
               builder:

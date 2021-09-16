@@ -15,7 +15,7 @@ class SettingsView extends StatelessWidget {
       child: SafeArea(
         child: MLContainer(
           borderRadius: MLDefaults.rounded,
-          margin: const EdgeInsets.all(24),
+          margin: MLDefaults.screenPadding,
           padding: const EdgeInsets.all(16),
           hasShadow: true,
           backgroundColor: Colors.white,
