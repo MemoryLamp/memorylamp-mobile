@@ -28,6 +28,12 @@ class MLOutlinedButton extends StatelessWidget {
       width: width,
       child: OutlinedButton(
         onPressed: onPressed,
+        style: OutlinedButton.styleFrom(
+          backgroundColor: backgroundColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: borderRadius ?? BorderRadius.circular(30),
+          ),
+        ),
         child: Padding(
           padding: padding,
           child: child,

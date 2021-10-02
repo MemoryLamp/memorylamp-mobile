@@ -3,9 +3,11 @@ import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/emotion.dart';
 import 'package:memory_lamp/models/verse.dart';
+import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
+import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
@@ -20,20 +22,7 @@ class EmotionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: MLText(_emotion.name),
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: Icon(Icons.chevron_left_rounded, size: 40),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () => print("nothing here yet"),
-            icon: Icon(Icons.share_outlined, size: 30),
-          )
-        ],
-      ),
+      appBar: _appBar(context),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -44,6 +33,23 @@ class EmotionsScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  AppBar _appBar(context) {
+    return AppBar(
+      centerTitle: true,
+      title: MLText(_emotion.name),
+      leading: IconButton(
+        onPressed: () => Navigator.pop(context),
+        icon: Icon(Icons.chevron_left_rounded, size: 40),
+      ),
+      actions: [
+        IconButton(
+          onPressed: () => print("nothing here yet"),
+          icon: Icon(Icons.share_outlined, size: 30),
+        )
+      ],
     );
   }
 
@@ -59,26 +65,32 @@ class EmotionsScreen extends StatelessWidget {
           backgroundColor: MLColors.primary,
           padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
-                child: MLText(
-                  _emotion.name.toUpperCase(),
-                  fontColor: Colors.white,
-                  fontWeight: MLFont.semiBold,
-                  textAlign: TextAlign.center,
-                  fontSize: MLFont.medium,
-                ),
-              ),
-              MLText(
-                _emotion.highlightVerse.verse,
-                fontColor: Colors.white,
-                textAlign: TextAlign.center,
-                fontWeight: MLFont.light,
-              ),
               MLText(
                 _emotion.highlightVerse.toVerseFormat,
                 fontColor: Colors.white,
+              ),
+              Padding(
+                padding: MLDefaults.screenPadding,
+                child: MLText(
+                  _emotion.highlightVerse.verse,
+                  fontColor: Colors.white,
+                  textAlign: TextAlign.center,
+                  fontWeight: MLFont.light,
+                ),
+              ),
+              Row(
+                children: [
+                  MLOutlinedButton(
+                    child: MLText(
+                      "START",
+                      fontColor: Colors.white,
+                    ),
+                  ),
+                  MLTextButton(child: MLText("PENDING")),
+                  MLTextButton(child: MLText("COMPLETED")),
+                ],
               )
             ],
           ),
