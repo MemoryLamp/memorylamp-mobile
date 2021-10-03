@@ -12,7 +12,7 @@ class MemorizeScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: MLText("Memorize"), centerTitle: true),
+      appBar: AppBar(title: const MLText("Memorize"), centerTitle: true),
       body: SafeArea(
         child: Padding(
           padding: MLDefaults.screenPadding,

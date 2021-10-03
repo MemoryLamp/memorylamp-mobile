@@ -11,5 +11,5 @@ class Verse {
     required this.verse,
   });
 
-  String get toVerseFormat => "${this.book} ${this.chapter}:${this.number}";
+  String get toVerseFormat => "$book $chapter:$number";
 }

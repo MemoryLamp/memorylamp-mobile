@@ -28,27 +28,27 @@ extension ViewsExt on Views {
   Widget get view {
     switch (this) {
       case Views.home:
-        return HomeView();
+        return const HomeView();
       case Views.profile:
-        return ProfileView();
+        return const ProfileView();
       case Views.books:
-        return BooksView();
+        return const BooksView();
       case Views.notification:
-        return NotificationView();
+        return const NotificationView();
       case Views.settings:
-        return SettingsView();
+        return const SettingsView();
       case Views.logout:
-        return LogoutView();
+        return const LogoutView();
 
       case Views.streaks:
-        return StreaksView();
+        return const StreaksView();
       case Views.bookmarks:
-        return BookmarksView();
+        return const BookmarksView();
       case Views.emotions:
-        return EmotionsView();
+        return const EmotionsView();
 
       default:
-        return Center(child: MLText("View not found"));
+        return const Center(child: MLText("View not found"));
     }
   }
 

@@ -19,7 +19,8 @@ class MLContainer extends StatelessWidget {
     this.height,
     this.width,
     this.hasShadow = false,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class MLContainer extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 2,
                   blurRadius: 3,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ]
             : [],

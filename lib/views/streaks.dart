@@ -25,18 +25,18 @@ class StreaksView extends StatelessWidget {
     );
   }
 
-  UserStats _userStats() => UserStats();
+  UserStats _userStats() => const UserStats();
 
   Padding _statsContainer() {
     return Padding(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         children: [
           _indicator(large: true),
           GridView.count(
             crossAxisCount: 2,
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             childAspectRatio: .9,
             children: List.generate(5, (_) => _indicator()),
           ),
@@ -77,7 +77,7 @@ class StreaksView extends StatelessWidget {
       footer: MLTextButton(
         width: large ? SizeMQ.width! * .5 : SizeMQ.width! * .3,
         backgroundColor: MLColors.secondary,
-        child: MLText("Continue"),
+        child: const MLText("Continue"),
         onPressed: () => print("nothing here yet"),
       ),
     );

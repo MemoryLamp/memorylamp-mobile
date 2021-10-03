@@ -37,12 +37,12 @@ class BookmarksView extends StatelessWidget {
       children: [
         MLOutlinedButton(
           width: SizeMQ.width! * .4,
-          child: MLText("Collections"),
+          child: const MLText("Collections"),
           onPressed: () => print("nothing here yet"),
         ),
         MLTextButton(
           width: SizeMQ.width! * .4,
-          child: MLText("Memorize"),
+          child: const MLText("Memorize"),
           onPressed: () => print("nothing here yet"),
         )
       ],
@@ -50,7 +50,7 @@ class BookmarksView extends StatelessWidget {
   }
 
   Padding _bookmarkList() {
-    Verse _sampleVerse = Verse(
+    Verse _sampleVerse = const Verse(
       book: "Psalm",
       chapter: 119,
       number: 1,
@@ -71,7 +71,7 @@ class BookmarksView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 LabeledIcon(
-                  icon: Icon(Icons.book),
+                  icon: const Icon(Icons.book),
                   label: MLText(
                     _verse.toVerseFormat,
                     fontSize: MLFont.medium,
@@ -80,7 +80,7 @@ class BookmarksView extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () => print("nothing here yet"),
-                  icon: Icon(Icons.share_outlined),
+                  icon: const Icon(Icons.share_outlined),
                 )
               ],
             ),
@@ -96,7 +96,7 @@ class BookmarksView extends StatelessWidget {
               return MLTextButton(
                 backgroundColor: MLColors.secondary,
                 width: double.infinity,
-                child: MLText("Begin"),
+                child: const MLText("Begin"),
                 onPressed: () => Navigator.pushNamed(
                   context,
                   PickGameScreen.routeName,

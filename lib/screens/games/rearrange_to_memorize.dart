@@ -9,7 +9,7 @@ class RearrangeToMemorizeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MemorizeScaffold(
+    return const MemorizeScaffold(
       body: MLText("Rearrange to memorize"),
     );
   }

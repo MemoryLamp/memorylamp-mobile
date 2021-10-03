@@ -33,7 +33,7 @@ class FillInTheBlanksScreen extends StatelessWidget {
           MLTextButton(
             width: SizeMQ.width! * .7,
             backgroundColor: MLColors.secondary,
-            child: MLText("Next"),
+            child: const MLText("Next"),
           ),
           MLContainer(
             backgroundColor: MLColors.primary,
@@ -41,7 +41,7 @@ class FillInTheBlanksScreen extends StatelessWidget {
             borderRadius: MLDefaults.rounded,
             child: ClipRRect(
               borderRadius: MLDefaults.rounded,
-              child: LinearProgressIndicator(
+              child: const LinearProgressIndicator(
                 backgroundColor: Colors.white,
                 valueColor: AlwaysStoppedAnimation<Color>(
                   MLColors.primary,

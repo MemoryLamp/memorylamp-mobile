@@ -9,7 +9,7 @@ class ReciteThisVerseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MemorizeScaffold(
+    return const MemorizeScaffold(
       body: MLText("Recite this verse"),
     );
   }

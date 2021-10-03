@@ -25,7 +25,7 @@ class MLElevatedButton extends StatelessWidget {
       width: width ?? SizeMQ.width! * .5,
       child: ElevatedButton(
         child: Padding(
-          padding: padding ?? EdgeInsets.all(8.0),
+          padding: padding ?? const EdgeInsets.all(8.0),
           child: child,
         ),
         onPressed: onPressed,

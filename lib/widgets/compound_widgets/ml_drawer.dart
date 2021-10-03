@@ -13,7 +13,7 @@ import 'package:memory_lamp/widgets/ml_text.dart';
 import 'package:provider/provider.dart';
 
 class MLDrawer extends StatelessWidget {
-  const MLDrawer();
+  const MLDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class MLDrawer extends StatelessWidget {
   }
 
   UserStats _navHeader() {
-    return UserStats(inDrawer: true);
+    return const UserStats(inDrawer: true);
   }
 
   MLContainer _navItems(ViewProvider viewProvider, BuildContext context) {

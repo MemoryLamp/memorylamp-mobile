@@ -44,7 +44,7 @@ class OnboardingScreen extends StatelessWidget {
     return MLElevatedButton(
       backgroundColor: Colors.white,
       width: SizeMQ.width! * .60,
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       onPressed: () => Navigator.pushNamed(context, HomeScreen.routeName),
       child: MLText(
         "Get Started",

@@ -35,11 +35,11 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  UserStats _userStats() => UserStats();
+  UserStats _userStats() => const UserStats();
 
   LabeledIcon _banner() {
     return LabeledIcon(
-      icon: Icon(
+      icon: const Icon(
         Icons.check_circle_outline,
         color: MLColors.secondary,
         size: 32,
@@ -105,14 +105,11 @@ class ProfileView extends StatelessWidget {
               ),
             ),
           ),
-        ]..addAll(
-            List.generate(
-              _completedGames.length,
-              (index) {
-                return _rowBuilder(_completedGames[index]);
-              },
-            ),
+          ...List.generate(
+            _completedGames.length,
+            (index) => _rowBuilder(_completedGames[index]),
           ),
+        ],
       ),
     );
   }

@@ -1,7 +1,7 @@
-final String _logosPath = "assets/logos";
-final String _iconsPath = "assets/icons";
-final String _emotionsPath = "assets/emotion";
-final String _imagesPath = "assets/images";
+const String _logosPath = "assets/logos";
+const String _iconsPath = "assets/icons";
+const String _emotionsPath = "assets/emotion";
+const String _imagesPath = "assets/images";
 
 class AssetPaths {
   static String logo(String assetName) => "$_logosPath/$assetName";

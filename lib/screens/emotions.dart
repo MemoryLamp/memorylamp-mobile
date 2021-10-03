@@ -42,12 +42,12 @@ class EmotionsScreen extends StatelessWidget {
       title: MLText(_emotion.name),
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
-        icon: Icon(Icons.chevron_left_rounded, size: 40),
+        icon: const Icon(Icons.chevron_left_rounded, size: 40),
       ),
       actions: [
         IconButton(
           onPressed: () => print("nothing here yet"),
-          icon: Icon(Icons.share_outlined, size: 30),
+          icon: const Icon(Icons.share_outlined, size: 30),
         )
       ],
     );
@@ -81,7 +81,7 @@ class EmotionsScreen extends StatelessWidget {
                 ),
               ),
               Row(
-                children: [
+                children: const [
                   MLOutlinedButton(
                     child: MLText(
                       "START",
@@ -120,10 +120,10 @@ class EmotionsScreen extends StatelessWidget {
                   fontSize: MLFont.medium,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               MLOutlinedButton(
                 width: SizeMQ.width! * .4,
-                child: MLText("Memorize"),
+                child: const MLText("Memorize"),
                 onPressed: () => print("nothing here yet"),
               ),
             ],

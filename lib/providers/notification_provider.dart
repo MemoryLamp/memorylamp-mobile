@@ -6,7 +6,7 @@ import 'package:memory_lamp/models/notification_card.dart';
 enum NotifAction { increment, decrement }
 
 class NotificationProvider extends ChangeNotifier {
-  List<NotificationCard> _cards = [
+  final List<NotificationCard> _cards = [
     NotificationCard(
       count: 5,
       name: "Pending Verses",
@@ -42,8 +42,9 @@ class NotificationProvider extends ChangeNotifier {
           _cards[_indexOf(name)].count += 1;
           break;
         case NotifAction.decrement:
-          if (_cards[_indexOf(name)].count > 0)
+          if (_cards[_indexOf(name)].count > 0) {
             _cards[_indexOf(name)].count -= 1;
+          }
           break;
         default:
       }

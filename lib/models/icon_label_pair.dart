@@ -6,9 +6,9 @@ class IconLabelPair {
   Image? _image;
 
   IconLabelPair({required this.name, icon, image}) {
-    this.name = name;
-    this._icon = icon;
-    this._image = image;
+    name = name;
+    _icon = icon;
+    _image = image;
   }
 
   dynamic get icon => _icon ?? _image;

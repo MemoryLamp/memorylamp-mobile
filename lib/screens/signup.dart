@@ -60,7 +60,7 @@ class SignupScreen extends StatelessWidget {
   }
 
   Padding _divider() {
-    Expanded _line = Expanded(
+    const Expanded _line = Expanded(
       child: Divider(
         color: MLColors.secondary,
         thickness: .5,
@@ -75,7 +75,7 @@ class SignupScreen extends StatelessWidget {
         children: [
           _line,
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: MLText("OR", fontSize: MLFont.extraSmall),
           ),
           _line,
@@ -86,7 +86,7 @@ class SignupScreen extends StatelessWidget {
 
   Column _signUp() {
     return Column(
-      children: [
+      children: const [
         MLText("email"),
         MLText("password"),
       ],
@@ -97,7 +97,7 @@ class SignupScreen extends StatelessWidget {
     return MLElevatedButton(
       width: _width,
       onPressed: () {},
-      child: MLText("Submit"),
+      child: const MLText("Submit"),
     );
   }
 }

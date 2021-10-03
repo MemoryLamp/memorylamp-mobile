@@ -12,9 +12,9 @@ _extractArgs(BuildContext context) =>
     ModalRoute.of(context)!.settings.arguments;
 
 final Map<String, WidgetBuilder> routeMap = {
-  OnboardingScreen.routeName: (_) => OnboardingScreen(),
+  OnboardingScreen.routeName: (_) => const OnboardingScreen(),
   SignupScreen.routeName: (_) => SignupScreen(),
-  HomeScreen.routeName: (_) => HomeScreen(),
+  HomeScreen.routeName: (_) => const HomeScreen(),
   EmotionsScreen.routeName: (context) => EmotionsScreen(_extractArgs(context)),
 
   // games
@@ -22,6 +22,7 @@ final Map<String, WidgetBuilder> routeMap = {
   FillInTheBlanksScreen.routeName: (context) => FillInTheBlanksScreen(
         _extractArgs(context),
       ),
-  ReciteThisVerseScreen.routeName: (context) => ReciteThisVerseScreen(),
-  RearrangeToMemorizeScreen.routeName: (context) => RearrangeToMemorizeScreen(),
+  ReciteThisVerseScreen.routeName: (context) => const ReciteThisVerseScreen(),
+  RearrangeToMemorizeScreen.routeName: (context) =>
+      const RearrangeToMemorizeScreen(),
 };

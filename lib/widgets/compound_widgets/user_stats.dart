@@ -11,7 +11,7 @@ import 'package:memory_lamp/widgets/ml_text.dart';
 import 'package:provider/provider.dart';
 
 class UserStats extends StatelessWidget {
-  final inDrawer;
+  final bool inDrawer;
 
   const UserStats({this.inDrawer = false, Key? key}) : super(key: key);
 
@@ -30,7 +30,7 @@ class UserStats extends StatelessWidget {
   MLContainer _inDrawer(User _user) {
     return MLContainer(
       backgroundColor: MLColors.primaryLight,
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: LabeledIcon(
         icon: Padding(
           padding: const EdgeInsets.all(4.0),
@@ -51,7 +51,7 @@ class UserStats extends StatelessWidget {
   MLContainer _asHeader(User _user) {
     return MLContainer(
       padding: const EdgeInsets.all(20.0),
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(28),
         bottomRight: Radius.circular(28),
       ),
@@ -77,7 +77,7 @@ class UserStats extends StatelessWidget {
                     fontColor: Colors.white,
                     fontWeight: MLFont.semiBold,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   MLText(
                     "Week: ${_user.week}",
                     fontColor: Colors.white,

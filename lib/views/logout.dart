@@ -12,7 +12,7 @@ class LogoutView extends StatelessWidget {
         child: Padding(
           padding: MLDefaults.screenPadding,
           child: Column(
-            children: [
+            children: const [
               MLText(
                 "This isn't actually supposed to be a view, I just added it here temporarily",
               )

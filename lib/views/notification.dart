@@ -16,7 +16,7 @@ class NotificationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double spacing = 24;
+    const double spacing = 24;
 
     return SingleChildScrollView(
       child: SafeArea(

@@ -30,7 +30,7 @@ class PickGameScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: MLText("Memorize"), centerTitle: true),
+      appBar: AppBar(title: const MLText("Memorize"), centerTitle: true),
       body: SafeArea(
         child: Padding(
           padding: MLDefaults.screenPadding,
@@ -39,12 +39,11 @@ class PickGameScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 _header(),
-              ]..addAll(
-                  List.generate(
-                    gameList.length,
-                    (index) => _choiceButton(gameList[index]),
-                  ),
+                ...List.generate(
+                  gameList.length,
+                  (index) => _choiceButton(gameList[index]),
                 ),
+              ],
             ),
           ),
         ),

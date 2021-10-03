@@ -34,7 +34,7 @@ class BooksView extends StatelessWidget {
         child: LabeledIcon(
           mainAxisAlignment: MainAxisAlignment.center,
           direction: Axis.vertical,
-          icon: Icon(Icons.book),
+          icon: const Icon(Icons.book),
           label: MLText(_bookList[index]),
         ),
       );
@@ -45,7 +45,7 @@ class BooksView extends StatelessWidget {
         padding: MLDefaults.screenPadding,
         child: GridView.builder(
           shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
             childAspectRatio: 1.1,
             crossAxisSpacing: 20,

@@ -66,7 +66,7 @@ class SettingsView extends StatelessWidget {
             _text("Weekly"),
             _text("Monthly"),
           ],
-          isSelected: [
+          isSelected: const [
             false,
             true,
             false,

@@ -11,7 +11,7 @@ Image _emotionIcon(String _emotionName) {
   );
 }
 
-List<Verse> _verses = [
+const List<Verse> _verses = [
   Verse(
     book: "Genesis",
     chapter: 1,
@@ -28,7 +28,7 @@ List<Verse> _verses = [
   )
 ];
 
-Verse _highlightVerse = Verse(
+const Verse _highlightVerse = Verse(
   book: "Isaiah",
   chapter: 26,
   number: 3,

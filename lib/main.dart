@@ -6,7 +6,7 @@ import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_theme.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -27,9 +27,11 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: MLColors.primary,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: MLColors.primary,
+      ),
+    );
 
     return MaterialApp(
       title: 'Memory Lamp',

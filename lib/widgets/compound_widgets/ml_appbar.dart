@@ -4,7 +4,7 @@ import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:provider/provider.dart';
 
 class MLAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const MLAppbar();
+  const MLAppbar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class MLAppbar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           onPressed: () => print("Search"),
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
         )
       ],
     );

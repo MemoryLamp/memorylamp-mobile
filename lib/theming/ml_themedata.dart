@@ -20,7 +20,7 @@ abstract class MLThemeData {
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(MLColors.primary),
           side: MaterialStateProperty.all<BorderSide?>(
-            BorderSide(
+            const BorderSide(
               style: BorderStyle.solid,
               color: MLColors.primary,
               width: .8,

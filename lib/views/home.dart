@@ -46,7 +46,7 @@ class HomeView extends StatelessWidget {
     return Column(
       children: [
         LabeledIcon(
-          icon: Icon(Icons.home),
+          icon: const Icon(Icons.home),
           label: MLText(
             "Verse of the day",
             style: MLFont.bannerText01,
@@ -59,8 +59,8 @@ class HomeView extends StatelessWidget {
           borderRadius: MLDefaults.rounded,
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
+              const Padding(
+                padding: EdgeInsets.all(16.0),
                 child: MLText(
                   '"BUT THE LORD STOOD WITH ME AND GAVE ME STRENGTH"',
                   fontColor: Colors.white,
@@ -109,7 +109,7 @@ class HomeView extends StatelessWidget {
       child: Column(
         children: [
           LabeledIcon(
-            icon: Icon(Icons.home),
+            icon: const Icon(Icons.home),
             label: MLText(
               "Get comforted by Bible verses",
               style: MLFont.bannerText01,
@@ -119,7 +119,7 @@ class HomeView extends StatelessWidget {
             child: GridView.count(
               crossAxisCount: 2,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               childAspectRatio: 4,
               children: List.generate(7, (index) {
                 return _emotionButton(index);
@@ -164,7 +164,7 @@ class HomeView extends StatelessWidget {
       child: Column(
         children: [
           LabeledIcon(
-            icon: Icon(Icons.home),
+            icon: const Icon(Icons.home),
             label: MLText(
               "Start memorizing Bible verses",
               style: MLFont.bannerText01,
@@ -174,7 +174,7 @@ class HomeView extends StatelessWidget {
             child: GridView.count(
               shrinkWrap: true,
               crossAxisCount: 3,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               childAspectRatio: 1.1,
               children: List.generate(_bookList.length, (index) {
                 return _bookButton(_bookList[index]);
@@ -203,7 +203,7 @@ class HomeView extends StatelessWidget {
   }
 
   Padding _games() {
-    Verse _sampleHardcodedVerse =
+    const Verse _sampleHardcodedVerse =
         Verse(book: "Genesis", chapter: 1, number: 1, verse: "Hello world");
 
     Builder _gameButton(Game _game) {

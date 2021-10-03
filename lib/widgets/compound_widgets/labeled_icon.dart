@@ -13,7 +13,8 @@ class LabeledIcon extends StatelessWidget {
     this.spaceBetween = 8,
     this.direction = Axis.horizontal,
     this.mainAxisAlignment,
-  });
+    Key? key,
+  }) : super(key: key);
 
   SizedBox _separator() {
     return SizedBox(
@@ -28,9 +29,9 @@ class LabeledIcon extends StatelessWidget {
       mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
       direction: direction,
       children: [
-        this.icon,
+        icon,
         _separator(),
-        this.label,
+        label,
       ],
     );
   }

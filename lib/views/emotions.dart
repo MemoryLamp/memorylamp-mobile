@@ -34,7 +34,7 @@ class EmotionsView extends StatelessWidget {
 
   LabeledIcon _banner() {
     return LabeledIcon(
-      icon: Icon(
+      icon: const Icon(
         Icons.check_circle_outline,
         color: MLColors.secondary,
         size: 32,
@@ -79,7 +79,7 @@ class EmotionsView extends StatelessWidget {
             child: GridView.count(
               crossAxisCount: 2,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               childAspectRatio: 4,
               children: List.generate(
                 emotionsList.length,
