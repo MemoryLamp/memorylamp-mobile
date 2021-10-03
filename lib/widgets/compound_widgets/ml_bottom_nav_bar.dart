@@ -5,15 +5,8 @@ import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:provider/provider.dart';
 
-class MLBottomNavBar extends StatefulWidget {
+class MLBottomNavBar extends StatelessWidget {
   const MLBottomNavBar({Key? key}) : super(key: key);
-
-  @override
-  _MLBottomNavBarState createState() => _MLBottomNavBarState();
-}
-
-class _MLBottomNavBarState extends State<MLBottomNavBar> {
-  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +30,20 @@ class _MLBottomNavBarState extends State<MLBottomNavBar> {
       NavItem(icon: Icons.query_stats, name: "Streaks", view: Views.streaks),
     ];
 
+    int _selectedIndex = _navItems
+        .indexWhere((element) => viewProvider.selectedView == element.view);
+
+    bool _currentViewOnBottomNav = _selectedIndex >= 0;
+
     return BottomNavigationBar(
-      selectedItemColor: Colors.white,
+      selectedItemColor:
+          _currentViewOnBottomNav ? Colors.white : MLColors.bgLight,
       unselectedItemColor: MLColors.bgLight,
       showSelectedLabels: false,
       showUnselectedLabels: false,
       backgroundColor: MLColors.primary,
       type: BottomNavigationBarType.fixed,
-      currentIndex: _currentIndex,
+      currentIndex: _currentViewOnBottomNav ? _selectedIndex : 0,
       items: List.generate(
         _navItems.length,
         (index) => BottomNavigationBarItem(
@@ -54,7 +53,6 @@ class _MLBottomNavBarState extends State<MLBottomNavBar> {
       ),
       onTap: (int index) {
         viewProvider.changeView(_navItems[index].view);
-        setState(() => _currentIndex = index);
       },
     );
   }
