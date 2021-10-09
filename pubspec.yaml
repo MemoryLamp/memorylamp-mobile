@@ -60,13 +60,18 @@ flutter:
     - assets/icons/streak.png
     - assets/icons/badges.png
     # emotion
-    - assets/emotion/angry.png
-    - assets/emotion/drained.png
-    - assets/emotion/joy.png
-    - assets/emotion/hope.png
-    - assets/emotion/love.png
-    - assets/emotion/peace.png
+    - assets/emotion/happy.png
+    - assets/emotion/cheerful.png
+    - assets/emotion/loved.png
+    - assets/emotion/joyful.png
+    - assets/emotion/relief.png
+    - assets/emotion/exhausted.png
     - assets/emotion/sad.png
+    - assets/emotion/drained.png
+    - assets/emotion/tired.png
+    - assets/emotion/angry.png
+    - assets/emotion/hopeless.png
+    - assets/emotion/betrayed.png
     # image
     - assets/images/emotion-img.png
 

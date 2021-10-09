@@ -71,7 +71,7 @@ class NotificationView extends StatelessWidget {
           borderRadius: MLDefaults.rounded,
           child: LabeledIcon(
             direction: Axis.vertical,
-            icon: Expanded(child: _data.image!),
+            icon: Expanded(child: _data.icon),
             label: MLContainer(
               padding: const EdgeInsets.all(12),
               backgroundColor: MLColors.primaryAccent,

@@ -13,6 +13,7 @@ abstract class MLColors {
   static Color purple = Color(0xFF2a347f);
 
   static Color secondary = Color(0xFF227ABA);
+  static Color secondaryLight = Color(0xFFEBF4F9);
 
   static Color bgLight = Color(0xFF8396A3);
 }

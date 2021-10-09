@@ -1,15 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
+import 'package:memory_lamp/views/bookmarks.dart';
 import 'package:memory_lamp/views/books.dart';
+import 'package:memory_lamp/views/emotions.dart';
 import 'package:memory_lamp/views/home.dart';
 import 'package:memory_lamp/views/logout.dart';
 import 'package:memory_lamp/views/notification.dart';
 import 'package:memory_lamp/views/profile.dart';
 import 'package:memory_lamp/views/settings.dart';
+import 'package:memory_lamp/views/streaks.dart';
 import 'package:memory_lamp/widgets/ml_text.dart';
 
-enum Views { home, profile, books, notification, settings, logout }
+enum Views {
+  home,
+  profile,
+  books,
+  notification,
+  settings,
+  logout,
+  streaks,
+  bookmarks,
+  emotions,
+}
 
 extension ViewsExt on Views {
   Widget get view {
@@ -26,6 +39,13 @@ extension ViewsExt on Views {
         return SettingsView();
       case Views.logout:
         return LogoutView();
+
+      case Views.streaks:
+        return StreaksView();
+      case Views.bookmarks:
+        return BookmarksView();
+      case Views.emotions:
+        return EmotionsView();
 
       default:
         return Center(child: MLText("View not found"));
@@ -48,6 +68,13 @@ extension ViewsExt on Views {
         return _headerText("Settings");
       case Views.logout:
         return _headerText("Logout");
+
+      case Views.streaks:
+        return _headerText("Streaks");
+      case Views.bookmarks:
+        return _headerText("Bookmarks");
+      case Views.emotions:
+        return _headerText("Emotions");
 
       default:
         return Image.asset(AssetPaths.logo("Header.png"));
