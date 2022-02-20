@@ -23,6 +23,7 @@ class MLTheme with ChangeNotifier {
       elevatedButtonTheme: MLThemeData.elevatedButton,
       outlinedButtonTheme: MLThemeData.outlinedButton,
       textButtonTheme: MLThemeData.textButton,
+      appBarTheme: MLThemeData.appbar,
     );
   }
 

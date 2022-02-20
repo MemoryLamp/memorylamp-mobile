@@ -34,6 +34,10 @@ abstract class MLThemeData {
         ),
       );
 
+  static AppBarTheme get appbar {
+    return const AppBarTheme(backgroundColor: MLColors.primary);
+  }
+
   static TextButtonThemeData get textButton => TextButtonThemeData(
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
