@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/constants/emotion_list.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
