@@ -4,7 +4,6 @@ import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({Key? key}) : super(key: key);
@@ -32,19 +31,18 @@ class SettingsView extends StatelessWidget {
     );
   }
 
-  MLText _banner() {
-    return MLText(
+  Text _banner() {
+    return const Text(
       "Verses Notification",
       style: MLFont.bannerText01,
     );
   }
 
   Padding _toggleButtons() {
-    MLText _text(String text) {
-      return MLText(
+    Text _text(String text) {
+      return Text(
         text,
-        fontWeight: MLFont.semiBold,
-        fontSize: MLFont.medium,
+        style: MLFont.mediumSemiBold,
       );
     }
 

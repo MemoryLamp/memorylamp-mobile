@@ -10,7 +10,6 @@ import 'package:memory_lamp/views/notification.dart';
 import 'package:memory_lamp/views/profile.dart';
 import 'package:memory_lamp/views/settings.dart';
 import 'package:memory_lamp/views/streaks.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 
 enum Views {
   home,
@@ -48,13 +47,13 @@ extension ViewsExt on Views {
         return const EmotionsView();
 
       default:
-        return const Center(child: MLText("View not found"));
+        return const Center(child: Text("View not found"));
     }
   }
 
   Widget get title {
-    MLText _headerText(String text) {
-      return MLText(text, fontSize: MLFont.mediumLarge);
+    Text _headerText(String text) {
+      return Text(text, style: MLFont.mediumLargeS);
     }
 
     switch (this) {

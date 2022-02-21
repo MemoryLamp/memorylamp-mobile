@@ -17,7 +17,6 @@ import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
@@ -45,9 +44,9 @@ class HomeView extends StatelessWidget {
   Column _verseOfTheDay() {
     return Column(
       children: [
-        LabeledIcon(
-          icon: const Icon(Icons.home),
-          label: MLText(
+        const LabeledIcon(
+          icon: Icon(Icons.home),
+          label: Text(
             "Verse of the day",
             style: MLFont.bannerText01,
           ),
@@ -58,19 +57,18 @@ class HomeView extends StatelessWidget {
           padding: const EdgeInsets.all(32.0),
           borderRadius: MLDefaults.rounded,
           child: Column(
-            children: [
-              const Padding(
+            children: const [
+              Padding(
                 padding: EdgeInsets.all(16.0),
-                child: MLText(
+                child: Text(
                   '"BUT THE LORD STOOD WITH ME AND GAVE ME STRENGTH"',
-                  fontColor: Colors.white,
+                  style: MLFont.mediumWhite,
                   textAlign: TextAlign.center,
                 ),
               ),
-              MLText(
+              Text(
                 "2 TIMOTHY 4:17",
-                fontSize: MLFont.small,
-                fontColor: Colors.white,
+                style: MLFont.smallWhite,
               ),
             ],
           ),
@@ -93,9 +91,9 @@ class HomeView extends StatelessWidget {
               ),
               child: LabeledIcon(
                 icon: emotionsList[index].icon,
-                label: MLText(
+                label: Text(
                   emotionsList[index].name,
-                  fontSize: MLFont.medium,
+                  style: MLFont.mediumS,
                 ),
               ),
             ),
@@ -108,9 +106,9 @@ class HomeView extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
         children: [
-          LabeledIcon(
-            icon: const Icon(Icons.home),
-            label: MLText(
+          const LabeledIcon(
+            icon: Icon(Icons.home),
+            label: Text(
               "Get comforted by Bible verses",
               style: MLFont.bannerText01,
             ),
@@ -133,9 +131,9 @@ class HomeView extends StatelessWidget {
                           onPressed: () {
                             viewProvider.changeView(Views.emotions);
                           },
-                          child: MLText(
+                          child: const Text(
                             "•••",
-                            fontSize: MLFont.medium,
+                            style: MLFont.mediumS,
                           ),
                         );
                       },
@@ -163,9 +161,9 @@ class HomeView extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
         children: [
-          LabeledIcon(
-            icon: const Icon(Icons.home),
-            label: MLText(
+          const LabeledIcon(
+            icon: Icon(Icons.home),
+            label: Text(
               "Start memorizing Bible verses",
               style: MLFont.bannerText01,
             ),
@@ -197,7 +195,7 @@ class HomeView extends StatelessWidget {
         direction: Axis.vertical,
         mainAxisAlignment: MainAxisAlignment.center,
         icon: Expanded(child: Icon(_book.icon)),
-        label: Expanded(child: MLText(_book.name)),
+        label: Expanded(child: Text(_book.name)),
       ),
     );
   }
@@ -221,7 +219,7 @@ class HomeView extends StatelessWidget {
             direction: Axis.vertical,
             icon: Expanded(child: Icon(_game.icon)),
             label: Expanded(
-              child: MLText(_game.name),
+              child: Text(_game.name),
             ),
           ),
         );
@@ -237,7 +235,7 @@ class HomeView extends StatelessWidget {
               AssetPaths.icon("game.png"),
               height: MLFont.large,
             ),
-            label: MLText(
+            label: const Text(
               "Ready For A Challenge?",
               style: MLFont.bannerText01,
             ),

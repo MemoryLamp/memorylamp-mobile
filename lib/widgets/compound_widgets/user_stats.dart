@@ -7,7 +7,6 @@ import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 import 'package:provider/provider.dart';
 
 class UserStats extends StatelessWidget {
@@ -39,9 +38,9 @@ class UserStats extends StatelessWidget {
         label: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            MLText(_user.name, style: MLFont.extraLargeBold),
-            MLText("Streak : ${_user.streak}"),
-            MLText("Week: ${_user.week}"),
+            Text(_user.name, style: MLFont.extraLargeBold),
+            Text("Streak : ${_user.streak}"),
+            Text("Week: ${_user.week}"),
           ],
         ),
       ),
@@ -64,24 +63,17 @@ class UserStats extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              MLText(
-                _user.name,
-                fontColor: Colors.white,
-                fontWeight: MLFont.bold,
-                fontSize: MLFont.extraLarge,
-              ),
+              Text(_user.name, style: MLFont.extraLargeWhiteBold),
               Row(
                 children: [
-                  MLText(
+                  Text(
                     "Streak : ${_user.streak}",
-                    fontColor: Colors.white,
-                    fontWeight: MLFont.semiBold,
+                    style: MLFont.whiteSemiBold,
                   ),
                   const Spacer(),
-                  MLText(
+                  Text(
                     "Week: ${_user.week}",
-                    fontColor: Colors.white,
-                    fontWeight: MLFont.semiBold,
+                    style: MLFont.whiteSemiBold,
                   ),
                 ],
               ),

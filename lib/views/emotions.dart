@@ -8,7 +8,6 @@ import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 import 'package:provider/provider.dart';
 
 class EmotionsView extends StatelessWidget {
@@ -32,13 +31,13 @@ class EmotionsView extends StatelessWidget {
   }
 
   LabeledIcon _banner() {
-    return LabeledIcon(
-      icon: const Icon(
+    return const LabeledIcon(
+      icon: Icon(
         Icons.check_circle_outline,
         color: MLColors.secondary,
         size: 32,
       ),
-      label: MLText(
+      label: Text(
         "Get comforted by Bible verses",
         style: MLFont.bannerText01,
       ),
@@ -59,9 +58,9 @@ class EmotionsView extends StatelessWidget {
               ),
               child: LabeledIcon(
                 icon: emotionsList[index].icon,
-                label: MLText(
+                label: Text(
                   emotionsList[index].name,
-                  fontSize: MLFont.medium,
+                  style: MLFont.mediumS,
                 ),
               ),
             ),

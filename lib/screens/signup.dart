@@ -3,7 +3,6 @@ import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_elevated_button.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 
 class SignupScreen extends StatelessWidget {
   static String routeName = '/signup';
@@ -40,19 +39,17 @@ class SignupScreen extends StatelessWidget {
         MLElevatedButton(
           width: _width,
           onPressed: () {},
-          child: MLText(
+          child: const Text(
             "Sign up via Google",
-            fontWeight: MLFont.light,
-            fontSize: MLFont.small,
+            style: MLFont.smallLight,
           ),
         ),
         MLElevatedButton(
           width: _width,
           onPressed: () {},
-          child: MLText(
+          child: const Text(
             "Sign up via Facebook",
-            fontWeight: MLFont.light,
-            fontSize: MLFont.small,
+            style: MLFont.smallLight,
           ),
         ),
       ],
@@ -72,11 +69,11 @@ class SignupScreen extends StatelessWidget {
         vertical: SizeMQ.width! * .06,
       ),
       child: Row(
-        children: [
+        children: const [
           _line,
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: MLText("OR", fontSize: MLFont.extraSmall),
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Text("OR", style: MLFont.extraSmallS),
           ),
           _line,
         ],
@@ -87,8 +84,8 @@ class SignupScreen extends StatelessWidget {
   Column _signUp() {
     return Column(
       children: const [
-        MLText("email"),
-        MLText("password"),
+        Text("email"),
+        Text("password"),
       ],
     );
   }
@@ -97,7 +94,7 @@ class SignupScreen extends StatelessWidget {
     return MLElevatedButton(
       width: _width,
       onPressed: () {},
-      child: const MLText("Submit"),
+      child: const Text("Submit"),
     );
   }
 }

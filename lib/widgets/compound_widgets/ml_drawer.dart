@@ -9,7 +9,6 @@ import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/compound_widgets/user_stats.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 import 'package:provider/provider.dart';
 
 class MLDrawer extends StatelessWidget {
@@ -87,9 +86,11 @@ class MLDrawer extends StatelessWidget {
                     return _icon;
                   },
                 ),
-                label: MLText(
+                label: Text(
                   _drawerItems[index].name,
-                  fontColor: isActive ? MLColors.primary : Colors.white,
+                  style: TextStyle(
+                    color: isActive ? MLColors.primary : Colors.white,
+                  ),
                 ),
               ),
               onPressed: () {

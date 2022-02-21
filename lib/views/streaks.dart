@@ -4,7 +4,6 @@ import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/user_stats.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class StreaksView extends StatelessWidget {
@@ -52,15 +51,16 @@ class StreaksView extends StatelessWidget {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MLText(
+          Text(
             percent,
-            fontSize: large ? MLFont.medium * 2 : MLFont.medium,
-            fontWeight: MLFont.bold,
+            style: TextStyle(
+              fontSize: large ? MLFont.medium * 2 : MLFont.medium,
+              fontWeight: MLFont.bold,
+            ),
           ),
-          MLText(
+          Text(
             formatedVerse,
-            fontSize: MLFont.small,
-            fontWeight: MLFont.bold,
+            style: MLFont.smallPrimaryBold,
           ),
         ],
       );
@@ -76,7 +76,7 @@ class StreaksView extends StatelessWidget {
       footer: MLTextButton(
         width: large ? SizeMQ.width! * .5 : SizeMQ.width! * .3,
         backgroundColor: MLColors.secondary,
-        child: const MLText("Continue"),
+        child: const Text("Continue"),
         onPressed: () => print("nothing here yet"),
       ),
     );

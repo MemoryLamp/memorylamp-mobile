@@ -6,7 +6,6 @@ import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 
 class PickGameScreen extends StatelessWidget {
   static const String routeName = "/pickGame";
@@ -19,7 +18,7 @@ class PickGameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     MLOutlinedButton _choiceButton(Game _game) {
       return MLOutlinedButton(
-        child: MLText(_game.name),
+        child: Text(_game.name),
         width: SizeMQ.width! * .65,
         onPressed: () => Navigator.pushNamed(
           context,
@@ -30,7 +29,7 @@ class PickGameScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const MLText("Memorize"), centerTitle: true),
+      appBar: AppBar(title: const Text("Memorize"), centerTitle: true),
       body: SafeArea(
         child: Padding(
           padding: MLDefaults.screenPadding,
@@ -54,7 +53,7 @@ class PickGameScreen extends StatelessWidget {
   Padding _header() {
     return Padding(
       padding: MLDefaults.screenPadding,
-      child: MLText(
+      child: const Text(
         "How Do you want to memorize the Verse?",
         style: MLFont.memorizeHeader,
         textAlign: TextAlign.center,

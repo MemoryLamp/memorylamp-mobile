@@ -10,7 +10,6 @@ import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 
 class EmotionsScreen extends StatelessWidget {
   static const routeName = "/emotions";
@@ -39,7 +38,7 @@ class EmotionsScreen extends StatelessWidget {
   AppBar _appBar(context) {
     return AppBar(
       centerTitle: true,
-      title: MLText(_emotion.name),
+      title: Text(_emotion.name),
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
         icon: const Icon(Icons.chevron_left_rounded, size: 40),
@@ -67,29 +66,28 @@ class EmotionsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              MLText(
+              Text(
                 _emotion.highlightVerse.toVerseFormat,
-                fontColor: Colors.white,
+                style: MLFont.mediumWhite,
               ),
               Padding(
                 padding: MLDefaults.screenPadding,
-                child: MLText(
+                child: Text(
                   _emotion.highlightVerse.verse,
-                  fontColor: Colors.white,
                   textAlign: TextAlign.center,
-                  fontWeight: MLFont.light,
+                  style: MLFont.mediumWhiteLight,
                 ),
               ),
               Row(
                 children: const [
                   MLOutlinedButton(
-                    child: MLText(
+                    child: Text(
                       "START",
-                      fontColor: Colors.white,
+                      style: MLFont.mediumWhite,
                     ),
                   ),
-                  MLTextButton(child: MLText("PENDING")),
-                  MLTextButton(child: MLText("COMPLETED")),
+                  MLTextButton(child: Text("PENDING")),
+                  MLTextButton(child: Text("COMPLETED")),
                 ],
               )
             ],
@@ -114,16 +112,15 @@ class EmotionsScreen extends StatelessWidget {
                   AssetPaths.icon("book.png"),
                   width: MLFont.large,
                 ),
-                label: MLText(
+                label: Text(
                   _verses[index].toVerseFormat,
-                  fontWeight: MLFont.semiBold,
-                  fontSize: MLFont.medium,
+                  style: MLFont.mediumSemiBold,
                 ),
               ),
               const Spacer(),
               MLOutlinedButton(
                 width: SizeMQ.width! * .4,
-                child: const MLText("Memorize"),
+                child: const Text("Memorize"),
                 onPressed: () => print("nothing here yet"),
               ),
             ],

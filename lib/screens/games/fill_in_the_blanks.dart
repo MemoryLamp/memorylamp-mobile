@@ -7,7 +7,6 @@ import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/memorize_scaffold.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 
 class FillInTheBlanksScreen extends StatelessWidget {
   static const String routeName = "/fillInTheBlanks";
@@ -22,18 +21,15 @@ class FillInTheBlanksScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          MLText(
+          Text(
             _verse.book,
             style: MLFont.memorizeHeader,
           ),
-          MLText(
-            _verse.verse,
-            height: 1.8,
-          ),
+          Text(_verse.verse),
           MLTextButton(
             width: SizeMQ.width! * .7,
             backgroundColor: MLColors.secondary,
-            child: const MLText("Next"),
+            child: const Text("Next"),
           ),
           MLContainer(
             backgroundColor: MLColors.primary,

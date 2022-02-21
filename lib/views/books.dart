@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/theming/defaults.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 
 class BooksView extends StatelessWidget {
   const BooksView({Key? key}) : super(key: key);
@@ -35,7 +34,7 @@ class BooksView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           direction: Axis.vertical,
           icon: const Icon(Icons.book),
-          label: MLText(_bookList[index]),
+          label: Text(_bookList[index]),
         ),
       );
     }

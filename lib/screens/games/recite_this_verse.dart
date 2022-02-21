@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/widgets/compound_widgets/memorize_scaffold.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 
 class ReciteThisVerseScreen extends StatelessWidget {
   static const String routeName = "/reciteThisVerse";
@@ -10,7 +9,7 @@ class ReciteThisVerseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MemorizeScaffold(
-      body: MLText("Recite this verse"),
+      body: Text("Recite this verse"),
     );
   }
 }

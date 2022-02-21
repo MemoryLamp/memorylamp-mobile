@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/theming/defaults.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 
 class MemorizeScaffold extends StatelessWidget {
   static const String routeName = "/reciteThisVerse";
@@ -12,7 +11,7 @@ class MemorizeScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const MLText("Memorize"), centerTitle: true),
+      appBar: AppBar(title: const Text("Memorize"), centerTitle: true),
       body: SafeArea(
         child: Padding(
           padding: MLDefaults.screenPadding,

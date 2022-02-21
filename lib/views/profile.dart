@@ -7,7 +7,6 @@ import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/compound_widgets/user_stats.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -37,13 +36,13 @@ class ProfileView extends StatelessWidget {
   UserStats _userStats() => const UserStats();
 
   LabeledIcon _banner() {
-    return LabeledIcon(
-      icon: const Icon(
+    return const LabeledIcon(
+      icon: Icon(
         Icons.check_circle_outline,
         color: MLColors.secondary,
         size: 32,
       ),
-      label: MLText(
+      label: Text(
         "Completed Verses",
         style: MLFont.bannerText01,
       ),
@@ -72,9 +71,9 @@ class ProfileView extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            MLText(_item.verse.toVerseFormat),
-            MLText(_item.name),
-            MLText(_item.time),
+            Text(_item.verse.toVerseFormat),
+            Text(_item.name),
+            Text(_item.time),
           ],
         ),
       );
@@ -95,11 +94,9 @@ class ProfileView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: List.generate(
                 _columnHeaders.length,
-                (index) => MLText(
+                (index) => Text(
                   _columnHeaders[index],
-                  fontWeight: MLFont.semiBold,
-                  fontSize: MLFont.mediumLarge,
-                  fontColor: Colors.white,
+                  style: MLFont.mediumLargeWhiteSemiBold,
                 ),
               ),
             ),

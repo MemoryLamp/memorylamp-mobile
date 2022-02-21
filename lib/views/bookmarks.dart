@@ -9,7 +9,6 @@ import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 
 class BookmarksView extends StatelessWidget {
   const BookmarksView({Key? key}) : super(key: key);
@@ -37,12 +36,12 @@ class BookmarksView extends StatelessWidget {
       children: [
         MLOutlinedButton(
           width: SizeMQ.width! * .4,
-          child: const MLText("Collections"),
+          child: const Text("Collections"),
           onPressed: () => print("nothing here yet"),
         ),
         MLTextButton(
           width: SizeMQ.width! * .4,
-          child: const MLText("Memorize"),
+          child: const Text("Memorize"),
           onPressed: () => print("nothing here yet"),
         )
       ],
@@ -72,10 +71,9 @@ class BookmarksView extends StatelessWidget {
               children: [
                 LabeledIcon(
                   icon: const Icon(Icons.book),
-                  label: MLText(
+                  label: Text(
                     _verse.toVerseFormat,
-                    fontSize: MLFont.medium,
-                    fontWeight: MLFont.semiBold,
+                    style: MLFont.mediumSemiBold,
                   ),
                 ),
                 IconButton(
@@ -86,17 +84,17 @@ class BookmarksView extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: MLText(
+              child: Text(
                 _verse.verse,
                 textAlign: TextAlign.center,
-                fontStyle: FontStyle.italic,
+                style: MLFont.italic,
               ),
             ),
             Builder(builder: (context) {
               return MLTextButton(
                 backgroundColor: MLColors.secondary,
                 width: double.infinity,
-                child: const MLText("Begin"),
+                child: const Text("Begin"),
                 onPressed: () => Navigator.pushNamed(
                   context,
                   PickGameScreen.routeName,

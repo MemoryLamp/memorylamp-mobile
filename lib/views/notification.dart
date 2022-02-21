@@ -8,7 +8,6 @@ import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/ml_container.dart';
-import 'package:memory_lamp/widgets/ml_text.dart';
 import 'package:provider/provider.dart';
 
 class NotificationView extends StatelessWidget {
@@ -57,7 +56,7 @@ class NotificationView extends StatelessWidget {
       animationDuration: const Duration(milliseconds: 200),
       padding: const EdgeInsets.all(12),
       showBadge: _data.count > 0,
-      badgeContent: MLText("${_data.count}", fontColor: Colors.white),
+      badgeContent: Text("${_data.count}", style: MLFont.mediumWhite),
       child: GestureDetector(
         onTap: () => _provider.updateNotification(
           name: _data.name,
@@ -77,11 +76,10 @@ class NotificationView extends StatelessWidget {
               backgroundColor: MLColors.primaryAccent,
               width: double.infinity,
               borderRadius: MLDefaults.roundedBottom,
-              child: MLText(
+              child: Text(
                 _data.name,
                 textAlign: TextAlign.center,
-                fontSize: MLFont.medium,
-                fontColor: Colors.white,
+                style: MLFont.mediumWhite,
               ),
             ),
           ),
