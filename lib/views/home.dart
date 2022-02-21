@@ -13,7 +13,6 @@ import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/screens/emotions.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:provider/provider.dart';
@@ -84,7 +83,7 @@ class HomeView extends StatelessWidget {
         builder: (BuildContext context, viewProvider, Widget? child) {
           return Padding(
             padding: const EdgeInsets.all(4.0),
-            child: MLOutlinedButton(
+            child: OutlinedButton(
               onPressed: () => Navigator.pushNamed(
                 context,
                 EmotionsScreen.routeName,
@@ -127,7 +126,7 @@ class HomeView extends StatelessWidget {
                   padding: const EdgeInsets.all(4.0),
                   child: Consumer<ViewProvider>(
                     builder: (context, viewProvider, child) {
-                      return MLOutlinedButton(
+                      return OutlinedButton(
                         onPressed: () {
                           viewProvider.changeView(Views.emotions);
                         },

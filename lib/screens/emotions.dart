@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/asset_paths.dart';
-import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/emotion.dart';
 import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 
@@ -78,15 +76,16 @@ class EmotionsScreen extends StatelessWidget {
                 ),
               ),
               Row(
-                children: const [
-                  MLOutlinedButton(
-                    child: Text(
+                children: [
+                  OutlinedButton(
+                    onPressed: () => {},
+                    child: const Text(
                       "START",
                       style: MLFont.mediumWhite,
                     ),
                   ),
-                  MLTextButton(child: Text("PENDING")),
-                  MLTextButton(child: Text("COMPLETED")),
+                  const MLTextButton(child: Text("PENDING")),
+                  const MLTextButton(child: Text("COMPLETED")),
                 ],
               )
             ],
@@ -117,8 +116,7 @@ class EmotionsScreen extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              MLOutlinedButton(
-                width: SizeMQ.width! * .4,
+              OutlinedButton(
                 child: const Text("Memorize"),
                 onPressed: () => print("nothing here yet"),
               ),

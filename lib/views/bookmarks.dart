@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/screens/games/pick_game.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 
@@ -33,15 +31,18 @@ class BookmarksView extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        MLOutlinedButton(
-          width: SizeMQ.width! * .4,
-          child: const Text("Collections"),
-          onPressed: () => print("nothing here yet"),
+        Expanded(
+          child: OutlinedButton(
+            child: const Text("Collections"),
+            onPressed: () => print("nothing here yet"),
+          ),
         ),
-        MLTextButton(
-          width: SizeMQ.width! * .4,
-          child: const Text("Memorize"),
-          onPressed: () => print("nothing here yet"),
+        const SizedBox(width: 12),
+        Expanded(
+          child: MLTextButton(
+            child: const Text("Memorize"),
+            onPressed: () => print("nothing here yet"),
+          ),
         )
       ],
     );

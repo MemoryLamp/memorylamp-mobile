@@ -5,7 +5,6 @@ import 'package:memory_lamp/models/game.dart';
 import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 
 class PickGameScreen extends StatelessWidget {
   static const String routeName = "/pickGame";
@@ -16,14 +15,16 @@ class PickGameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MLOutlinedButton _choiceButton(Game _game) {
-      return MLOutlinedButton(
-        child: Text(_game.name),
+    SizedBox _choiceButton(Game _game) {
+      return SizedBox(
         width: SizeMQ.width! * .65,
-        onPressed: () => Navigator.pushNamed(
-          context,
-          _game.routeName,
-          arguments: _verse,
+        child: OutlinedButton(
+          child: Text(_game.name),
+          onPressed: () => Navigator.pushNamed(
+            context,
+            _game.routeName,
+            arguments: _verse,
+          ),
         ),
       );
     }
