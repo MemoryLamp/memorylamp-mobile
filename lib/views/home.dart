@@ -13,7 +13,6 @@ import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/screens/emotions.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:provider/provider.dart';
 
@@ -180,18 +179,22 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  MLTextButton _bookButton(IconLabelPair _book) {
-    return MLTextButton(
+  Container _bookButton(IconLabelPair _book) {
+    return Container(
       margin: const EdgeInsets.all(8.0),
-      borderRadius: MLDefaults.rounded,
+      decoration: BoxDecoration(
+        borderRadius: MLDefaults.rounded,
+      ),
       width: SizeMQ.height! * .1,
       height: SizeMQ.height! * .1,
-      onPressed: () => print("nothing here yet"),
-      child: LabeledIcon(
-        direction: Axis.vertical,
-        mainAxisAlignment: MainAxisAlignment.center,
-        icon: Expanded(child: Icon(_book.icon)),
-        label: Expanded(child: Text(_book.name)),
+      child: TextButton(
+        onPressed: () => print("nothing here yet"),
+        child: LabeledIcon(
+          direction: Axis.vertical,
+          mainAxisAlignment: MainAxisAlignment.center,
+          icon: Expanded(child: Icon(_book.icon)),
+          label: Expanded(child: Text(_book.name)),
+        ),
       ),
     );
   }
@@ -202,20 +205,24 @@ class HomeView extends StatelessWidget {
 
     Builder _gameButton(Game _game) {
       return Builder(builder: (context) {
-        return MLTextButton(
+        return Container(
           margin: const EdgeInsets.all(8.0),
           width: SizeMQ.height! * .2,
-          borderRadius: MLDefaults.rounded,
-          onPressed: () => Navigator.pushNamed(
-            context,
-            PickGameScreen.routeName,
-            arguments: _sampleHardcodedVerse,
+          decoration: BoxDecoration(
+            borderRadius: MLDefaults.rounded,
           ),
-          child: LabeledIcon(
-            direction: Axis.vertical,
-            icon: Expanded(child: Icon(_game.icon)),
-            label: Expanded(
-              child: Text(_game.name),
+          child: TextButton(
+            onPressed: () => Navigator.pushNamed(
+              context,
+              PickGameScreen.routeName,
+              arguments: _sampleHardcodedVerse,
+            ),
+            child: LabeledIcon(
+              direction: Axis.vertical,
+              icon: Expanded(child: Icon(_game.icon)),
+              label: Expanded(
+                child: Text(_game.name),
+              ),
             ),
           ),
         );

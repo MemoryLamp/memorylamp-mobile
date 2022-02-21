@@ -4,7 +4,6 @@ import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/memorize_scaffold.dart';
 
 class FillInTheBlanksScreen extends StatelessWidget {
@@ -25,10 +24,13 @@ class FillInTheBlanksScreen extends StatelessWidget {
             style: MLFont.memorizeHeader,
           ),
           Text(_verse.verse),
-          MLTextButton(
+          SizedBox(
             width: SizeMQ.width! * .7,
-            backgroundColor: MLColors.secondary,
-            child: const Text("Next"),
+            child: ElevatedButton(
+              onPressed: () => {},
+              child: const Text("Next"),
+              style: ElevatedButton.styleFrom(primary: MLColors.secondary),
+            ),
           ),
           Container(
             padding: const EdgeInsets.all(1),

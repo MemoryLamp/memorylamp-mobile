@@ -38,17 +38,17 @@ class OnboardingScreen extends StatelessWidget {
     );
   }
 
-  Container _getStarted(BuildContext context) {
-    return Container(
-      color: Colors.white,
+  SizedBox _getStarted(BuildContext context) {
+    return SizedBox(
       width: SizeMQ.width! * .60,
-      padding: const EdgeInsets.all(12),
+      height: 40,
       child: ElevatedButton(
         onPressed: () => Navigator.pushNamed(context, HomeScreen.routeName),
         child: const Text(
           "Get Started",
           style: MLFont.mediumPrimaryBold,
         ),
+        style: ElevatedButton.styleFrom(primary: Colors.white),
       ),
     );
   }

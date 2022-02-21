@@ -4,7 +4,6 @@ import 'package:memory_lamp/screens/games/pick_game.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 
 class BookmarksView extends StatelessWidget {
@@ -39,7 +38,7 @@ class BookmarksView extends StatelessWidget {
         ),
         const SizedBox(width: 12),
         Expanded(
-          child: MLTextButton(
+          child: ElevatedButton(
             child: const Text("Memorize"),
             onPressed: () => print("nothing here yet"),
           ),
@@ -93,14 +92,18 @@ class BookmarksView extends StatelessWidget {
               ),
             ),
             Builder(builder: (context) {
-              return MLTextButton(
-                backgroundColor: MLColors.secondary,
+              return SizedBox(
                 width: double.infinity,
-                child: const Text("Begin"),
-                onPressed: () => Navigator.pushNamed(
-                  context,
-                  PickGameScreen.routeName,
-                  arguments: _verse,
+                child: ElevatedButton(
+                  child: const Text("Begin"),
+                  style: ElevatedButton.styleFrom(
+                    primary: MLColors.secondary,
+                  ),
+                  onPressed: () => Navigator.pushNamed(
+                    context,
+                    PickGameScreen.routeName,
+                    arguments: _verse,
+                  ),
                 ),
               );
             }),

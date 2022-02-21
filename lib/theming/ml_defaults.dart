@@ -23,6 +23,12 @@ class MLDefaults {
     );
   }
 
+  static RoundedRectangleBorder get roundedRectangle {
+    return RoundedRectangleBorder(
+      borderRadius: rounded,
+    );
+  }
+
   static List<BoxShadow> get boxShadow {
     return [
       BoxShadow(

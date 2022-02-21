@@ -5,7 +5,6 @@ import 'package:memory_lamp/screens/emotions.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:provider/provider.dart';
 
@@ -49,7 +48,7 @@ class EmotionsView extends StatelessWidget {
         builder: (BuildContext context, viewProvider, Widget? child) {
           return Padding(
             padding: const EdgeInsets.all(4.0),
-            child: MLTextButton(
+            child: OutlinedButton(
               onPressed: () => Navigator.pushNamed(
                 context,
                 EmotionsScreen.routeName,

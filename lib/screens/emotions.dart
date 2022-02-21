@@ -5,7 +5,6 @@ import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 
 class EmotionsScreen extends StatelessWidget {
@@ -84,8 +83,14 @@ class EmotionsScreen extends StatelessWidget {
                       style: MLFont.mediumWhite,
                     ),
                   ),
-                  const MLTextButton(child: Text("PENDING")),
-                  const MLTextButton(child: Text("COMPLETED")),
+                  TextButton(
+                    onPressed: () => {},
+                    child: const Text("PENDING"),
+                  ),
+                  TextButton(
+                    onPressed: () => {},
+                    child: const Text("COMPLETED"),
+                  ),
                 ],
               )
             ],

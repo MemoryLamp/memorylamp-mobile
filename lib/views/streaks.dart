@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/user_stats.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -73,11 +72,15 @@ class StreaksView extends StatelessWidget {
       percent: .4,
       center: _centerContent(percent: "40%", formatedVerse: "Psalm 119:1"),
       progressColor: MLColors.purple,
-      footer: MLTextButton(
+      footer: SizedBox(
         width: large ? SizeMQ.width! * .5 : SizeMQ.width! * .3,
-        backgroundColor: MLColors.secondary,
-        child: const Text("Continue"),
-        onPressed: () => print("nothing here yet"),
+        child: ElevatedButton(
+          child: const Text("Continue"),
+          onPressed: () => print("nothing here yet"),
+          style: TextButton.styleFrom(
+            backgroundColor: MLColors.secondary,
+          ),
+        ),
       ),
     );
   }
