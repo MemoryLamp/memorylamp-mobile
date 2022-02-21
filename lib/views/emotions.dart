@@ -55,7 +55,7 @@ class EmotionsView extends StatelessWidget {
                 arguments: emotionsList[index],
               ),
               child: LabeledIcon(
-                icon: emotionsList[index].icon,
+                icon: emotionsList[index].image,
                 label: Text(
                   emotionsList[index].name,
                   style: MLFont.mediumS,

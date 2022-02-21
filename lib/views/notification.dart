@@ -71,7 +71,7 @@ class NotificationView extends StatelessWidget {
           ),
           child: LabeledIcon(
             direction: Axis.vertical,
-            icon: Expanded(child: _data.icon),
+            icon: Expanded(child: _data.image),
             label: Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(

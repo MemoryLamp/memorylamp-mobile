@@ -89,7 +89,7 @@ class HomeView extends StatelessWidget {
                 arguments: emotionsList[index],
               ),
               child: LabeledIcon(
-                icon: emotionsList[index].icon,
+                icon: emotionsList[index].image,
                 label: Text(
                   emotionsList[index].name,
                   style: MLFont.mediumS,
@@ -145,7 +145,7 @@ class HomeView extends StatelessWidget {
   }
 
   Padding _books() {
-    List<IconLabelPair> _bookList = [
+    List<IconLabelPair> _bookList = const [
       IconLabelPair(name: "Genesis", icon: Icons.book),
       IconLabelPair(name: "Exodus", icon: Icons.book),
       IconLabelPair(name: "Leviticus", icon: Icons.book),

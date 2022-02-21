@@ -1,7 +1,8 @@
-import 'package:memory_lamp/models/icon_label_pair.dart';
 import 'package:memory_lamp/models/verse.dart';
 
-class Emotion extends IconLabelPair {
+import 'image_label_pair.dart';
+
+class Emotion extends ImageLabelPair {
   Verse highlightVerse;
   List<Verse> verses;
 
@@ -9,7 +10,6 @@ class Emotion extends IconLabelPair {
     required this.verses,
     required this.highlightVerse,
     required name,
-    icon,
-    image,
-  }) : super(name: name, icon: icon, image: image);
+    required image,
+  }) : super(name: name, image: image);
 }
