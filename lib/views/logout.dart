@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/theming/defaults.dart';
+import 'package:memory_lamp/theming/ml_defaults.dart';
 
 class LogoutView extends StatelessWidget {
   const LogoutView({Key? key}) : super(key: key);

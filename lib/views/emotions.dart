@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/constants/emotion_list.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/screens/emotions.dart';
-import 'package:memory_lamp/theming/defaults.dart';
+import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
-import 'package:memory_lamp/widgets/ml_container.dart';
 import 'package:provider/provider.dart';
 
 class EmotionsView extends StatelessWidget {
@@ -73,18 +72,16 @@ class EmotionsView extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
         children: [
-          MLContainer(
-            child: GridView.count(
-              crossAxisCount: 2,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              childAspectRatio: 4,
-              children: List.generate(
-                emotionsList.length,
-                (index) {
-                  return _emotionButton(index);
-                },
-              ),
+          GridView.count(
+            crossAxisCount: 2,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            childAspectRatio: 4,
+            children: List.generate(
+              emotionsList.length,
+              (index) {
+                return _emotionButton(index);
+              },
             ),
           )
         ],

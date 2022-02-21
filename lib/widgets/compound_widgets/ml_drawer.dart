@@ -8,7 +8,6 @@ import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/compound_widgets/user_stats.dart';
-import 'package:memory_lamp/widgets/ml_container.dart';
 import 'package:provider/provider.dart';
 
 class MLDrawer extends StatelessWidget {
@@ -37,7 +36,7 @@ class MLDrawer extends StatelessWidget {
     return const UserStats(inDrawer: true);
   }
 
-  MLContainer _navItems(ViewProvider viewProvider, BuildContext context) {
+  Container _navItems(ViewProvider viewProvider, BuildContext context) {
     List<NavItem> _drawerItems = [
       NavItem(icon: Icons.home, name: "Home", view: Views.home),
       NavItem(icon: Icons.person, name: "Profile", view: Views.profile),
@@ -51,7 +50,7 @@ class MLDrawer extends StatelessWidget {
       NavItem(icon: Icons.logout, name: "Logout", view: Views.logout),
     ];
 
-    return MLContainer(
+    return Container(
       padding: const EdgeInsets.all(12.0),
       child: Column(
         children: List.generate(

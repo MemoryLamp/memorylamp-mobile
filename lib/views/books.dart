@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/theming/defaults.dart';
+import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 

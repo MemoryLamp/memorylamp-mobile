@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/models/completed_game.dart';
 import 'package:memory_lamp/models/verse.dart';
-import 'package:memory_lamp/theming/defaults.dart';
+import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/compound_widgets/user_stats.dart';
-import 'package:memory_lamp/widgets/ml_container.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -49,7 +48,7 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  MLContainer _completedVerses() {
+  Container _completedVerses() {
     List<String> _columnHeaders = ["Verse", "Activity", "Time"];
     // temporary hardcoded data
     List<CompletedGame> _completedGames = List.generate(20, (index) {
@@ -79,17 +78,21 @@ class ProfileView extends StatelessWidget {
       );
     }
 
-    return MLContainer(
-      backgroundColor: Colors.white,
-      hasShadow: true,
-      borderRadius: MLDefaults.rounded,
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: MLDefaults.boxShadow,
+        color: Colors.white,
+        borderRadius: MLDefaults.rounded,
+      ),
       margin: const EdgeInsets.symmetric(vertical: 12),
       child: Column(
         children: [
-          MLContainer(
+          Container(
             padding: const EdgeInsets.all(8),
-            borderRadius: MLDefaults.roundedTop,
-            backgroundColor: MLColors.primary,
+            decoration: BoxDecoration(
+              color: MLColors.primary,
+              borderRadius: MLDefaults.roundedTop,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: List.generate(

@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class MLDefaults {
   const MLDefaults._();
@@ -21,6 +21,17 @@ class MLDefaults {
       bottomLeft: Radius.circular(12),
       bottomRight: Radius.circular(12),
     );
+  }
+
+  static List<BoxShadow> get boxShadow {
+    return [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.5),
+        spreadRadius: 2,
+        blurRadius: 3,
+        offset: const Offset(0, 3),
+      ),
+    ];
   }
 
   // paddings

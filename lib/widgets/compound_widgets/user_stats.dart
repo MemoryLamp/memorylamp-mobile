@@ -6,7 +6,6 @@ import 'package:memory_lamp/providers/user_provider.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
-import 'package:memory_lamp/widgets/ml_container.dart';
 import 'package:provider/provider.dart';
 
 class UserStats extends StatelessWidget {
@@ -26,9 +25,9 @@ class UserStats extends StatelessWidget {
     );
   }
 
-  MLContainer _inDrawer(User _user) {
-    return MLContainer(
-      backgroundColor: MLColors.primaryLight,
+  Container _inDrawer(User _user) {
+    return Container(
+      color: MLColors.primaryLight,
       padding: const EdgeInsets.all(8),
       child: LabeledIcon(
         icon: Padding(
@@ -47,14 +46,16 @@ class UserStats extends StatelessWidget {
     );
   }
 
-  MLContainer _asHeader(User _user) {
-    return MLContainer(
+  Container _asHeader(User _user) {
+    return Container(
       padding: const EdgeInsets.all(20.0),
-      borderRadius: const BorderRadius.only(
-        bottomLeft: Radius.circular(28),
-        bottomRight: Radius.circular(28),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(28),
+          bottomRight: Radius.circular(28),
+        ),
+        color: MLColors.primary,
       ),
-      backgroundColor: MLColors.primary,
       child: LabeledIcon(
         spaceBetween: 24,
         icon: Image.asset(AssetPaths.icon("pfp.png")),

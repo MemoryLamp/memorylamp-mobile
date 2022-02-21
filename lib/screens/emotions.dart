@@ -3,13 +3,12 @@ import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/emotion.dart';
 import 'package:memory_lamp/models/verse.dart';
-import 'package:memory_lamp/theming/defaults.dart';
+import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
-import 'package:memory_lamp/widgets/ml_container.dart';
 
 class EmotionsScreen extends StatelessWidget {
   static const routeName = "/emotions";
@@ -60,8 +59,8 @@ class EmotionsScreen extends StatelessWidget {
           fit: BoxFit.fitWidth,
           width: double.infinity,
         ),
-        MLContainer(
-          backgroundColor: MLColors.primary,
+        Container(
+          color: MLColors.primary,
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

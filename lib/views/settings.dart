@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
-import 'package:memory_lamp/theming/defaults.dart';
+import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/ml_container.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({Key? key}) : super(key: key);
@@ -12,12 +11,14 @@ class SettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SafeArea(
-        child: MLContainer(
-          borderRadius: MLDefaults.rounded,
+        child: Container(
           margin: MLDefaults.screenPadding,
           padding: const EdgeInsets.all(16),
-          hasShadow: true,
-          backgroundColor: Colors.white,
+          decoration: BoxDecoration(
+            borderRadius: MLDefaults.rounded,
+            boxShadow: MLDefaults.boxShadow,
+            color: Colors.white,
+          ),
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -3,7 +3,7 @@ import 'package:memory_lamp/constants/games_list.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/game.dart';
 import 'package:memory_lamp/models/verse.dart';
-import 'package:memory_lamp/theming/defaults.dart';
+import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/verse.dart';
-import 'package:memory_lamp/theming/defaults.dart';
+import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/memorize_scaffold.dart';
-import 'package:memory_lamp/widgets/ml_container.dart';
 
 class FillInTheBlanksScreen extends StatelessWidget {
   static const String routeName = "/fillInTheBlanks";
@@ -31,10 +30,12 @@ class FillInTheBlanksScreen extends StatelessWidget {
             backgroundColor: MLColors.secondary,
             child: const Text("Next"),
           ),
-          MLContainer(
-            backgroundColor: MLColors.primary,
+          Container(
             padding: const EdgeInsets.all(1),
-            borderRadius: MLDefaults.rounded,
+            decoration: BoxDecoration(
+              color: MLColors.primary,
+              borderRadius: MLDefaults.rounded,
+            ),
             child: ClipRRect(
               borderRadius: MLDefaults.rounded,
               child: const LinearProgressIndicator(

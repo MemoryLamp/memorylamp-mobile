@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/screens/games/pick_game.dart';
-import 'package:memory_lamp/theming/defaults.dart';
+import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
-import 'package:memory_lamp/widgets/ml_container.dart';
 
 class BookmarksView extends StatelessWidget {
   const BookmarksView({Key? key}) : super(key: key);
@@ -57,13 +56,15 @@ class BookmarksView extends StatelessWidget {
           "Blessed are they whose ways are blameless, who walk according to the law of the LORD. Blessed are they who keep his statutes and seek him with all their heart. ... I will praise you with an upright heart as I learn your righteous laws.",
     );
 
-    MLContainer _verseContainer(Verse _verse) {
-      return MLContainer(
+    Container _verseContainer(Verse _verse) {
+      return Container(
         margin: const EdgeInsets.symmetric(vertical: 16),
         padding: const EdgeInsets.all(16),
-        borderRadius: MLDefaults.rounded,
+        decoration: BoxDecoration(
+          borderRadius: MLDefaults.rounded,
+          color: MLColors.secondaryLight,
+        ),
         width: double.infinity,
-        backgroundColor: MLColors.secondaryLight,
         child: Column(
           children: [
             Row(

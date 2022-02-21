@@ -9,14 +9,13 @@ import 'package:memory_lamp/models/icon_label_pair.dart';
 import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/screens/games/pick_game.dart';
-import 'package:memory_lamp/theming/defaults.dart';
+import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/screens/emotions.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/buttons/ml_outlined_button.dart';
 import 'package:memory_lamp/widgets/buttons/ml_text_button.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
-import 'package:memory_lamp/widgets/ml_container.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
@@ -51,11 +50,13 @@ class HomeView extends StatelessWidget {
             style: MLFont.bannerText01,
           ),
         ),
-        MLContainer(
-          backgroundColor: MLColors.primary,
+        Container(
           margin: const EdgeInsets.symmetric(vertical: 16.0),
           padding: const EdgeInsets.all(32.0),
-          borderRadius: MLDefaults.rounded,
+          decoration: BoxDecoration(
+            color: MLColors.primary,
+            borderRadius: MLDefaults.rounded,
+          ),
           child: Column(
             children: const [
               Padding(
@@ -113,34 +114,32 @@ class HomeView extends StatelessWidget {
               style: MLFont.bannerText01,
             ),
           ),
-          MLContainer(
-            child: GridView.count(
-              crossAxisCount: 2,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              childAspectRatio: 4,
-              children: List.generate(7, (index) {
-                return _emotionButton(index);
-              })
-                ..add(
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Consumer<ViewProvider>(
-                      builder: (context, viewProvider, child) {
-                        return MLOutlinedButton(
-                          onPressed: () {
-                            viewProvider.changeView(Views.emotions);
-                          },
-                          child: const Text(
-                            "•••",
-                            style: MLFont.mediumS,
-                          ),
-                        );
-                      },
-                    ),
+          GridView.count(
+            crossAxisCount: 2,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            childAspectRatio: 4,
+            children: List.generate(7, (index) {
+              return _emotionButton(index);
+            })
+              ..add(
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Consumer<ViewProvider>(
+                    builder: (context, viewProvider, child) {
+                      return MLOutlinedButton(
+                        onPressed: () {
+                          viewProvider.changeView(Views.emotions);
+                        },
+                        child: const Text(
+                          "•••",
+                          style: MLFont.mediumS,
+                        ),
+                      );
+                    },
                   ),
                 ),
-            ),
+              ),
           )
         ],
       ),
@@ -168,16 +167,14 @@ class HomeView extends StatelessWidget {
               style: MLFont.bannerText01,
             ),
           ),
-          MLContainer(
-            child: GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 3,
-              physics: const NeverScrollableScrollPhysics(),
-              childAspectRatio: 1.1,
-              children: List.generate(_bookList.length, (index) {
-                return _bookButton(_bookList[index]);
-              }),
-            ),
+          GridView.count(
+            shrinkWrap: true,
+            crossAxisCount: 3,
+            physics: const NeverScrollableScrollPhysics(),
+            childAspectRatio: 1.1,
+            children: List.generate(_bookList.length, (index) {
+              return _bookButton(_bookList[index]);
+            }),
           )
         ],
       ),
