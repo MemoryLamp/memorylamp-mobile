@@ -4,7 +4,6 @@ import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/screens/home.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_elevated_button.dart';
 
 class OnboardingScreen extends StatelessWidget {
   static String routeName = '/onboarding';
@@ -39,15 +38,17 @@ class OnboardingScreen extends StatelessWidget {
     );
   }
 
-  MLElevatedButton _getStarted(BuildContext context) {
-    return MLElevatedButton(
-      backgroundColor: Colors.white,
+  Container _getStarted(BuildContext context) {
+    return Container(
+      color: Colors.white,
       width: SizeMQ.width! * .60,
       padding: const EdgeInsets.all(12),
-      onPressed: () => Navigator.pushNamed(context, HomeScreen.routeName),
-      child: const Text(
-        "Get Started",
-        style: MLFont.mediumPrimaryBold,
+      child: ElevatedButton(
+        onPressed: () => Navigator.pushNamed(context, HomeScreen.routeName),
+        child: const Text(
+          "Get Started",
+          style: MLFont.mediumPrimaryBold,
+        ),
       ),
     );
   }

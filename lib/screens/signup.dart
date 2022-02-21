@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
-import 'package:memory_lamp/widgets/buttons/ml_elevated_button.dart';
 
 class SignupScreen extends StatelessWidget {
   static String routeName = '/signup';
@@ -36,20 +35,24 @@ class SignupScreen extends StatelessWidget {
   Column _thirdPartySignup() {
     return Column(
       children: [
-        MLElevatedButton(
+        SizedBox(
           width: _width,
-          onPressed: () {},
-          child: const Text(
-            "Sign up via Google",
-            style: MLFont.smallLight,
+          child: ElevatedButton(
+            onPressed: () {},
+            child: const Text(
+              "Sign up via Google",
+              style: MLFont.smallLight,
+            ),
           ),
         ),
-        MLElevatedButton(
+        SizedBox(
           width: _width,
-          onPressed: () {},
-          child: const Text(
-            "Sign up via Facebook",
-            style: MLFont.smallLight,
+          child: ElevatedButton(
+            onPressed: () {},
+            child: const Text(
+              "Sign up via Facebook",
+              style: MLFont.smallLight,
+            ),
           ),
         ),
       ],
@@ -90,11 +93,13 @@ class SignupScreen extends StatelessWidget {
     );
   }
 
-  MLElevatedButton _submitButton() {
-    return MLElevatedButton(
+  SizedBox _submitButton() {
+    return SizedBox(
       width: _width,
-      onPressed: () {},
-      child: const Text("Submit"),
+      child: ElevatedButton(
+        onPressed: () {},
+        child: const Text("Submit"),
+      ),
     );
   }
 }
