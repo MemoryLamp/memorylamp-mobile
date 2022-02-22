@@ -16,17 +16,22 @@ class BookmarksView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            children: [
-              _toggleButtons(),
-              _bookmarkList(),
+            children: const [
+              _ToggleButtons(),
+              _BookmarkList(),
             ],
           ),
         ),
       ),
     );
   }
+}
 
-  Row _toggleButtons() {
+class _ToggleButtons extends StatelessWidget {
+  const _ToggleButtons({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -46,8 +51,13 @@ class BookmarksView extends StatelessWidget {
       ],
     );
   }
+}
 
-  Padding _bookmarkList() {
+class _BookmarkList extends StatelessWidget {
+  const _BookmarkList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     Verse _sampleVerse = const Verse(
       book: "Psalm",
       chapter: 119,
@@ -56,66 +66,72 @@ class BookmarksView extends StatelessWidget {
           "Blessed are they whose ways are blameless, who walk according to the law of the LORD. Blessed are they who keep his statutes and seek him with all their heart. ... I will praise you with an upright heart as I learn your righteous laws.",
     );
 
-    Container _verseContainer(Verse _verse) {
-      return Container(
-        margin: const EdgeInsets.symmetric(vertical: 16),
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: MLDefaults.rounded,
-          color: MLColors.secondaryLight,
-        ),
-        width: double.infinity,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                LabeledIcon(
-                  icon: const Icon(Icons.book),
-                  label: Text(
-                    _verse.toVerseFormat,
-                    style: MLFont.mediumSemiBold,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () => print("nothing here yet"),
-                  icon: const Icon(Icons.share_outlined),
-                )
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                _verse.verse,
-                textAlign: TextAlign.center,
-                style: MLFont.italic,
-              ),
-            ),
-            Builder(builder: (context) {
-              return SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  child: const Text("Begin"),
-                  style: ElevatedButton.styleFrom(
-                    primary: MLColors.secondary,
-                  ),
-                  onPressed: () => Navigator.pushNamed(
-                    context,
-                    PickGameScreen.routeName,
-                    arguments: _verse,
-                  ),
-                ),
-              );
-            }),
-          ],
-        ),
-      );
-    }
-
     return Padding(
       padding: const EdgeInsets.only(top: 16),
       child: Column(
-        children: List.generate(10, (index) => _verseContainer(_sampleVerse)),
+        children: List.generate(10, (index) => _VerseContainer(_sampleVerse)),
+      ),
+    );
+  }
+}
+
+class _VerseContainer extends StatelessWidget {
+  final Verse verse;
+  const _VerseContainer(this.verse, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        borderRadius: MLDefaults.rounded,
+        color: MLColors.secondaryLight,
+      ),
+      width: double.infinity,
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              LabeledIcon(
+                icon: const Icon(Icons.book),
+                label: Text(
+                  verse.toVerseFormat,
+                  style: MLFont.mediumSemiBold,
+                ),
+              ),
+              IconButton(
+                onPressed: () => print("nothing here yet"),
+                icon: const Icon(Icons.share_outlined),
+              )
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              verse.verse,
+              textAlign: TextAlign.center,
+              style: MLFont.italic,
+            ),
+          ),
+          Builder(builder: (context) {
+            return SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                child: const Text("Begin"),
+                style: ElevatedButton.styleFrom(
+                  primary: MLColors.secondary,
+                ),
+                onPressed: () => Navigator.pushNamed(
+                  context,
+                  PickGameScreen.routeName,
+                  arguments: verse,
+                ),
+              ),
+            );
+          }),
+        ],
       ),
     );
   }

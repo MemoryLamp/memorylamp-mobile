@@ -1,61 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
-import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
+
+import '../models/icon_label_pair.dart';
+import '../widgets/reusable/book_button.dart';
 
 class BooksView extends StatelessWidget {
   const BooksView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<String> _bookList = [
-      "Genesis",
-      "Exodus",
-      "Leviticus",
-      "Numbers",
-      "Deutronomy",
-      "Joshua",
-      "Judges",
-      "Ruth",
-      "1 Samuel",
-      "2 Samuel",
-      "1 Kings",
-      "2 Kings",
-      "1 Chronicles",
-      "2 Chronicles",
-      "Ezra",
+    List<IconLabelPair> bookList = const [
+      IconLabelPair(name: "Genesis", icon: Icons.book),
+      IconLabelPair(name: "Exodus", icon: Icons.book),
+      IconLabelPair(name: "Leviticus", icon: Icons.book),
+      IconLabelPair(name: "Numbers", icon: Icons.book),
+      IconLabelPair(name: "Deutronomy", icon: Icons.book),
+      IconLabelPair(name: "Joshua", icon: Icons.book),
+      IconLabelPair(name: "Judges", icon: Icons.book),
+      IconLabelPair(name: "Ruth", icon: Icons.book),
+      IconLabelPair(name: "1 Samuel", icon: Icons.book),
+      IconLabelPair(name: "2 Samuel", icon: Icons.book),
+      IconLabelPair(name: "1 Kings", icon: Icons.book),
+      IconLabelPair(name: "2 Kings", icon: Icons.book),
+      IconLabelPair(name: "1 Chronicles", icon: Icons.book),
+      IconLabelPair(name: "2 Chronicles", icon: Icons.book),
+      IconLabelPair(name: "Ezra", icon: Icons.book),
     ];
 
-    TextButton _bookButton(int index) {
-      return TextButton(
-        onPressed: () => print("nothing here yet"),
-        style: TextButton.styleFrom(
-          shape: MLDefaults.roundedRectangle,
-        ),
-        child: LabeledIcon(
-          mainAxisAlignment: MainAxisAlignment.center,
-          direction: Axis.vertical,
-          icon: const Icon(Icons.book),
-          label: Text(_bookList[index]),
-        ),
-      );
-    }
-
     return SafeArea(
-      child: Padding(
-        padding: MLDefaults.screenPadding,
-        child: GridView.builder(
-          shrinkWrap: true,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            childAspectRatio: 1.1,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
-          ),
-          itemCount: _bookList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return _bookButton(index);
-          },
+      child: GridView.builder(
+        shrinkWrap: true,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 1.1,
+          crossAxisSpacing: 4,
+          mainAxisSpacing: 4,
         ),
+        padding: MLDefaults.screenPadding,
+        itemCount: bookList.length,
+        itemBuilder: (BuildContext context, int index) {
+          return BookButton(bookList[index]);
+        },
       ),
     );
   }

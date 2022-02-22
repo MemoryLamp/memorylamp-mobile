@@ -7,7 +7,7 @@ class SignupScreen extends StatelessWidget {
   static String routeName = '/signup';
   SignupScreen({Key? key}) : super(key: key);
 
-  final double _width = SizeMQ.width! * .6;
+  final double width = SizeMQ.width! * .6;
 
   @override
   Widget build(BuildContext context) {
@@ -21,22 +21,29 @@ class SignupScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(height: SizeMQ.width! * .1),
-              _thirdPartySignup(),
-              _divider(),
-              _signUp(),
-              _submitButton(),
+              _ThirdPartySignup(width: width),
+              const _Divider(),
+              const _SignUp(),
+              _SubmitButton(width: width),
             ],
           ),
         ),
       ),
     );
   }
+}
 
-  Column _thirdPartySignup() {
+class _ThirdPartySignup extends StatelessWidget {
+  final double width;
+
+  const _ThirdPartySignup({required this.width, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
-          width: _width,
+          width: width,
           child: ElevatedButton(
             onPressed: () {},
             child: const Text(
@@ -46,7 +53,7 @@ class SignupScreen extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: _width,
+          width: width,
           child: ElevatedButton(
             onPressed: () {},
             child: const Text(
@@ -58,8 +65,13 @@ class SignupScreen extends StatelessWidget {
       ],
     );
   }
+}
 
-  Padding _divider() {
+class _Divider extends StatelessWidget {
+  const _Divider({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     const Expanded _line = Expanded(
       child: Divider(
         color: MLColors.secondary,
@@ -83,8 +95,13 @@ class SignupScreen extends StatelessWidget {
       ),
     );
   }
+}
 
-  Column _signUp() {
+class _SignUp extends StatelessWidget {
+  const _SignUp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: const [
         Text("email"),
@@ -92,10 +109,16 @@ class SignupScreen extends StatelessWidget {
       ],
     );
   }
+}
 
-  SizedBox _submitButton() {
+class _SubmitButton extends StatelessWidget {
+  final double width;
+  const _SubmitButton({required this.width, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
-      width: _width,
+      width: width,
       child: ElevatedButton(
         onPressed: () {},
         child: const Text("Submit"),

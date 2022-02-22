@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/constants/emotion_list.dart';
-import 'package:memory_lamp/providers/view_provider.dart';
-import 'package:memory_lamp/screens/emotions.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
-import 'package:provider/provider.dart';
+
+import '../widgets/reusable/emotion_button.dart';
 
 class EmotionsView extends StatelessWidget {
   const EmotionsView({Key? key}) : super(key: key);
@@ -18,17 +17,22 @@ class EmotionsView extends StatelessWidget {
         child: Padding(
           padding: MLDefaults.screenPadding,
           child: Column(
-            children: [
-              _banner(),
-              _emotions(),
+            children: const [
+              _Banner(),
+              _Emotions(),
             ],
           ),
         ),
       ),
     );
   }
+}
 
-  LabeledIcon _banner() {
+class _Banner extends StatelessWidget {
+  const _Banner({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return const LabeledIcon(
       icon: Icon(
         Icons.check_circle_outline,
@@ -41,32 +45,13 @@ class EmotionsView extends StatelessWidget {
       ),
     );
   }
+}
 
-  Padding _emotions() {
-    Consumer _emotionButton(int index) {
-      return Consumer<ViewProvider>(
-        builder: (BuildContext context, viewProvider, Widget? child) {
-          return Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: OutlinedButton(
-              onPressed: () => Navigator.pushNamed(
-                context,
-                EmotionsScreen.routeName,
-                arguments: emotionsList[index],
-              ),
-              child: LabeledIcon(
-                icon: emotionsList[index].image,
-                label: Text(
-                  emotionsList[index].name,
-                  style: MLFont.mediumS,
-                ),
-              ),
-            ),
-          );
-        },
-      );
-    }
+class _Emotions extends StatelessWidget {
+  const _Emotions({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
@@ -79,7 +64,7 @@ class EmotionsView extends StatelessWidget {
             children: List.generate(
               emotionsList.length,
               (index) {
-                return _emotionButton(index);
+                return EmotionButton(emotionsList[index]);
               },
             ),
           )

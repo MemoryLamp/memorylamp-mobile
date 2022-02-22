@@ -30,10 +30,7 @@ class NotificationView extends StatelessWidget {
                   alignment: WrapAlignment.center,
                   children: List.generate(
                     notificationProvider.cards.length,
-                    (index) => _notificationCard(
-                      notificationProvider.cards[index],
-                      notificationProvider,
-                    ),
+                    (index) => _NotificationCard(index: index),
                   ),
                 );
               },
@@ -43,51 +40,60 @@ class NotificationView extends StatelessWidget {
       ),
     );
   }
+}
 
-  Badge _notificationCard(
-    NotificationCard _data,
-    NotificationProvider _provider,
-  ) {
+class _NotificationCard extends StatelessWidget {
+  final int index;
+
+  const _NotificationCard({required this.index, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     final dimension = SizeMQ.width! * .35;
 
-    return Badge(
-      animationType: BadgeAnimationType.scale,
-      animationDuration: const Duration(milliseconds: 200),
-      padding: const EdgeInsets.all(12),
-      showBadge: _data.count > 0,
-      badgeContent: Text("${_data.count}", style: MLFont.mediumWhite),
-      child: GestureDetector(
-        onTap: () => _provider.updateNotification(
-          name: _data.name,
-          action: NotifAction.decrement,
-        ),
-        child: Container(
-          width: dimension,
-          height: dimension,
-          decoration: BoxDecoration(
-            boxShadow: MLDefaults.boxShadow,
-            color: Colors.white,
-            borderRadius: MLDefaults.rounded,
-          ),
-          child: LabeledIcon(
-            direction: Axis.vertical,
-            icon: Expanded(child: _data.image),
-            label: Container(
-              padding: const EdgeInsets.all(12),
+    return Consumer(
+      builder: (context, NotificationProvider notificationProvider, child) {
+        NotificationCard data = notificationProvider.cards[index];
+        return Badge(
+          animationType: BadgeAnimationType.scale,
+          animationDuration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.all(12),
+          showBadge: data.count > 0,
+          badgeContent: Text("${data.count}", style: MLFont.mediumWhite),
+          child: GestureDetector(
+            onTap: () => notificationProvider.updateNotification(
+              name: data.name,
+              action: NotifAction.decrement,
+            ),
+            child: Container(
+              width: dimension,
+              height: dimension,
               decoration: BoxDecoration(
-                color: MLColors.primaryAccent,
-                borderRadius: MLDefaults.roundedBottom,
+                boxShadow: MLDefaults.boxShadow,
+                color: Colors.white,
+                borderRadius: MLDefaults.rounded,
               ),
-              width: double.infinity,
-              child: Text(
-                _data.name,
-                textAlign: TextAlign.center,
-                style: MLFont.mediumWhite,
+              child: LabeledIcon(
+                direction: Axis.vertical,
+                icon: Expanded(child: data.image),
+                label: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: MLColors.primaryAccent,
+                    borderRadius: MLDefaults.roundedBottom,
+                  ),
+                  width: double.infinity,
+                  child: Text(
+                    data.name,
+                    textAlign: TextAlign.center,
+                    style: MLFont.mediumWhite,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

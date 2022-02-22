@@ -16,13 +16,13 @@ class ProfileView extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            _userStats(),
+            const UserStats(),
             Padding(
               padding: MLDefaults.screenPadding,
               child: Column(
-                children: [
-                  _banner(),
-                  _completedVerses(),
+                children: const [
+                  _Banner(),
+                  _CompletedVerses(),
                 ],
               ),
             ),
@@ -31,10 +31,13 @@ class ProfileView extends StatelessWidget {
       ),
     );
   }
+}
 
-  UserStats _userStats() => const UserStats();
+class _Banner extends StatelessWidget {
+  const _Banner({Key? key}) : super(key: key);
 
-  LabeledIcon _banner() {
+  @override
+  Widget build(BuildContext context) {
     return const LabeledIcon(
       icon: Icon(
         Icons.check_circle_outline,
@@ -47,8 +50,13 @@ class ProfileView extends StatelessWidget {
       ),
     );
   }
+}
 
-  Container _completedVerses() {
+class _CompletedVerses extends StatelessWidget {
+  const _CompletedVerses({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     List<String> _columnHeaders = ["Verse", "Activity", "Time"];
     // temporary hardcoded data
     List<CompletedGame> _completedGames = List.generate(20, (index) {
@@ -63,20 +71,6 @@ class ProfileView extends StatelessWidget {
         time: "01:5$index",
       );
     });
-
-    Padding _rowBuilder(CompletedGame _item) {
-      return Padding(
-        padding: const EdgeInsets.all(6.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(_item.verse.toVerseFormat),
-            Text(_item.name),
-            Text(_item.time),
-          ],
-        ),
-      );
-    }
 
     return Container(
       decoration: BoxDecoration(
@@ -106,8 +100,28 @@ class ProfileView extends StatelessWidget {
           ),
           ...List.generate(
             _completedGames.length,
-            (index) => _rowBuilder(_completedGames[index]),
+            (index) => _RowBuilder(completedGame: _completedGames[index]),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class _RowBuilder extends StatelessWidget {
+  final CompletedGame completedGame;
+  const _RowBuilder({required this.completedGame, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(6.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text(completedGame.verse.toVerseFormat),
+          Text(completedGame.name),
+          Text(completedGame.time),
         ],
       ),
     );

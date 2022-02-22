@@ -5,7 +5,6 @@ import 'package:memory_lamp/models/nav_item.dart';
 import 'package:memory_lamp/providers/notification_provider.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
-import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/compound_widgets/user_stats.dart';
 import 'package:provider/provider.dart';
@@ -18,25 +17,22 @@ class MLDrawer extends StatelessWidget {
     return Drawer(
       child: ColoredBox(
         color: MLColors.primary,
-        child: Consumer<ViewProvider>(
-          builder: (BuildContext context, viewProvider, Widget? child) {
-            return ListView(
-              children: [
-                _navHeader(),
-                _navItems(viewProvider, context),
-              ],
-            );
-          },
+        child: ListView(
+          children: const [
+            UserStats(inDrawer: true),
+            _NavItems(),
+          ],
         ),
       ),
     );
   }
+}
 
-  UserStats _navHeader() {
-    return const UserStats(inDrawer: true);
-  }
+class _NavItems extends StatelessWidget {
+  const _NavItems({Key? key}) : super(key: key);
 
-  Container _navItems(ViewProvider viewProvider, BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     List<NavItem> _drawerItems = [
       NavItem(icon: Icons.home, name: "Home", view: Views.home),
       NavItem(icon: Icons.person, name: "Profile", view: Views.profile),
@@ -50,68 +46,72 @@ class MLDrawer extends StatelessWidget {
       NavItem(icon: Icons.logout, name: "Logout", view: Views.logout),
     ];
 
-    return Container(
-      padding: const EdgeInsets.all(12.0),
-      child: Column(
-        children: List.generate(
-          _drawerItems.length,
-          (index) {
-            bool isActive =
-                _drawerItems[index].view == viewProvider.selectedView;
-            return Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(28),
-              ),
-              margin: const EdgeInsets.all(4.0),
-              padding: const EdgeInsets.all(8.0),
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: isActive ? Colors.white : Colors.transparent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(287),
-                  ),
+    return Consumer<ViewProvider>(
+        builder: (context, ViewProvider viewProvider, child) {
+      return Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: List.generate(
+            _drawerItems.length,
+            (index) {
+              bool isActive =
+                  _drawerItems[index].view == viewProvider.selectedView;
+              return Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(28),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: LabeledIcon(
-                    icon: Consumer<NotificationProvider>(
-                      builder: (
-                        BuildContext context,
-                        notificationProvider,
-                        Widget? child,
-                      ) {
-                        Icon _icon = Icon(
-                          _drawerItems[index].icon,
-                          color: isActive ? MLColors.primary : Colors.white,
-                        );
-                        if (_drawerItems[index].view == Views.notification) {
-                          return Badge(
-                            showBadge: !notificationProvider.noNotifications,
-                            badgeColor: MLColors.secondary,
-                            position: BadgePosition.topEnd(top: -1, end: -1),
-                            child: _icon,
-                          );
-                        }
-                        return _icon;
-                      },
+                margin: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.all(8.0),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor:
+                        isActive ? Colors.white : Colors.transparent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(287),
                     ),
-                    label: Text(
-                      _drawerItems[index].name,
-                      style: TextStyle(
-                        color: isActive ? MLColors.primary : Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: LabeledIcon(
+                      icon: Consumer<NotificationProvider>(
+                        builder: (
+                          BuildContext context,
+                          notificationProvider,
+                          Widget? child,
+                        ) {
+                          Icon _icon = Icon(
+                            _drawerItems[index].icon,
+                            color: isActive ? MLColors.primary : Colors.white,
+                          );
+                          if (_drawerItems[index].view == Views.notification) {
+                            return Badge(
+                              showBadge: !notificationProvider.noNotifications,
+                              badgeColor: MLColors.secondary,
+                              position: BadgePosition.topEnd(top: -1, end: -1),
+                              child: _icon,
+                            );
+                          }
+                          return _icon;
+                        },
+                      ),
+                      label: Text(
+                        _drawerItems[index].name,
+                        style: TextStyle(
+                          color: isActive ? MLColors.primary : Colors.white,
+                        ),
                       ),
                     ),
                   ),
+                  onPressed: () {
+                    viewProvider.changeView(_drawerItems[index].view);
+                    Navigator.pop(context);
+                  },
                 ),
-                onPressed: () {
-                  viewProvider.changeView(_drawerItems[index].view);
-                  Navigator.pop(context);
-                },
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

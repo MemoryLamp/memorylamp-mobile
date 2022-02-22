@@ -16,13 +16,6 @@ class LabeledIcon extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  SizedBox _separator() {
-    return SizedBox(
-      width: direction == Axis.vertical ? 0 : spaceBetween,
-      height: direction == Axis.horizontal ? 0 : spaceBetween,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Flex(
@@ -30,9 +23,30 @@ class LabeledIcon extends StatelessWidget {
       direction: direction,
       children: [
         icon,
-        _separator(),
+        _Separator(
+          direction: direction,
+          spaceBetween: spaceBetween,
+        ),
         label,
       ],
+    );
+  }
+}
+
+class _Separator extends StatelessWidget {
+  final Axis direction;
+  final double? spaceBetween;
+  const _Separator({
+    required this.direction,
+    this.spaceBetween,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: direction == Axis.vertical ? 0 : spaceBetween,
+      height: direction == Axis.horizontal ? 0 : spaceBetween,
     );
   }
 }

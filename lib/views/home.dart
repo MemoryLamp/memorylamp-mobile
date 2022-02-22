@@ -10,11 +10,13 @@ import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/screens/games/pick_game.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
-import 'package:memory_lamp/screens/emotions.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
+import 'package:memory_lamp/widgets/reusable/emotion_button.dart';
 import 'package:provider/provider.dart';
+
+import '../widgets/reusable/book_button.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -26,19 +28,24 @@ class HomeView extends StatelessWidget {
         child: Padding(
           padding: MLDefaults.screenPadding,
           child: Column(
-            children: [
-              _verseOfTheDay(),
-              _emotions(),
-              _books(),
-              _games(),
+            children: const [
+              _VerseOfTheDay(),
+              _Emotions(),
+              _Books(),
+              _Games(),
             ],
           ),
         ),
       ),
     );
   }
+}
 
-  Column _verseOfTheDay() {
+class _VerseOfTheDay extends StatelessWidget {
+  const _VerseOfTheDay({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         const LabeledIcon(
@@ -75,32 +82,13 @@ class HomeView extends StatelessWidget {
       ],
     );
   }
+}
 
-  Padding _emotions() {
-    Consumer _emotionButton(int index) {
-      return Consumer<ViewProvider>(
-        builder: (BuildContext context, viewProvider, Widget? child) {
-          return Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: OutlinedButton(
-              onPressed: () => Navigator.pushNamed(
-                context,
-                EmotionsScreen.routeName,
-                arguments: emotionsList[index],
-              ),
-              child: LabeledIcon(
-                icon: emotionsList[index].image,
-                label: Text(
-                  emotionsList[index].name,
-                  style: MLFont.mediumS,
-                ),
-              ),
-            ),
-          );
-        },
-      );
-    }
+class _Emotions extends StatelessWidget {
+  const _Emotions({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
@@ -118,7 +106,7 @@ class HomeView extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             childAspectRatio: 4,
             children: List.generate(7, (index) {
-              return _emotionButton(index);
+              return EmotionButton(emotionsList[index]);
             })
               ..add(
                 Padding(
@@ -143,8 +131,13 @@ class HomeView extends StatelessWidget {
       ),
     );
   }
+}
 
-  Padding _books() {
+class _Books extends StatelessWidget {
+  const _Books({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     List<IconLabelPair> _bookList = const [
       IconLabelPair(name: "Genesis", icon: Icons.book),
       IconLabelPair(name: "Exodus", icon: Icons.book),
@@ -171,64 +164,20 @@ class HomeView extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             childAspectRatio: 1.1,
             children: List.generate(_bookList.length, (index) {
-              return _bookButton(_bookList[index]);
+              return BookButton(_bookList[index]);
             }),
           )
         ],
       ),
     );
   }
+}
 
-  Container _bookButton(IconLabelPair _book) {
-    return Container(
-      margin: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        borderRadius: MLDefaults.rounded,
-      ),
-      width: SizeMQ.height! * .1,
-      height: SizeMQ.height! * .1,
-      child: TextButton(
-        onPressed: () => print("nothing here yet"),
-        child: LabeledIcon(
-          direction: Axis.vertical,
-          mainAxisAlignment: MainAxisAlignment.center,
-          icon: Expanded(child: Icon(_book.icon)),
-          label: Expanded(child: Text(_book.name)),
-        ),
-      ),
-    );
-  }
+class _Games extends StatelessWidget {
+  const _Games({Key? key}) : super(key: key);
 
-  Padding _games() {
-    const Verse _sampleHardcodedVerse =
-        Verse(book: "Genesis", chapter: 1, number: 1, verse: "Hello world");
-
-    Builder _gameButton(Game _game) {
-      return Builder(builder: (context) {
-        return Container(
-          margin: const EdgeInsets.all(8.0),
-          width: SizeMQ.height! * .2,
-          decoration: BoxDecoration(
-            borderRadius: MLDefaults.rounded,
-          ),
-          child: TextButton(
-            onPressed: () => Navigator.pushNamed(
-              context,
-              PickGameScreen.routeName,
-              arguments: _sampleHardcodedVerse,
-            ),
-            child: LabeledIcon(
-              direction: Axis.vertical,
-              icon: Expanded(child: Icon(_game.icon)),
-              label: Expanded(
-                child: Text(_game.name),
-              ),
-            ),
-          ),
-        );
-      });
-    }
-
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
@@ -250,12 +199,52 @@ class HomeView extends StatelessWidget {
               child: Row(
                 children: List.generate(
                   gameList.length,
-                  (int index) => _gameButton(gameList[index]),
+                  (int index) => _GameButton(gameList[index]),
                 ),
               ),
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class _GameButton extends StatelessWidget {
+  final Game game;
+  const _GameButton(this.game, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const Verse _sampleHardcodedVerse = Verse(
+      book: "Genesis",
+      chapter: 1,
+      number: 1,
+      verse: "Hello world",
+    );
+
+    return Container(
+      margin: const EdgeInsets.all(8.0),
+      width: SizeMQ.height! * .2,
+      decoration: BoxDecoration(
+        borderRadius: MLDefaults.rounded,
+      ),
+      child: TextButton(
+        onPressed: () => Navigator.pushNamed(
+          context,
+          PickGameScreen.routeName,
+          arguments: _sampleHardcodedVerse,
+        ),
+        child: LabeledIcon(
+          direction: Axis.vertical,
+          icon: Expanded(child: Icon(game.icon)),
+          label: Expanded(
+            child: Text(
+              game.name,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
       ),
     );
   }

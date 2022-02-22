@@ -13,67 +13,58 @@ class StreaksView extends StatelessWidget {
     return SingleChildScrollView(
       child: SafeArea(
         child: Column(
-          children: [
-            _userStats(),
-            _statsContainer(),
+          children: const [
+            UserStats(),
+            _StatsContainer(),
           ],
         ),
       ),
     );
   }
+}
 
-  UserStats _userStats() => const UserStats();
+class _StatsContainer extends StatelessWidget {
+  const _StatsContainer({Key? key}) : super(key: key);
 
-  Padding _statsContainer() {
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          _indicator(large: true),
+          const _Indicator(isLarge: true),
           GridView.count(
             crossAxisCount: 2,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             childAspectRatio: .9,
-            children: List.generate(5, (_) => _indicator()),
+            children: List.generate(5, (_) => const _Indicator()),
           ),
         ],
       ),
     );
   }
+}
 
-  CircularPercentIndicator _indicator({bool large = false}) {
-    Column _centerContent({
-      required String percent,
-      required String formatedVerse,
-    }) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            percent,
-            style: TextStyle(
-              fontSize: large ? MLFont.medium * 2 : MLFont.medium,
-              fontWeight: MLFont.bold,
-            ),
-          ),
-          Text(
-            formatedVerse,
-            style: MLFont.smallPrimaryBold,
-          ),
-        ],
-      );
-    }
+class _Indicator extends StatelessWidget {
+  final bool isLarge;
+  const _Indicator({this.isLarge = false, Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
     return CircularPercentIndicator(
-      radius: large ? SizeMQ.width! * .55 : SizeMQ.width! * .28,
+      radius: isLarge ? SizeMQ.width! * .55 : SizeMQ.width! * .28,
       animation: true,
-      lineWidth: large ? 28 : 14,
+      lineWidth: isLarge ? 28 : 14,
       percent: .4,
-      center: _centerContent(percent: "40%", formatedVerse: "Psalm 119:1"),
+      center: _CenterContent(
+        percent: "40%",
+        formatedVerse: "Psalm 119:1",
+        isLarge: isLarge,
+      ),
       progressColor: MLColors.purple,
       footer: SizedBox(
-        width: large ? SizeMQ.width! * .5 : SizeMQ.width! * .3,
+        width: isLarge ? SizeMQ.width! * .5 : SizeMQ.width! * .3,
         child: ElevatedButton(
           child: const Text("Continue"),
           onPressed: () => print("nothing here yet"),
@@ -82,6 +73,39 @@ class StreaksView extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _CenterContent extends StatelessWidget {
+  final String percent;
+  final String formatedVerse;
+  final bool isLarge;
+
+  const _CenterContent({
+    required this.percent,
+    required this.formatedVerse,
+    this.isLarge = false,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          percent,
+          style: TextStyle(
+            fontSize: isLarge ? MLFont.medium * 2 : MLFont.medium,
+            fontWeight: MLFont.bold,
+          ),
+        ),
+        Text(
+          formatedVerse,
+          style: MLFont.smallPrimaryBold,
+        ),
+      ],
     );
   }
 }

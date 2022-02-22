@@ -43,6 +43,6 @@ class MLDefaults {
   // paddings
 
   static EdgeInsetsGeometry get screenPadding {
-    return const EdgeInsets.all(24);
+    return const EdgeInsets.all(16);
   }
 }

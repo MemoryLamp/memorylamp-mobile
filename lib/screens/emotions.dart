@@ -10,45 +10,48 @@ import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 class EmotionsScreen extends StatelessWidget {
   static const routeName = "/emotions";
 
-  final Emotion _emotion;
+  final Emotion emotion;
 
-  const EmotionsScreen(this._emotion, {Key? key}) : super(key: key);
+  const EmotionsScreen(this.emotion, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar(context),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(emotion.name),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.chevron_left_rounded, size: 40),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () => print("nothing here yet"),
+            icon: const Icon(Icons.share_outlined, size: 30),
+          )
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              _header(),
-              _verseList(_emotion.verses),
+              _Header(emotion: emotion),
+              _VerseList(verses: emotion.verses),
             ],
           ),
         ),
       ),
     );
   }
+}
 
-  AppBar _appBar(context) {
-    return AppBar(
-      centerTitle: true,
-      title: Text(_emotion.name),
-      leading: IconButton(
-        onPressed: () => Navigator.pop(context),
-        icon: const Icon(Icons.chevron_left_rounded, size: 40),
-      ),
-      actions: [
-        IconButton(
-          onPressed: () => print("nothing here yet"),
-          icon: const Icon(Icons.share_outlined, size: 30),
-        )
-      ],
-    );
-  }
+class _Header extends StatelessWidget {
+  final Emotion emotion;
 
-  Column _header() {
+  const _Header({required this.emotion, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         Image.asset(
@@ -63,13 +66,13 @@ class EmotionsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                _emotion.highlightVerse.toVerseFormat,
+                emotion.highlightVerse.toVerseFormat,
                 style: MLFont.mediumWhite,
               ),
               Padding(
                 padding: MLDefaults.screenPadding,
                 child: Text(
-                  _emotion.highlightVerse.verse,
+                  emotion.highlightVerse.verse,
                   textAlign: TextAlign.center,
                   style: MLFont.mediumWhiteLight,
                 ),
@@ -99,13 +102,20 @@ class EmotionsScreen extends StatelessWidget {
       ],
     );
   }
+}
 
-  Padding _verseList(List<Verse> _verses) {
+class _VerseList extends StatelessWidget {
+  final List<Verse> verses;
+
+  const _VerseList({required this.verses, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: List.generate(
-          _verses.length,
+          verses.length,
           (index) => Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -116,7 +126,7 @@ class EmotionsScreen extends StatelessWidget {
                   width: MLFont.large,
                 ),
                 label: Text(
-                  _verses[index].toVerseFormat,
+                  verses[index].toVerseFormat,
                   style: MLFont.mediumSemiBold,
                 ),
               ),

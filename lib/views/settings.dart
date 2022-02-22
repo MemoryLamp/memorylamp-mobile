@@ -22,24 +22,34 @@ class SettingsView extends StatelessWidget {
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _banner(),
-              _toggleButtons(),
+            children: const [
+              _Banner(),
+              _ToggleButtons(),
             ],
           ),
         ),
       ),
     );
   }
+}
 
-  Text _banner() {
+class _Banner extends StatelessWidget {
+  const _Banner({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return const Text(
       "Verses Notification",
       style: MLFont.bannerText01,
     );
   }
+}
 
-  Padding _toggleButtons() {
+class _ToggleButtons extends StatelessWidget {
+  const _ToggleButtons({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     Text _text(String text) {
       return Text(
         text,

@@ -15,17 +15,18 @@ class UserStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserProvider>(
-      builder: (BuildContext context, userProvider, Widget? child) {
-        if (inDrawer) {
-          return _inDrawer(userProvider.data);
-        }
-        return _asHeader(userProvider.data);
-      },
-    );
+    if (inDrawer) {
+      return const _InDrawer();
+    }
+    return const _AsHeader();
   }
+}
 
-  Container _inDrawer(User _user) {
+class _InDrawer extends StatelessWidget {
+  const _InDrawer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       color: MLColors.primaryLight,
       padding: const EdgeInsets.all(8),
@@ -34,19 +35,29 @@ class UserStats extends StatelessWidget {
           padding: const EdgeInsets.all(4.0),
           child: Image.asset(AssetPaths.icon("pfp.png")),
         ),
-        label: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(_user.name, style: MLFont.extraLargeBold),
-            Text("Streak : ${_user.streak}"),
-            Text("Week: ${_user.week}"),
-          ],
+        label: Consumer<UserProvider>(
+          builder: (context, UserProvider userProvider, child) {
+            User user = userProvider.data;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(user.name, style: MLFont.extraLargeBold),
+                Text("Streak : ${user.streak}"),
+                Text("Week: ${user.week}"),
+              ],
+            );
+          },
         ),
       ),
     );
   }
+}
 
-  Container _asHeader(User _user) {
+class _AsHeader extends StatelessWidget {
+  const _AsHeader({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20.0),
       decoration: const BoxDecoration(
@@ -61,25 +72,29 @@ class UserStats extends StatelessWidget {
         icon: Image.asset(AssetPaths.icon("pfp.png")),
         label: SizedBox(
           width: SizeMQ.width! * .4,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(_user.name, style: MLFont.extraLargeWhiteBold),
-              Row(
-                children: [
-                  Text(
-                    "Streak : ${_user.streak}",
-                    style: MLFont.whiteSemiBold,
-                  ),
-                  const Spacer(),
-                  Text(
-                    "Week: ${_user.week}",
-                    style: MLFont.whiteSemiBold,
-                  ),
-                ],
-              ),
-            ],
-          ),
+          child: Consumer<UserProvider>(
+              builder: (context, UserProvider userProvider, child) {
+            User user = userProvider.data;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(user.name, style: MLFont.extraLargeWhiteBold),
+                Row(
+                  children: [
+                    Text(
+                      "Streak : ${user.streak}",
+                      style: MLFont.whiteSemiBold,
+                    ),
+                    const Spacer(),
+                    Text(
+                      "Week: ${user.week}",
+                      style: MLFont.whiteSemiBold,
+                    ),
+                  ],
+                ),
+              ],
+            );
+          }),
         ),
       ),
     );

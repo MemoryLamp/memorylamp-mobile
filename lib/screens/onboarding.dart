@@ -21,24 +21,34 @@ class OnboardingScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _logo(),
+            const _Logo(),
             SizedBox(height: SizeMQ.width! * .2),
-            _getStarted(context),
+            const _GetStarted(),
           ],
         ),
       ),
     );
   }
+}
 
-  Image _logo() {
+class _Logo extends StatelessWidget {
+  const _Logo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Image.asset(
       AssetPaths.logo("logo-light.png"),
       width: SizeMQ.width! * .65,
       fit: BoxFit.fitWidth,
     );
   }
+}
 
-  SizedBox _getStarted(BuildContext context) {
+class _GetStarted extends StatelessWidget {
+  const _GetStarted({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       width: SizeMQ.width! * .60,
       height: 40,
