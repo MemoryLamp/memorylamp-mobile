@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/constants/games_list.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/game.dart';
 import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
+
+import '../../constants/temp_hardcoded_data.dart';
 
 class PickGameScreen extends StatelessWidget {
   static const String routeName = "/pickGame";

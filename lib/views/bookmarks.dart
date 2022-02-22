@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_lamp/constants/temp_hardcoded_data.dart';
 import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/screens/games/pick_game.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
@@ -58,18 +59,13 @@ class _BookmarkList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Verse _sampleVerse = const Verse(
-      book: "Psalm",
-      chapter: 119,
-      number: 1,
-      verse:
-          "Blessed are they whose ways are blameless, who walk according to the law of the LORD. Blessed are they who keep his statutes and seek him with all their heart. ... I will praise you with an upright heart as I learn your righteous laws.",
-    );
-
     return Padding(
       padding: const EdgeInsets.only(top: 16),
       child: Column(
-        children: List.generate(10, (index) => _VerseContainer(_sampleVerse)),
+        children: List.generate(
+          10,
+          (index) => const _VerseContainer(sampleHardcodedVerse),
+        ),
       ),
     );
   }

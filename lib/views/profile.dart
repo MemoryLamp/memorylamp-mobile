@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:memory_lamp/models/completed_game.dart';
-import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';
 import 'package:memory_lamp/widgets/compound_widgets/labeled_icon.dart';
 import 'package:memory_lamp/widgets/compound_widgets/user_stats.dart';
+
+import '../constants/temp_hardcoded_data.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -58,19 +59,6 @@ class _CompletedVerses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> _columnHeaders = ["Verse", "Activity", "Time"];
-    // temporary hardcoded data
-    List<CompletedGame> _completedGames = List.generate(20, (index) {
-      return CompletedGame(
-        verse: Verse(
-          book: "Genesis",
-          chapter: 1,
-          number: index,
-          verse: "Hello",
-        ),
-        name: "Fill in the Blanks",
-        time: "01:5$index",
-      );
-    });
 
     return Container(
       decoration: BoxDecoration(
@@ -99,8 +87,8 @@ class _CompletedVerses extends StatelessWidget {
             ),
           ),
           ...List.generate(
-            _completedGames.length,
-            (index) => _RowBuilder(completedGame: _completedGames[index]),
+            completedGames.length,
+            (index) => _RowBuilder(completedGame: completedGames[index]),
           ),
         ],
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/constants/emotion_list.dart';
+import 'package:memory_lamp/constants/temp_hardcoded_data.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
 import 'package:memory_lamp/theming/ml_colors.dart';
 import 'package:memory_lamp/theming/ml_font.dart';

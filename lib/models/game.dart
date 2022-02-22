@@ -6,7 +6,6 @@ class Game extends IconLabelPair {
   Game({
     required this.routeName,
     required name,
-    icon,
-    image,
+    required icon,
   }) : super(name: name, icon: icon);
 }

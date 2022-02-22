@@ -7,7 +7,8 @@ import '../compound_widgets/labeled_icon.dart';
 
 class BookButton extends StatelessWidget {
   final IconLabelPair book;
-  const BookButton(this.book, {Key? key}) : super(key: key);
+  final VoidCallback? onPressed;
+  const BookButton(this.book, {this.onPressed, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class BookButton extends StatelessWidget {
       width: SizeMQ.height! * .1,
       height: SizeMQ.height! * .1,
       child: TextButton(
-        onPressed: () => print("nothing here yet"),
+        onPressed: onPressed ?? () => print("Nothing here yet"),
         child: LabeledIcon(
           direction: Axis.vertical,
           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:memory_lamp/constants/emotion_list.dart';
-import 'package:memory_lamp/constants/games_list.dart';
+import 'package:memory_lamp/constants/temp_hardcoded_data.dart';
 import 'package:memory_lamp/helpers/asset_paths.dart';
 import 'package:memory_lamp/helpers/size_mq.dart';
 import 'package:memory_lamp/models/enums/views.dart';
 import 'package:memory_lamp/models/game.dart';
 import 'package:memory_lamp/models/icon_label_pair.dart';
-import 'package:memory_lamp/models/verse.dart';
 import 'package:memory_lamp/providers/view_provider.dart';
 import 'package:memory_lamp/screens/games/pick_game.dart';
 import 'package:memory_lamp/theming/ml_defaults.dart';
@@ -138,15 +136,6 @@ class _Books extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<IconLabelPair> _bookList = const [
-      IconLabelPair(name: "Genesis", icon: Icons.book),
-      IconLabelPair(name: "Exodus", icon: Icons.book),
-      IconLabelPair(name: "Leviticus", icon: Icons.book),
-      IconLabelPair(name: "Numbers", icon: Icons.book),
-      IconLabelPair(name: "Deutronomy", icon: Icons.book),
-      IconLabelPair(name: "more", icon: Icons.more_horiz),
-    ];
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
@@ -163,8 +152,18 @@ class _Books extends StatelessWidget {
             crossAxisCount: 3,
             physics: const NeverScrollableScrollPhysics(),
             childAspectRatio: 1.1,
-            children: List.generate(_bookList.length, (index) {
-              return BookButton(_bookList[index]);
+            children: List.generate(bookList.length >= 6 ? 6 : bookList.length,
+                (index) {
+              if (index == 5) {
+                return BookButton(
+                  const IconLabelPair(name: "more", icon: Icons.more_horiz),
+                  onPressed: () => Provider.of<ViewProvider>(
+                    context,
+                    listen: false,
+                  ).changeView(Views.books),
+                );
+              }
+              return BookButton(bookList[index]);
             }),
           )
         ],
@@ -216,13 +215,6 @@ class _GameButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Verse _sampleHardcodedVerse = Verse(
-      book: "Genesis",
-      chapter: 1,
-      number: 1,
-      verse: "Hello world",
-    );
-
     return Container(
       margin: const EdgeInsets.all(8.0),
       width: SizeMQ.height! * .2,
@@ -233,7 +225,7 @@ class _GameButton extends StatelessWidget {
         onPressed: () => Navigator.pushNamed(
           context,
           PickGameScreen.routeName,
-          arguments: _sampleHardcodedVerse,
+          arguments: sampleHardcodedVerse,
         ),
         child: LabeledIcon(
           direction: Axis.vertical,
